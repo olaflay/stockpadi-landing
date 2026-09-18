@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Bluetooth, Zap, Smartphone, Printer, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { HARDWARE_SHOWCASE } from '../data/content';
+import { buildContactLink, getBusinessName } from '../config/env';
 
 interface HardwareSectionProps {
   onStartFree: () => void;
@@ -9,6 +10,11 @@ interface HardwareSectionProps {
 export const HardwareSection: React.FC<HardwareSectionProps> = ({ onStartFree }) => {
   const [printCount, setPrintCount] = useState(1);
   const [isFeeding, setIsFeeding] = useState(false);
+  const businessName = getBusinessName();
+  const printerContactUrl = buildContactLink(
+    `Hi ${businessName}, what thermal printer models are recommended?`,
+    `${businessName} Thermal Printer Compatibility Inquiry`
+  );
 
   const handleTestPrint = () => {
     setIsFeeding(true);
@@ -46,7 +52,7 @@ export const HardwareSection: React.FC<HardwareSectionProps> = ({ onStartFree })
               <ArrowRight size={16} />
             </button>
             <a
-              href="https://wa.me/2348000000000?text=Hi%20StockPadi,%20what%20printers%20are%20recommended?"
+              href={printerContactUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-secondary"

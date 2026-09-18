@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, X, ShieldCheck, Sun, Moon } from 'lucide-react';
+import { getWebAppUrl, getBusinessName } from '../config/env';
 
 interface NavbarProps {
   onStartFree: () => void;
@@ -9,6 +10,8 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ onStartFree, theme, onToggleTheme }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const webAppUrl = getWebAppUrl();
+  const businessName = getBusinessName();
 
   const scrollToSection = (id: string) => {
     setIsOpen(false);
@@ -31,7 +34,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onStartFree, theme, onToggleThem
         <div className="nav-brand-logo">
           <ShieldCheck size={20} />
         </div>
-        <span>StockPadi</span>
+        <span>{businessName}</span>
       </a>
 
       <nav className={`nav-links ${isOpen ? 'open' : ''}`} aria-label="Main navigation">
@@ -51,7 +54,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onStartFree, theme, onToggleThem
           FAQ
         </button>
         <a
-          href="https://app.stockpadi.com/auth"
+          href={`${webAppUrl}/auth`}
           className="nav-item"
           style={{ fontWeight: 600 }}
         >

@@ -12,6 +12,9 @@ import { FaqSection } from './components/FaqSection';
 import { FinalCta } from './components/FinalCta';
 import { Footer } from './components/Footer';
 import { MobileFloatingBar } from './components/MobileFloatingBar';
+import { DynamicJsonLd } from './components/DynamicJsonLd';
+
+import { getWebAppUrl, buildContactLink, getBusinessName } from './config/env';
 
 export function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -24,6 +27,9 @@ export function App() {
     }
     return 'light';
   });
+
+  const webAppUrl = getWebAppUrl();
+  const businessName = getBusinessName();
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -60,22 +66,22 @@ export function App() {
   }, []);
 
   const handleStartFree = () => {
-    window.location.href = 'https://app.stockpadi.com/auth/signup';
+    window.location.href = `${webAppUrl}/auth/signup`;
   };
 
   const handleUpgradePro = () => {
-    window.location.href = 'https://app.stockpadi.com/auth/signup?plan=pro';
+    window.location.href = `${webAppUrl}/auth/signup?plan=pro`;
   };
 
   const handleContactEnterprise = () => {
-    const message = encodeURIComponent(
-      'Hello StockPadi! I am interested in the Enterprise Plan (up to 6 branches, custom receipt branding, and inter-branch transfers) for my retail chain.'
-    );
-    window.open(`https://wa.me/2348000000000?text=${message}`, '_blank');
+    const message = `Hello ${businessName}! I am interested in the Enterprise Plan (up to 6 branches, custom receipt branding, and inter-branch transfers) for my retail chain.`;
+    const contactUrl = buildContactLink(message, `${businessName} Enterprise Plan Inquiry`);
+    window.open(contactUrl, '_blank');
   };
 
   return (
     <div className="stockpadi-landing-root">
+      <DynamicJsonLd />
       <Navbar
         onStartFree={handleStartFree}
         theme={theme}
