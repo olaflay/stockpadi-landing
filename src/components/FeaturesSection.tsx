@@ -6,13 +6,13 @@ export const FeaturesSection: React.FC = () => {
   const getFeatureIcon = (id: string) => {
     switch (id) {
       case 'feat-inventory':
-        return <Database size={24} color="var(--brand)" />;
+        return <Database size={24} color="var(--color-brand-accent)" />;
       case 'feat-receipts':
-        return <Printer size={24} color="var(--brand)" />;
+        return <Printer size={24} color="var(--color-brand-accent)" />;
       case 'feat-credit':
-        return <BookOpenCheck size={24} color="var(--brand)" />;
+        return <BookOpenCheck size={24} color="var(--color-brand-accent)" />;
       default:
-        return <Layers size={24} color="var(--brand)" />;
+        return <Layers size={24} color="var(--color-brand-accent)" />;
     }
   };
 
@@ -24,7 +24,7 @@ export const FeaturesSection: React.FC = () => {
             style={{
               fontSize: 12,
               fontWeight: 700,
-              color: 'var(--brand)',
+              color: 'var(--color-brand-accent)',
               letterSpacing: '0.08em',
               display: 'inline-block',
               marginBottom: 12,

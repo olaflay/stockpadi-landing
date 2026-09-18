@@ -18,7 +18,7 @@ export const Footer: React.FC = () => {
                 width: 32,
                 height: 32,
                 borderRadius: 8,
-                background: 'var(--brand)',
+                background: 'var(--color-brand-accent)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',

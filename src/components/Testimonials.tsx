@@ -21,7 +21,7 @@ export const Testimonials: React.FC = () => {
         style={{
           fontSize: 12,
           fontWeight: 700,
-          color: 'var(--brand)',
+          color: 'var(--color-brand-accent)',
           letterSpacing: '0.08em',
           display: 'inline-block',
           marginBottom: 12,
@@ -36,7 +36,7 @@ export const Testimonials: React.FC = () => {
 
       <div className="testimonial-stage">
         <article className="testimonial-card-single" role="region" aria-label={`Testimonial from ${currentItem.name}`}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--brand)', marginBottom: 16 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--color-brand-accent)', marginBottom: 16 }}>
             <Quote size={28} />
           </div>
 
@@ -49,10 +49,10 @@ export const Testimonials: React.FC = () => {
               {currentItem.initials}
             </div>
             <div>
-              <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--ink)' }}>
+              <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--color-on-surface)' }}>
                 {currentItem.name}
               </div>
-              <div style={{ fontSize: 13, color: 'var(--ink-secondary)' }}>
+              <div style={{ fontSize: 13, color: 'var(--color-on-surface-muted)' }}>
                 {currentItem.role} • {currentItem.location}
               </div>
             </div>

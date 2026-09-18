@@ -91,7 +91,7 @@ export const HardwareSection: React.FC<HardwareSectionProps> = ({ onStartFree })
                 <span>2x Gino Pepper Tomato</span>
                 <span className="font-number">₦800</span>
               </div>
-              <div style={{ borderTop: '1px dashed var(--color-border)', marginTop: 6, paddingTop: 4, display: 'flex', justifyContent: 'space-between', fontWeight: 700 }}>
+              <div style={{ borderTop: '1px dashed var(--color-outline-variant)', marginTop: 6, paddingTop: 4, display: 'flex', justifyContent: 'space-between', fontWeight: 700 }}>
                 <span>PAID (TRANSFER):</span>
                 <span className="font-number">₦4,000</span>
               </div>

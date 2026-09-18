@@ -61,13 +61,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onStartFree, scrollPro
               style={{
                 fontSize: 12,
                 fontWeight: 600,
-                color: 'var(--brand)',
-                background: 'var(--brand-surface)',
+                color: 'var(--color-brand-accent)',
+                background: 'var(--color-brand-container)',
                 padding: '6px 14px',
                 borderRadius: 9999,
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: 6
+                gap: 6,
+                border: 'none',
+                cursor: 'pointer',
               }}
             >
               <Printer size={14} />
@@ -119,16 +121,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onStartFree, scrollPro
             <div className="receipt-zigzag-edge" />
           </div>
 
-          {/* Device status footer */}
-          <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 16, borderTop: '1px solid var(--paper-border)', fontSize: 12, color: 'var(--ink-secondary)' }}>
+          {/* Device status footer (M3 Tonal Container, Zero Border) */}
+          <div style={{ display: 'flex', justifyContent: 'space-around', padding: '12px 14px', marginTop: 16, background: 'var(--color-surface-container)', borderRadius: 'var(--shape-sm)', fontSize: 12, color: 'var(--color-on-surface-muted)', flexWrap: 'wrap', gap: 8 }}>
             <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-              <CheckCircle2 size={14} color="#16A34A" /> No monthly subscription
+              <CheckCircle2 size={14} color="var(--color-brand-accent)" /> 100% offline-first
             </span>
             <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-              <CheckCircle2 size={14} color="#16A34A" /> Zero ink thermal paper
+              <CheckCircle2 size={14} color="var(--color-brand-accent)" /> Zero ink thermal paper
             </span>
             <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-              <CheckCircle2 size={14} color="#16A34A" /> WhatsApp digital copy
+              <CheckCircle2 size={14} color="var(--color-brand-accent)" /> WhatsApp digital copy
             </span>
           </div>
         </div>

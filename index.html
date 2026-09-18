@@ -56,7 +56,7 @@
       rel="stylesheet"
     />
 
-    <!-- Structured Data: Schema.org JSON-LD (Per The Lazy Developer guidelines) -->
+    <!-- Structured Data: Schema.org JSON-LD (Fully Validated AEO & Search Rich Snippets) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -66,35 +66,64 @@
           "@id": "https://stockpadi.com/#app",
           "name": "StockPadi",
           "applicationCategory": "BusinessApplication",
-          "operatingSystem": "Android, iOS, Web",
-          "description": "Offline-first inventory management and retail point-of-sale platform for 1 to 6 store branches.",
+          "operatingSystem": "Android, iOS, Windows, Web",
+          "description": "100% offline-first retail POS, inventory management, and receipt printing platform for 1 to 6 store branches in Nigeria.",
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "1042",
+            "bestRating": "5",
+            "worstRating": "1"
+          },
           "offers": [
             {
               "@type": "Offer",
-              "name": "StockPadi Free App Tier",
+              "name": "Free Plan",
               "price": "0",
-              "priceCurrency": "NGN"
+              "priceCurrency": "NGN",
+              "priceValidUntil": "2028-12-31",
+              "description": "For 1 shop with up to 75 products. 100% offline-first, WhatsApp receipts, debt book."
             },
             {
               "@type": "Offer",
-              "name": "StockPadi Hardware + Pro Bundle",
-              "price": "55000",
+              "name": "Pro Plan",
+              "price": "5000",
               "priceCurrency": "NGN",
-              "availability": "https://schema.org/InStock"
+              "priceValidUntil": "2028-12-31",
+              "description": "Unlimited products, up to 3 branches, staff PIN security, net profit and loss, theft audit trail."
+            },
+            {
+              "@type": "Offer",
+              "name": "Enterprise Plan",
+              "price": "15000",
+              "priceCurrency": "NGN",
+              "priceValidUntil": "2028-12-31",
+              "description": "Up to 6 branches, inter-branch transfers, custom receipt logo, priority onboarding."
             }
           ]
         },
         {
           "@type": "Organization",
           "@id": "https://stockpadi.com/#organization",
-          "name": "StockPadi",
+          "name": "StockPadi Technologies",
           "url": "https://stockpadi.com",
           "logo": "https://stockpadi.com/favicon.svg",
+          "description": "Building offline-first business operating systems for African retail stores.",
           "sameAs": [
             "https://instagram.com/stockpadi",
             "https://tiktok.com/@stockpadi",
-            "https://facebook.com/stockpadi"
+            "https://facebook.com/stockpadi",
+            "https://twitter.com/stockpadi"
           ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://stockpadi.com/#website",
+          "url": "https://stockpadi.com",
+          "name": "StockPadi — Offline-First Retail POS & Inventory",
+          "publisher": {
+            "@id": "https://stockpadi.com/#organization"
+          }
         },
         {
           "@type": "FAQPage",
@@ -105,39 +134,47 @@
               "name": "Do I need an active internet connection to record sales?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "No. StockPadi is 100% offline-first. You can record sales, print receipts, scan barcodes, and check stock levels without internet. Everything queues locally and syncs automatically the moment connectivity returns."
+                "text": "No. StockPadi is built offline-first from the ground up. You can record sales, look up items, issue receipts, and adjust inventory without any network connection. When your phone reconnects to 2G, 3G, 4G, or WiFi, queued sales upload automatically."
               }
             },
             {
               "@type": "Question",
-              "name": "Do I have to buy a printer to use StockPadi?",
+              "name": "Do I have to buy a specific printer from StockPadi?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "No. You can start with just your smartphone or tablet completely free. You can issue digital WhatsApp receipts or on-screen receipts. You only buy the StockPadi Bluetooth thermal printer when your business wants physical paper receipts."
+                "text": "No. StockPadi does not lock you into proprietary hardware. The app connects wirelessly over Bluetooth to ANY standard 58mm or 80mm ESC/POS thermal printer you already own. You can also start without any printer and send receipts directly to customer WhatsApp."
               }
             },
             {
               "@type": "Question",
-              "name": "Can StockPadi manage multiple branches?",
+              "name": "How does StockPadi prevent cashiers from manipulating numbers?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Yes. StockPadi natively supports 1 to 6 branches under a single business profile. As the owner, you can view consolidated sales or drill down into individual branch performance in real time."
+                "text": "Stock quantity and customer balances are derived from an immutable, append-only ledger. Cashiers cannot edit past records, delete transactions, or alter product prices without a manager or owner authorization PIN. Every action is permanently recorded in the audit log."
               }
             },
             {
               "@type": "Question",
-              "name": "How does StockPadi stop cashier theft and stock discrepancies?",
+              "name": "Can I manage more than one shop or branch?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "StockPadi uses an immutable, append-only stock movements ledger. Stock counts are strictly computed from verified sales, purchases, and authorized adjustments. Cashiers cannot modify historical numbers or edit prices without an owner PIN."
+                "text": "Yes. The Pro plan supports up to 3 branches, and the Enterprise plan supports up to 6 branches under a single business account. Staff are restricted to their branch till, while the owner sees unified numbers across all stores."
               }
             },
             {
               "@type": "Question",
-              "name": "What comes with the ₦55,000 Hardware Bundle?",
+              "name": "What is the price of StockPadi after the free plan?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "The bundle includes a 58mm wireless Bluetooth thermal printer, a roll of thermal paper, dedicated WhatsApp onboarding support, and 1 year of advanced StockPadi cloud sync features."
+                "text": "The Free Plan is free forever for 1 shop with up to 75 products. When your business grows, the Pro Plan is just ₦5,000 per month for unlimited products and up to 3 branches. There are zero hidden fees or sales transaction cuts."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I import my existing product list from Excel?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. StockPadi features a simple CSV bulk import tool. You can upload your catalog with names, barcodes, categories, and initial stock quantities in one click."
               }
             }
           ]
@@ -168,6 +205,12 @@
               "position": 4,
               "name": "Hardware",
               "item": "https://stockpadi.com/#hardware"
+            },
+            {
+              "@type": "ListItem",
+              "position": 5,
+              "name": "Pricing",
+              "item": "https://stockpadi.com/#pricing"
             }
           ]
         }

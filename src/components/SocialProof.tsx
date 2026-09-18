@@ -19,8 +19,8 @@ export const SocialProof: React.FC<SocialProofProps> = ({ onStartFree }) => {
                   width: 36,
                   height: 36,
                   borderRadius: 10,
-                  background: 'var(--brand-surface)',
-                  color: 'var(--brand)',
+                  background: 'var(--color-brand-container)',
+                  color: 'var(--color-on-brand-container)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -29,12 +29,12 @@ export const SocialProof: React.FC<SocialProofProps> = ({ onStartFree }) => {
                 <Store size={18} />
               </div>
               <div style={{ textAlign: 'left' }}>
-                <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--ink)' }}>{item.name}</div>
-                <div style={{ fontSize: 11, color: 'var(--ink-muted)' }}>
+                <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--color-on-surface)' }}>{item.name}</div>
+                <div style={{ fontSize: 11, color: 'var(--color-on-surface-muted)' }}>
                   {item.city} • {item.tag}
                 </div>
               </div>
-              <span style={{ marginLeft: 'auto', fontSize: 11, fontWeight: 600, color: '#16A34A' }}>
+              <span style={{ marginLeft: 'auto', fontSize: 11, fontWeight: 600, color: 'var(--color-brand-accent)' }}>
                 {item.growth}
               </span>
             </div>
@@ -50,8 +50,8 @@ export const SocialProof: React.FC<SocialProofProps> = ({ onStartFree }) => {
               gap: 6,
               fontSize: 12,
               fontWeight: 700,
-              color: '#16A34A',
-              background: 'rgba(22, 163, 74, 0.1)',
+              color: 'var(--color-brand-accent)',
+              background: 'var(--color-brand-container)',
               padding: '6px 14px',
               borderRadius: 9999,
             }}
@@ -79,8 +79,8 @@ export const SocialProof: React.FC<SocialProofProps> = ({ onStartFree }) => {
                   width: 36,
                   height: 36,
                   borderRadius: 10,
-                  background: 'rgba(22, 163, 74, 0.1)',
-                  color: '#16A34A',
+                  background: 'var(--color-brand-container)',
+                  color: 'var(--color-on-brand-container)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -89,12 +89,12 @@ export const SocialProof: React.FC<SocialProofProps> = ({ onStartFree }) => {
                 <Store size={18} />
               </div>
               <div style={{ textAlign: 'left' }}>
-                <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--ink)' }}>{item.name}</div>
-                <div style={{ fontSize: 11, color: 'var(--ink-muted)' }}>
+                <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--color-on-surface)' }}>{item.name}</div>
+                <div style={{ fontSize: 11, color: 'var(--color-on-surface-muted)' }}>
                   {item.city} • {item.tag}
                 </div>
               </div>
-              <span style={{ marginLeft: 'auto', fontSize: 11, fontWeight: 600, color: 'var(--brand)' }}>
+              <span style={{ marginLeft: 'auto', fontSize: 11, fontWeight: 600, color: 'var(--color-brand-accent)' }}>
                 {item.growth}
               </span>
             </div>
@@ -104,3 +104,4 @@ export const SocialProof: React.FC<SocialProofProps> = ({ onStartFree }) => {
     </section>
   );
 };
+

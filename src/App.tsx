@@ -35,15 +35,23 @@ export function App() {
   };
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const progress = Math.min(scrollY / 500, 1);
-      setScrollProgress(progress);
+    let ticking = false;
 
-      const isPastHero = scrollY > window.innerHeight * 0.65;
-      const isNearBottom =
-        window.innerHeight + scrollY >= document.documentElement.scrollHeight - 350;
-      setShowMobileBar(isPastHero && !isNearBottom);
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+          const progress = Math.min(scrollY / 500, 1);
+          setScrollProgress(progress);
+
+          const isPastHero = scrollY > window.innerHeight * 0.65;
+          const isNearBottom =
+            window.innerHeight + scrollY >= document.documentElement.scrollHeight - 350;
+          setShowMobileBar(isPastHero && !isNearBottom);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     handleScroll();
