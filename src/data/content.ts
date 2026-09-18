@@ -4,16 +4,17 @@ import {
   PainPointItem,
   FeatureItem,
   PersonaStoryItem,
+  PricingPlan,
 } from '../types';
 
 export const HERO_CONTENT = {
   headlinePrefix: 'The simplest way to',
-  headlineHighlight: 'record a sale & track stock.',
+  headlineHighlight: 'record sales & manage stock.',
   description:
-    'StockPadi helps retail businesses record sales offline, print instant thermal receipts, track customer credit, and know daily net profit across 1 to 6 branches.',
+    'StockPadi helps retail businesses record sales offline, print receipts, track customer credit, and know daily net profit across 1 to 6 branches.',
   primaryCta: 'Start for free',
   secondaryCta: 'See how it works',
-  trustBadge: 'Built for Nigerian retail • 100% offline-first • Zero monthly hardware fee',
+  trustBadge: '100% offline-first • Free forever tier • No proprietary hardware lock-in',
 };
 
 export const SOCIAL_PROOF_AVATARS = {
@@ -70,9 +71,9 @@ export const CORE_FEATURES: FeatureItem[] = [
   },
   {
     id: 'feat-receipts',
-    tag: 'WIRELESS PRINTING',
-    title: 'Instant Bluetooth receipts',
-    copy: 'Hand customers a clean, professional 58mm or 80mm thermal receipt in two seconds. Also share directly to WhatsApp.',
+    tag: 'OPEN BLUETOOTH PRINTING',
+    title: 'Instant receipts on any printer',
+    copy: 'Works with any standard 58mm or 80mm ESC/POS thermal printer. Also share digital receipts directly to customer WhatsApp.',
     highlight: 'Connects directly to Android, iPhone, and Windows without cords or internet.',
   },
   {
@@ -121,22 +122,79 @@ export const PERSONA_STORIES: PersonaStoryItem[] = [
   },
 ];
 
-export const HARDWARE_BUNDLE = {
-  tag: 'STOCKPADI STARTER BUNDLE',
-  headline: 'No ink. No wires. No excuses.',
+/* StockPadi's Official 3 Simple Plans (From docs/BUSINESS-MODEL-AND-ROADMAP.md) */
+export const PRICING_PLANS: PricingPlan[] = [
+  {
+    id: 'plan-free',
+    name: 'Free Plan',
+    price: '₦0',
+    cadence: '/ forever',
+    subtitle: 'For 1 shop with up to 75 products. Perfect to get your store organized with zero risk.',
+    features: [
+      '1 store location (1 till)',
+      'Up to 75 products in catalog',
+      '100% offline-first checkout',
+      'Digital WhatsApp & on-screen receipts',
+      'Customer debt book & credit tracking',
+      'Camera barcode scanning on your phone',
+      'Daily end-of-day sales summary',
+    ],
+    ctaText: 'Start free',
+  },
+  {
+    id: 'plan-pro',
+    name: 'Pro Plan',
+    badge: 'MOST POPULAR FOR RETAIL',
+    price: '₦5,000',
+    cadence: '/ month',
+    subtitle: 'Full anti-theft protection and multi-branch management for growing retail stores.',
+    isPopular: true,
+    features: [
+      'Up to 3 branches (independent stock per branch)',
+      'Unlimited products & barcode lookups',
+      'Separate Cashier vs Owner PIN logins',
+      'Real Net Profit & Loss reports (Sales - Cost - Expenses)',
+      'Anti-theft stock audit trail (who changed stock & why)',
+      'Low stock & product expiry date alerts',
+      '1-tap WhatsApp customer debt reminders',
+      'Works with ANY 58mm/80mm Bluetooth printer',
+      'Excel & CSV data export for accounting',
+    ],
+    ctaText: 'Upgrade to Pro',
+  },
+  {
+    id: 'plan-enterprise',
+    name: 'Enterprise Plan',
+    badge: 'FOR CHAINS & LARGE STORES',
+    price: '₦15,000',
+    cadence: '/ month',
+    subtitle: 'For busy supermarkets, multi-location pharmacies, and chains with 4 to 6 outlets.',
+    features: [
+      'Up to 6 branches on 1 unified owner dashboard',
+      'Inter-branch stock transfers with digital waybill',
+      'Store logo & custom branding on all receipts',
+      'Priority VIP WhatsApp onboarding & setup support',
+      'Advanced cashier permission controls & till limits',
+      'Supplier purchase order management',
+      'Automated daily cloud backups',
+    ],
+    ctaText: 'Contact Enterprise',
+  },
+];
+
+/* Open Hardware Philosophy (Never proprietary lock-in) */
+export const HARDWARE_SHOWCASE = {
+  tag: 'BRING YOUR OWN PRINTER',
+  headline: 'Works with any thermal printer. No hardware lock-in.',
   subheadline:
-    'Your customer receives a clean printed receipt in seconds. Your stock records update simultaneously. Works 100% offline.',
-  price: '₦55,000',
-  priceDetail: 'one-time printer purchase + 1 year cloud sync included',
-  includedItems: [
-    '58mm portable Bluetooth thermal printer (rechargeable lithium battery)',
-    'Sample rolls of high-contrast thermal receipt paper',
-    'USB-C charging cable & power adapter',
-    '1 year of advanced StockPadi cloud sync & multi-branch reporting',
-    'Dedicated WhatsApp onboarding assistance within 24 hours',
+    'StockPadi connects over Bluetooth or USB to any standard 58mm or 80mm ESC/POS printer. You never need to buy a ₦400,000 computer or an overpriced proprietary terminal.',
+  bulletPoints: [
+    'Standard ESC/POS Bluetooth protocol (works with any market printer)',
+    'Runs directly on Android phones, iPhones, tablets, and Windows PCs',
+    'Instant WhatsApp digital receipt option for paperless customers',
+    'No monthly hardware rental fees or mandatory terminal leases',
+    'Rechargeable 58mm thermal printers available from ₦25,000 anywhere in Nigeria',
   ],
-  freeTierNote:
-    'Already have a phone? You can start with the free StockPadi app right now with digital receipts. Add physical printing whenever you are ready.',
 };
 
 export const TESTIMONIALS: TestimonialItem[] = [
@@ -147,7 +205,7 @@ export const TESTIMONIALS: TestimonialItem[] = [
     name: 'Alhaji Musa Garba',
     role: 'Managing Director, Garba Provisions & Supermarket',
     location: 'Kano (3 Branches)',
-    avatarBg: '#2234FD',
+    avatarBg: 'var(--color-brand-accent)',
     initials: 'MG',
   },
   {
@@ -157,7 +215,7 @@ export const TESTIMONIALS: TestimonialItem[] = [
     name: 'Folashade Adeleke',
     role: 'Founder, Shade’s FMCG Mart',
     location: 'Ikeja, Lagos',
-    avatarBg: '#16A34A',
+    avatarBg: '#1a7f3c',
     initials: 'FA',
   },
   {
@@ -167,7 +225,7 @@ export const TESTIMONIALS: TestimonialItem[] = [
     name: 'Emeka Okafor',
     role: 'CEO, Prime Line Menswear & Accessories',
     location: 'Wuse 2, Abuja',
-    avatarBg: '#EA580C',
+    avatarBg: '#b3261e',
     initials: 'EO',
   },
 ];
@@ -181,9 +239,9 @@ export const FAQ_LIST: FaqItem[] = [
   },
   {
     id: 'faq-2',
-    question: 'Do I need to purchase a printer before using StockPadi?',
+    question: 'Do I have to buy a specific printer from StockPadi?',
     answer:
-      'No. You can download and start using StockPadi immediately on your smartphone or computer for free. You can issue digital WhatsApp receipts or show on-screen receipts. The ₦55,000 Bluetooth thermal printer is optional and can be added whenever your store wants physical paper receipts.',
+      'No. StockPadi does not lock you into proprietary hardware. The app connects wirelessly over Bluetooth to ANY standard 58mm or 80mm ESC/POS thermal printer you already own. You can also start without any printer and send receipts directly to customer WhatsApp.',
   },
   {
     id: 'faq-3',
@@ -195,13 +253,13 @@ export const FAQ_LIST: FaqItem[] = [
     id: 'faq-4',
     question: 'Can I manage more than one shop or branch?',
     answer:
-      'Yes. StockPadi supports 1 to 6 branches under a single business account. Staff can be restricted to their assigned branch till, while the owner enjoys a unified dashboard showing total revenue and branch-by-branch comparisons.',
+      'Yes. The Pro plan supports up to 3 branches, and the Enterprise plan supports up to 6 branches under a single business account. Staff are restricted to their branch till, while the owner sees unified numbers across all stores.',
   },
   {
     id: 'faq-5',
-    question: 'How fast is delivery for the Bluetooth thermal printer bundle?',
+    question: 'What is the price of StockPadi after the free plan?',
     answer:
-      'Printer deliveries typically arrive within 24 hours in Lagos and Ibadan, and 2 to 3 business days in Abuja, Kano, Port Harcourt, and other states. Our support team contacts you via WhatsApp to assist with setup the moment you order.',
+      'The Free Plan is free forever for 1 shop with up to 75 products. When your business grows, the Pro Plan is just ₦5,000 per month for unlimited products and up to 3 branches. There are zero hidden fees or sales transaction cuts.',
   },
   {
     id: 'faq-6',

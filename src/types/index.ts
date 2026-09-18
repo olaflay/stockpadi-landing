@@ -38,3 +38,15 @@ export interface PersonaStoryItem {
   metricLabel: string;
   metricValue: string;
 }
+
+export interface PricingPlan {
+  id: string;
+  name: string;
+  badge?: string;
+  price: string;
+  cadence: string;
+  subtitle: string;
+  features: string[];
+  isPopular?: boolean;
+  ctaText: string;
+}

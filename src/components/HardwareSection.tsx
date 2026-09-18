@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { Bluetooth, Zap, BatteryCharging, Printer, ArrowRight, CheckCircle2 } from 'lucide-react';
-import { HARDWARE_BUNDLE } from '../data/content';
+import { Bluetooth, Zap, Smartphone, Printer, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { HARDWARE_SHOWCASE } from '../data/content';
 
 interface HardwareSectionProps {
   onStartFree: () => void;
-  onOrderBundle: () => void;
 }
 
-export const HardwareSection: React.FC<HardwareSectionProps> = ({ onStartFree, onOrderBundle }) => {
+export const HardwareSection: React.FC<HardwareSectionProps> = ({ onStartFree }) => {
   const [printCount, setPrintCount] = useState(1);
   const [isFeeding, setIsFeeding] = useState(false);
 
@@ -22,138 +21,97 @@ export const HardwareSection: React.FC<HardwareSectionProps> = ({ onStartFree, o
   return (
     <section id="hardware" className="hardware-section" aria-labelledby="hardware-title">
       <div className="hardware-container">
-        {/* Left Column: Copy & Value Proposition */}
+        {/* Left Column: Open Hardware Philosophy */}
         <div className="hardware-copy">
-          <span
-            style={{
-              fontSize: 12,
-              fontWeight: 700,
-              color: 'var(--brand)',
-              letterSpacing: '0.08em',
-              display: 'inline-block',
-              marginBottom: 12,
-            }}
-          >
-            {HARDWARE_BUNDLE.tag}
+          <span className="hardware-tag-badge">
+            {HARDWARE_SHOWCASE.tag}
           </span>
-          <h2 id="hardware-title">{HARDWARE_BUNDLE.headline}</h2>
-          <p style={{ color: 'var(--ink-secondary)', fontSize: 16, lineHeight: 1.7, marginBottom: 20 }}>
-            {HARDWARE_BUNDLE.subheadline}
+          <h2 id="hardware-title">{HARDWARE_SHOWCASE.headline}</h2>
+          <p className="hardware-description">
+            {HARDWARE_SHOWCASE.subheadline}
           </p>
 
-          <span className="hardware-price-tag">{HARDWARE_BUNDLE.price}</span>
-          <p style={{ fontSize: 13, color: 'var(--ink-muted)', marginBottom: 28 }}>
-            {HARDWARE_BUNDLE.priceDetail}
-          </p>
-
-          <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 36 }}>
-            {HARDWARE_BUNDLE.includedItems.map((item, idx) => (
-              <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 14, color: 'var(--ink)' }}>
-                <CheckCircle2 size={16} color="var(--brand)" />
+          <ul className="hardware-bullet-list">
+            {HARDWARE_SHOWCASE.bulletPoints.map((item, idx) => (
+              <li key={idx}>
+                <CheckCircle2 size={18} className="hardware-check" />
                 <span>{item}</span>
               </li>
             ))}
           </ul>
 
-          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
-            <button type="button" className="btn-primary" onClick={onOrderBundle}>
-              <span>Order printer (₦55,000)</span>
+          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginTop: 32 }}>
+            <button type="button" className="btn-primary" onClick={onStartFree}>
+              <span>Start free with your phone</span>
               <ArrowRight size={16} />
             </button>
-            <button type="button" className="btn-secondary" onClick={onStartFree}>
-              <span>Use app for free</span>
-            </button>
+            <a
+              href="https://wa.me/2348000000000?text=Hi%20StockPadi,%20what%20printers%20are%20recommended?"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary"
+            >
+              <span>Ask about printer models</span>
+            </a>
           </div>
         </div>
 
-        {/* Right Column: Interactive Thermal Printer Simulation */}
+        {/* Right Column: Interactive Open Printer Simulation */}
         <div className="hardware-interactive-box">
-          <div style={{ display: 'flex', justifyContent: 'center', gap: 24, marginBottom: 24, color: 'var(--ink-secondary)', fontSize: 13 }}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <Bluetooth size={16} color="var(--brand)" /> Bluetooth 5.0
+          <div className="hardware-badges-row">
+            <span>
+              <Bluetooth size={16} color="var(--color-brand-accent)" /> Standard Bluetooth
             </span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <Zap size={16} color="#EA580C" /> Direct thermal (no ink)
+            <span>
+              <Zap size={16} color="var(--color-warning)" /> 58mm / 80mm ESC-POS
             </span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <BatteryCharging size={16} color="#16A34A" /> 1500mAh battery
+            <span>
+              <Smartphone size={16} color="var(--color-success)" /> Android & iPhone
             </span>
           </div>
 
-          <div
-            style={{
-              background: '#232738',
-              borderRadius: 'var(--radius-md)',
-              padding: '28px 24px',
-              maxWidth: 320,
-              margin: '0 auto',
-              boxShadow: '0 12px 30px rgba(0, 0, 0, 0.15)',
-              position: 'relative',
-            }}
-          >
-            <div style={{ width: 140, height: 6, background: '#11131C', borderRadius: 3, margin: '0 auto 12px' }} />
+          <div className="printer-shell-visual">
+            <div className="printer-exit-slot" />
 
-            {/* Simulated Live Receipt */}
+            {/* Simulated Live Receipt Slip */}
             <div
+              className="receipt-preview-slip"
               style={{
-                background: '#FFFEEA',
-                borderRadius: 4,
-                padding: '12px 14px',
-                color: '#111',
-                fontFamily: 'Courier New, monospace',
-                fontSize: 11,
-                textAlign: 'left',
-                lineHeight: 1.3,
-                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-                transition: 'transform 0.3s ease, opacity 0.3s ease',
                 transform: isFeeding ? 'translateY(8px)' : 'none',
               }}
             >
-              <div style={{ textAlign: 'center', fontWeight: 'bold', borderBottom: '1px dashed #999', paddingBottom: 4, marginBottom: 6 }}>
-                STOCKPADI STORE #0{printCount}
+              <div className="receipt-store-title">
+                MUSA SUPERMARKET #0{printCount}
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span>1x Geisha Mackerel</span>
-                <span>₦1,200</span>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 2 }}>
+                <span>1x Golden Penny Flour</span>
+                <span className="font-number">₦3,200</span>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span>2x Indomie Noodles</span>
-                <span>₦1,000</span>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 2 }}>
+                <span>2x Gino Pepper Tomato</span>
+                <span className="font-number">₦800</span>
               </div>
-              <div style={{ borderTop: '1px dashed #999', marginTop: 6, paddingTop: 4, display: 'flex', justifyContent: 'space-between', fontWeight: 'bold' }}>
-                <span>PAID CASH:</span>
-                <span>₦2,200</span>
+              <div style={{ borderTop: '1px dashed var(--color-border)', marginTop: 6, paddingTop: 4, display: 'flex', justifyContent: 'space-between', fontWeight: 700 }}>
+                <span>PAID (TRANSFER):</span>
+                <span className="font-number">₦4,000</span>
               </div>
-              <div style={{ textAlign: 'center', marginTop: 4, fontSize: 9, color: '#666' }}>
-                Thank you for your patronage!
+              <div style={{ textAlign: 'center', marginTop: 4, fontSize: 10, color: 'var(--color-on-surface-muted)' }}>
+                Printed offline via Bluetooth
               </div>
             </div>
 
             <button
               type="button"
               onClick={handleTestPrint}
-              style={{
-                marginTop: 20,
-                width: '100%',
-                background: 'var(--brand)',
-                color: '#fff',
-                fontSize: 13,
-                fontWeight: 600,
-                padding: '10px',
-                borderRadius: 8,
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: 8,
-              }}
+              className="test-print-trigger-btn"
             >
               <Printer size={16} />
-              <span>{isFeeding ? 'Printing paper…' : 'Tap to test wireless print'}</span>
+              <span>{isFeeding ? 'Printing ticket…' : 'Tap to test print preview'}</span>
             </button>
           </div>
 
-          <p style={{ fontSize: 12, color: 'var(--ink-muted)', marginTop: 16 }}>
-            Connects seamlessly with Android phones, iPhones, and desktop browsers.
+          <p style={{ fontSize: 12, color: 'var(--color-on-surface-muted)', marginTop: 16 }}>
+            Compatible with Cat, Xprinter, Milestone, MPT, and all standard POS ESC/POS printers.
           </p>
         </div>
       </div>

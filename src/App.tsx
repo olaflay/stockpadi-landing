@@ -4,7 +4,7 @@ import { HeroSection } from './components/HeroSection';
 import { SocialProof } from './components/SocialProof';
 import { PainPoints } from './components/PainPoints';
 import { FeaturesSection } from './components/FeaturesSection';
-import { ProductPaths } from './components/ProductPaths';
+import { PricingPlans } from './components/PricingPlans';
 import { ExperienceStory } from './components/ExperienceStory';
 import { HardwareSection } from './components/HardwareSection';
 import { Testimonials } from './components/Testimonials';
@@ -16,6 +16,23 @@ import { MobileFloatingBar } from './components/MobileFloatingBar';
 export function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showMobileBar, setShowMobileBar] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('stockpadi-theme');
+      if (saved === 'dark' || saved === 'light') return saved;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    return 'light';
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('stockpadi-theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,28 +55,43 @@ export function App() {
     window.location.href = 'https://app.stockpadi.com/auth/signup';
   };
 
-  const handleOrderBundle = () => {
+  const handleUpgradePro = () => {
+    window.location.href = 'https://app.stockpadi.com/auth/signup?plan=pro';
+  };
+
+  const handleContactEnterprise = () => {
     const message = encodeURIComponent(
-      'Hello StockPadi team! I would like to order the ₦55,000 Bluetooth Thermal Printer & 1-Year Cloud Bundle for my store.'
+      'Hello StockPadi! I am interested in the Enterprise Plan (up to 6 branches, custom receipt branding, and inter-branch transfers) for my retail chain.'
     );
     window.open(`https://wa.me/2348000000000?text=${message}`, '_blank');
   };
 
   return (
     <div className="stockpadi-landing-root">
-      <Navbar onStartFree={handleStartFree} />
+      <Navbar
+        onStartFree={handleStartFree}
+        theme={theme}
+        onToggleTheme={toggleTheme}
+      />
 
       <main>
         <HeroSection onStartFree={handleStartFree} scrollProgress={scrollProgress} />
         <SocialProof onStartFree={handleStartFree} />
         <PainPoints />
         <FeaturesSection />
-        <ProductPaths onStartFree={handleStartFree} onOrderBundle={handleOrderBundle} />
+        <PricingPlans
+          onStartFree={handleStartFree}
+          onUpgradePro={handleUpgradePro}
+          onContactEnterprise={handleContactEnterprise}
+        />
         <ExperienceStory />
-        <HardwareSection onStartFree={handleStartFree} onOrderBundle={handleOrderBundle} />
+        <HardwareSection onStartFree={handleStartFree} />
         <Testimonials />
         <FaqSection />
-        <FinalCta onStartFree={handleStartFree} onOrderBundle={handleOrderBundle} />
+        <FinalCta
+          onStartFree={handleStartFree}
+          onUpgradePro={handleUpgradePro}
+        />
       </main>
 
       <Footer />
