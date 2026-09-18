@@ -58,7 +58,7 @@ export const DynamicJsonLd = () => {
           name: businessName,
           applicationCategory: 'BusinessApplication',
           operatingSystem: 'Android, iOS, Windows, Web',
-          description: `100% offline-first retail POS, inventory management, and receipt printing platform for 1 to 6 store branches.`,
+          description: `100% offline-first retail POS and inventory management platform for 1 to 6 store branches, with digital WhatsApp receipt sharing.`,
           aggregateRating: {
             '@type': 'AggregateRating',
             ratingValue: '4.9',
@@ -147,12 +147,6 @@ export const DynamicJsonLd = () => {
             {
               '@type': 'ListItem',
               position: 4,
-              name: 'Hardware',
-              item: siteUrl ? `${siteUrl}/#hardware` : '#hardware',
-            },
-            {
-              '@type': 'ListItem',
-              position: 5,
               name: 'Pricing',
               item: siteUrl ? `${siteUrl}/#pricing` : '#pricing',
             },

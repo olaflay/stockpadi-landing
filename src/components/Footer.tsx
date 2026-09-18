@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Instagram, Facebook, MessageCircle, Twitter } from 'lucide-react';
+import { Instagram, Facebook, MessageCircle, Twitter } from 'lucide-react';
 import {
   getWebAppUrl,
   getSupportEmail,
@@ -7,6 +7,7 @@ import {
   getSocialLinks,
   buildContactLink,
 } from '../config/env';
+import { BrandMark } from './BrandLogo';
 
 export const Footer: React.FC = () => {
   const businessName = getBusinessName();
@@ -36,24 +37,11 @@ export const Footer: React.FC = () => {
         {/* Brand Column */}
         <div className="footer-brand">
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-            <div
-              style={{
-                width: 32,
-                height: 32,
-                borderRadius: 8,
-                background: 'var(--color-brand-accent)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#fff',
-              }}
-            >
-              <ShieldCheck size={20} />
-            </div>
+            <BrandMark size={36} />
             <span style={{ fontSize: 22, fontWeight: 800, color: '#FFFFFF' }}>{businessName}</span>
           </div>
           <p>
-            The offline-first recording, inventory ledger, and wireless receipt printing platform built for retail businesses. Know your true numbers. Prove every sale.
+            The offline-first recording, inventory ledger, and digital receipt platform built for retail businesses. Know your true numbers. Prove every sale.
           </p>
         </div>
 
@@ -61,23 +49,13 @@ export const Footer: React.FC = () => {
         <div className="footer-column">
           <strong>PRODUCT</strong>
           <button type="button" onClick={() => scrollTo('how-it-works')}>How it works</button>
-          <button type="button" onClick={() => scrollTo('features')}>Smart inventory</button>
-          <button type="button" onClick={() => scrollTo('hardware')}>Thermal printer</button>
+          <button type="button" onClick={() => scrollTo('features')}>Features</button>
+          <button type="button" onClick={() => scrollTo('pricing')}>Pricing</button>
+          <button type="button" onClick={() => scrollTo('faq')}>FAQ</button>
           <a href={webAppUrl}>Web application</a>
         </div>
 
-        {/* Hardware & Support */}
-        <div className="footer-column">
-          <strong>HARDWARE & SUPPORT</strong>
-          <button type="button" onClick={() => scrollTo('hardware')}>Shop 58mm printer</button>
-          <button type="button" onClick={() => scrollTo('faq')}>FAQ & answers</button>
-          <a href={onboardingLink} target="_blank" rel="noopener noreferrer">
-            Setup & onboarding
-          </a>
-          <a href={`mailto:${supportEmail}`}>Email support</a>
-        </div>
-
-        {/* Social & Community */}
+        {/* Community & Contact */}
         <div className="footer-column">
           <strong>COMMUNITY & CONTACT</strong>
           {hasSocials ? (
@@ -108,6 +86,10 @@ export const Footer: React.FC = () => {
               Support: {supportEmail}
             </div>
           )}
+          <a href={onboardingLink} target="_blank" rel="noopener noreferrer">
+            Setup & onboarding
+          </a>
+          <a href={`mailto:${supportEmail}`}>Email support</a>
           <div style={{ marginTop: 24, fontSize: 13, color: '#64748B' }}>
             Lagos • Ibadan • Abuja • Kano
           </div>

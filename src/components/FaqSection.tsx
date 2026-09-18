@@ -23,7 +23,7 @@ export const FaqSection: React.FC = () => {
             A few useful answers
           </h2>
           <p style={{ color: 'var(--color-on-surface-muted)', fontSize: 16, marginTop: 8 }}>
-            Everything you need to know about offline sync, hardware compatibility, and store security.
+            Everything you need to know about offline sync, stock tracking, and store security.
           </p>
         </div>
 

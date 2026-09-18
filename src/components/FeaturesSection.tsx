@@ -1,5 +1,5 @@
 import React from 'react';
-import { Database, Printer, BookOpenCheck, Layers } from 'lucide-react';
+import { Database, MessageCircle, BookOpenCheck, Layers } from 'lucide-react';
 import { CORE_FEATURES } from '../data/content';
 
 export const FeaturesSection: React.FC = () => {
@@ -8,7 +8,7 @@ export const FeaturesSection: React.FC = () => {
       case 'feat-inventory':
         return <Database size={24} color="var(--color-brand-accent)" />;
       case 'feat-receipts':
-        return <Printer size={24} color="var(--color-brand-accent)" />;
+        return <MessageCircle size={24} color="var(--color-brand-accent)" />;
       case 'feat-credit':
         return <BookOpenCheck size={24} color="var(--color-brand-accent)" />;
       default:
@@ -37,7 +37,7 @@ export const FeaturesSection: React.FC = () => {
           </h2>
         </div>
         <p>
-          StockPadi gives you tools that record, calculate, print, and audit every transaction, so your business stays completely transparent whether you are at the counter or traveling.
+          StockPadi gives you tools that record, calculate, share, and audit every transaction, so your business stays completely transparent whether you are at the counter or traveling.
         </p>
       </div>
 
@@ -51,6 +51,17 @@ export const FeaturesSection: React.FC = () => {
               </div>
               <h3>{feat.title}</h3>
               <p>{feat.copy}</p>
+
+              {feat.image && (
+                <div style={{ marginTop: 18, marginBottom: 14, overflow: 'hidden', borderRadius: 'var(--shape-md)', display: 'flex', justifyContent: 'center', background: 'var(--color-surface)' }}>
+                  <img
+                    src={feat.image}
+                    alt={feat.title}
+                    loading="lazy"
+                    style={{ width: '100%', maxHeight: 220, objectFit: 'contain', display: 'block' }}
+                  />
+                </div>
+              )}
             </div>
 
             <div className="feature-highlight-box">

@@ -28,6 +28,7 @@ export interface FeatureItem {
   title: string;
   copy: string;
   highlight: string;
+  image?: string;
 }
 
 export interface PersonaStoryItem {

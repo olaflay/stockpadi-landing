@@ -6,7 +6,7 @@ import { PainPoints } from './components/PainPoints';
 import { FeaturesSection } from './components/FeaturesSection';
 import { PricingPlans } from './components/PricingPlans';
 import { ExperienceStory } from './components/ExperienceStory';
-import { HardwareSection } from './components/HardwareSection';
+
 import { Testimonials } from './components/Testimonials';
 import { FaqSection } from './components/FaqSection';
 import { FinalCta } from './components/FinalCta';
@@ -99,7 +99,7 @@ export function App() {
           onContactEnterprise={handleContactEnterprise}
         />
         <ExperienceStory />
-        <HardwareSection onStartFree={handleStartFree} />
+
         <Testimonials />
         <FaqSection />
         <FinalCta

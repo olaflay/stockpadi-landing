@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Menu, X, ShieldCheck, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { getWebAppUrl, getBusinessName } from '../config/env';
+import { BrandMark } from './BrandLogo';
 
 interface NavbarProps {
   onStartFree: () => void;
@@ -31,9 +32,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onStartFree, theme, onToggleThem
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
       >
-        <div className="nav-brand-logo">
-          <ShieldCheck size={20} />
-        </div>
+        <BrandMark size={32} />
         <span>{businessName}</span>
       </a>
 
@@ -43,9 +42,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onStartFree, theme, onToggleThem
         </button>
         <button type="button" className="nav-item" onClick={() => scrollToSection('features')}>
           Features
-        </button>
-        <button type="button" className="nav-item" onClick={() => scrollToSection('hardware')}>
-          Hardware
         </button>
         <button type="button" className="nav-item" onClick={() => scrollToSection('pricing')}>
           Pricing

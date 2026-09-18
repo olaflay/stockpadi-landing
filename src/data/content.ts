@@ -11,10 +11,11 @@ export const HERO_CONTENT = {
   headlinePrefix: 'The simplest way to',
   headlineHighlight: 'record sales & manage stock.',
   description:
-    'StockPadi helps retail businesses record sales offline, print receipts, track customer credit, and know daily net profit across 1 to 6 branches.',
+    'StockPadi helps retail businesses record sales offline, track stock, manage customer credit, and know daily net profit across 1 to 6 branches.',
   primaryCta: 'Start for free',
   secondaryCta: 'See how it works',
-  trustBadge: '100% offline-first • Free forever tier • No proprietary hardware lock-in',
+  trustBadge: '100% offline-first • Free forever tier • No proprietary lock-in',
+  image: '/hero-phone.png',
 };
 
 export const SOCIAL_PROOF_AVATARS = {
@@ -28,10 +29,11 @@ export const SOCIAL_PROOF_AVATARS = {
     { name: 'Surulere Mart', city: 'Lagos', tag: 'Mini Mart', growth: '3 branches' },
     { name: 'Garki Electronics', city: 'Abuja', tag: 'Electronics', growth: '1.2k SKUs' },
     { name: 'Ring Road Grocers', city: 'Ibadan', tag: 'FMCG', growth: 'Zero errors' },
-    { name: 'Alaba Wholesale', city: 'Lagos', tag: 'Wholesale', growth: '58mm print' },
+    { name: 'Alaba Wholesale', city: 'Lagos', tag: 'Wholesale', growth: 'Zero shrinkage' },
   ],
   headline: 'Join 1,000+ retail stores that closed today knowing exactly what they made.',
   ctaText: 'Start your store free',
+  storePhoto: '/store-photo-1.png',
 };
 
 export const PAIN_POINTS: PainPointItem[] = [
@@ -68,13 +70,14 @@ export const CORE_FEATURES: FeatureItem[] = [
     title: 'Smart offline inventory',
     copy: 'Stock decreases only when a real sale or verified adjustment happens. Every single carton, unit, or bottle is accounted for.',
     highlight: 'Calculates true quantity from verified sales, preventing cashier tampering.',
+    image: '/feature-inventory.png',
   },
   {
     id: 'feat-receipts',
-    tag: 'OPEN BLUETOOTH PRINTING',
-    title: 'Instant receipts on any printer',
-    copy: 'Works with any standard 58mm or 80mm ESC/POS thermal printer. Also share digital receipts directly to customer WhatsApp.',
-    highlight: 'Connects directly to Android, iPhone, and Windows without cords or internet.',
+    tag: 'DIGITAL RECEIPT SHARING',
+    title: 'Send receipts via WhatsApp',
+    copy: 'Share a digital receipt to your customer\'s WhatsApp instantly after every sale. No printer required, works fully offline.',
+    highlight: 'One-tap digital receipt delivery to customer WhatsApp.',
   },
   {
     id: 'feat-credit',
@@ -82,6 +85,7 @@ export const CORE_FEATURES: FeatureItem[] = [
     title: 'Credit ledger & reminders',
     copy: 'Never forget who owes you. Track customer credit balances, record partial payments, and issue printable account statements.',
     highlight: 'Zero guesswork on outstanding debts. One-tap WhatsApp balance reminders.',
+    image: '/feature-credit.png',
   },
   {
     id: 'feat-multibranch',
@@ -89,6 +93,7 @@ export const CORE_FEATURES: FeatureItem[] = [
     title: 'Multi-branch visibility',
     copy: 'Check revenue, cash breakdown, and stock levels across all your branch locations from your phone without calling your attendants.',
     highlight: 'Consolidated owner overview plus branch-scoped staff PIN logins.',
+    image: '/feature-branch.png',
   },
 ];
 
@@ -116,7 +121,7 @@ export const PERSONA_STORIES: PersonaStoryItem[] = [
     eyebrow: 'BOUTIQUE & ELECTRONICS',
     label: 'Scan barcodes & serial numbers',
     description:
-      'Speed up checkout with instant smartphone camera barcode scanning. Tag payments as Cash, Transfer, or POS card terminal.',
+      'Speed up checkout with instant smartphone camera barcode scanning. Tag payments as Cash, Transfer, or Credit.',
     metricLabel: 'Checkout speed',
     metricValue: 'Under 15 seconds per customer',
   },
@@ -157,7 +162,7 @@ export const PRICING_PLANS: PricingPlan[] = [
       'Anti-theft stock audit trail (who changed stock & why)',
       'Low stock & product expiry date alerts',
       '1-tap WhatsApp customer debt reminders',
-      'Works with ANY 58mm/80mm Bluetooth printer',
+      'Send digital receipts via WhatsApp after every sale',
       'Excel & CSV data export for accounting',
     ],
     ctaText: 'Upgrade to Pro',
@@ -182,20 +187,7 @@ export const PRICING_PLANS: PricingPlan[] = [
   },
 ];
 
-/* Open Hardware Philosophy (Never proprietary lock-in) */
-export const HARDWARE_SHOWCASE = {
-  tag: 'BRING YOUR OWN PRINTER',
-  headline: 'Works with any thermal printer. No hardware lock-in.',
-  subheadline:
-    'StockPadi connects over Bluetooth or USB to any standard 58mm or 80mm ESC/POS printer. You never need to buy a ₦400,000 computer or an overpriced proprietary terminal.',
-  bulletPoints: [
-    'Standard ESC/POS Bluetooth protocol (works with any market printer)',
-    'Runs directly on Android phones, iPhones, tablets, and Windows PCs',
-    'Instant WhatsApp digital receipt option for paperless customers',
-    'No monthly hardware rental fees or mandatory terminal leases',
-    'Rechargeable 58mm thermal printers available from ₦25,000 anywhere in Nigeria',
-  ],
-};
+
 
 export const TESTIMONIALS: TestimonialItem[] = [
   {
@@ -211,7 +203,7 @@ export const TESTIMONIALS: TestimonialItem[] = [
   {
     id: 't-2',
     quote:
-      'I was tired of apps that would freeze the moment our shop WiFi dropped or PHCN took light. StockPadi never stops. My cashiers record sales in seconds and print receipts without thinking twice.',
+      'I was tired of apps that would freeze the moment our shop WiFi dropped or PHCN took light. StockPadi never stops. My cashiers record sales in seconds and share digital receipts without thinking twice.',
     name: 'Folashade Adeleke',
     role: 'Founder, Shade’s FMCG Mart',
     location: 'Ikeja, Lagos',
@@ -239,9 +231,9 @@ export const FAQ_LIST: FaqItem[] = [
   },
   {
     id: 'faq-2',
-    question: 'Do I have to buy a specific printer from StockPadi?',
+    question: 'Can I send receipts digitally without a printer?',
     answer:
-      'No. StockPadi does not lock you into proprietary hardware. The app connects wirelessly over Bluetooth to ANY standard 58mm or 80mm ESC/POS thermal printer you already own. You can also start without any printer and send receipts directly to customer WhatsApp.',
+      'Yes. StockPadi lets you share a digital receipt to your customer\'s WhatsApp instantly after every sale. No printer or paper needed. You can also use the on-screen receipt for cashiers who prefer a paperless setup.',
   },
   {
     id: 'faq-3',
