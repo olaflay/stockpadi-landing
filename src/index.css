@@ -508,8 +508,11 @@ button:focus-visible, a:focus-visible {
   grid-template-columns: 140px 1fr;
   gap: 18px;
   align-items: center;
-  transition: transform 0.15s ease-out, opacity 0.15s ease-out;
   border: 1px solid var(--color-outline-variant);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .stack-card-img-wrap {
@@ -701,8 +704,11 @@ button:focus-visible, a:focus-visible {
   flex-direction: column;
   justify-content: space-between;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: transform 0.15s cubic-bezier(0.2, 0, 0, 1);
   box-sizing: border-box;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .painpoint-photo-frame {
@@ -1672,5 +1678,15 @@ button:focus-visible, a:focus-visible {
     font-weight: 700;
     padding: 7px 16px;
     border-radius: var(--shape-sm);
+  }
+}
+
+/* Reduced Motion for Low-Power & Sensitive Devices */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
 }

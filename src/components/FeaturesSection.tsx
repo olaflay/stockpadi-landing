@@ -43,6 +43,9 @@ export const FeaturesSection: React.FC = () => {
                   src={feat.image}
                   alt={feat.title}
                   loading="lazy"
+                  decoding="async"
+                  width={400}
+                  height={300}
                   className="feature-img"
                 />
               </div>

@@ -6,17 +6,26 @@ export const PainPoints: React.FC = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      if (!trackRef.current) return;
-      const rect = trackRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const totalScrollDistance = rect.height - windowHeight;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (trackRef.current) {
+            const rect = trackRef.current.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            const totalScrollDistance = rect.height - windowHeight;
 
-      if (totalScrollDistance <= 0) return;
-
-      const currentScroll = -rect.top;
-      const progress = Math.max(0, Math.min(1, currentScroll / totalScrollDistance));
-      setScrollProgress(progress);
+            if (totalScrollDistance > 0) {
+              const currentScroll = -rect.top;
+              const progress = Math.max(0, Math.min(1, currentScroll / totalScrollDistance));
+              setScrollProgress(progress);
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -95,6 +104,9 @@ export const PainPoints: React.FC = () => {
                         alt={item.quote}
                         className="painpoint-card-img"
                         loading="lazy"
+                        decoding="async"
+                        width={350}
+                        height={330}
                       />
                     )}
                   </div>

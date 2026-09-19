@@ -11,17 +11,26 @@ export const SocialProof: React.FC<SocialProofProps> = ({ onStartFree }) => {
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const totalScrollDistance = rect.height - windowHeight;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (containerRef.current) {
+            const rect = containerRef.current.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            const totalScrollDistance = rect.height - windowHeight;
 
-      if (totalScrollDistance <= 0) return;
-
-      const currentScroll = -rect.top;
-      const progress = Math.max(0, Math.min(1, currentScroll / totalScrollDistance));
-      setScrollProgress(progress);
+            if (totalScrollDistance > 0) {
+              const currentScroll = -rect.top;
+              const progress = Math.max(0, Math.min(1, currentScroll / totalScrollDistance));
+              setScrollProgress(progress);
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -85,6 +94,9 @@ export const SocialProof: React.FC<SocialProofProps> = ({ onStartFree }) => {
                     src={card.image}
                     alt={card.title}
                     loading="lazy"
+                    decoding="async"
+                    width={360}
+                    height={240}
                     className="stack-card-img"
                   />
                 </div>

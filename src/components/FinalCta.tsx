@@ -36,10 +36,13 @@ export const FinalCta: React.FC<FinalCtaProps> = ({ onStartFree, onNavigatePrici
         {/* Generated StockPadi Phone Cutout Illustration with Zero Background */}
         <div className="final-mockup-wrapper">
           <img
-            src="/cta-hand-phone.png"
+            src="/cta-hand-phone.webp"
             alt="StockPadi POS and Inventory App on Smartphone"
             className="final-mockup-hand-img"
             loading="lazy"
+            decoding="async"
+            width={480}
+            height={358}
           />
         </div>
       </div>

@@ -13,7 +13,7 @@ export const HERO_CONTENT = {
     'Offline-ready POS for retail stores. Record sales in seconds, prevent stock theft, and see your true daily profit.',
   primaryCta: 'Start free',
   secondaryCta: 'How it works',
-  image: '/hero-phone.png',
+  image: '/hero-phone.webp',
 };
 
 export const SOCIAL_PROOF_CARDS = [
@@ -24,7 +24,7 @@ export const SOCIAL_PROOF_CARDS = [
     highlight: '₦340k daily sales recorded offline',
     subtext: '3 checkout counters synced automatically when back online.',
     tag: 'Supermarket',
-    image: '/store-photo-1.png',
+    image: '/store-photo-1.webp',
   },
   {
     id: 'sp-2',
@@ -33,7 +33,7 @@ export const SOCIAL_PROOF_CARDS = [
     highlight: 'Zero stock shrinkage in 6 months',
     subtext: 'Every item barcode scanned at point of sale.',
     tag: 'Fashion & Retail',
-    image: '/feature-inventory.png',
+    image: '/feature-inventory.webp',
   },
   {
     id: 'sp-3',
@@ -42,7 +42,7 @@ export const SOCIAL_PROOF_CARDS = [
     highlight: 'Consolidated owner overview',
     subtext: 'Track revenue per location without calling attendants.',
     tag: 'Multi-Branch',
-    image: '/feature-branch.png',
+    image: '/feature-branch.webp',
   },
 ];
 
@@ -54,7 +54,7 @@ export const PAIN_POINTS: PainPointItem[] = [
       'Paper receipts get misplaced and calculator totals don’t match till cash at the end of the day.',
     quote: 'Records that take hours to reconcile',
     badge: 'Discrepancies',
-    image: '/how-it-works-ledger.jpg',
+    image: '/how-it-works-ledger.webp',
   },
   {
     id: 'pain-2',
@@ -63,7 +63,7 @@ export const PAIN_POINTS: PainPointItem[] = [
       'Items leave shelves without digital records. Weeks pass before anyone catches stock leakage or missing inventory.',
     quote: 'Stock you thought you still had',
     badge: 'Shrinkage',
-    image: '/how-it-works-shelves.jpg',
+    image: '/how-it-works-shelves.webp',
   },
   {
     id: 'pain-3',
@@ -72,7 +72,7 @@ export const PAIN_POINTS: PainPointItem[] = [
       'When the counter gets busy or customers promise to pay tomorrow, manual paper books fail and revenue vanishes.',
     quote: 'Sales forgotten when the store gets busy',
     badge: 'Unrecorded Sales',
-    image: '/how-it-works-market.jpg',
+    image: '/how-it-works-market.webp',
   },
 ];
 
@@ -83,7 +83,7 @@ export const CORE_FEATURES: FeatureItem[] = [
     title: 'Offline Inventory Ledger',
     copy: 'Stock decreases only from verified sales or approved adjustments. Zero cashier tampering.',
     highlight: 'True quantity derived from append-only movement logs.',
-    image: '/feature-inventory.png',
+    image: '/feature-inventory.webp',
   },
   {
     id: 'feat-receipts',
@@ -98,7 +98,7 @@ export const CORE_FEATURES: FeatureItem[] = [
     title: 'Customer Credit Tracking',
     copy: 'Log customer balances, record part-payments, and send polite WhatsApp payment reminders.',
     highlight: 'Zero forgotten credit. Instant account statements.',
-    image: '/feature-credit.png',
+    image: '/feature-credit.webp',
   },
   {
     id: 'feat-multibranch',
@@ -106,7 +106,7 @@ export const CORE_FEATURES: FeatureItem[] = [
     title: '1 to 6 Branches in One App',
     copy: 'View revenue, stock levels, and staff sales across all branches from your own phone.',
     highlight: 'Owner dashboard with isolated staff PIN logins.',
-    image: '/feature-branch.png',
+    image: '/feature-branch.webp',
   },
 ];
 
