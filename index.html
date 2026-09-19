@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    
-    <!-- Dynamic Canonical tag populated at runtime from ENV or window.location -->
-    <link rel="canonical" href="/" />
-    
-    <!-- Primary Meta Tags -->
-    <title>StockPadi — Offline-First Retail POS, Inventory Management & Receipt Printing</title>
-    <meta name="title" content="StockPadi — Offline-First Retail POS, Inventory Management & Receipt Printing" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- Static fallback head. Route-specific title/meta/canonical/OG/Twitter/JSON-LD
+         are baked at build time by vite.config.ts (static-seo-prerender) and kept in
+         sync at runtime by DynamicJsonLd — both consume src/seo/seo.ts. -->
+    <title>StockPadi: Offline-First Retail POS, Inventory Management & Receipt Printing</title>
+    <meta name="title" content="StockPadi: Offline-First Retail POS, Inventory Management & Receipt Printing" />
     <meta
       name="description"
       content="Record sales, track inventory, manage customer credit, and print wireless Bluetooth receipts without internet. The 100% offline-first POS platform built for retail businesses and multi-branch stores."
@@ -29,24 +29,6 @@
     <meta name="apple-mobile-web-app-title" content="StockPadi" />
     <meta name="mobile-web-app-capable" content="yes" />
 
-    <!-- Open Graph Preview (Dynamic image and relative fallback) -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="StockPadi — Offline-First Retail POS & Inventory Platform" />
-    <meta
-      property="og:description"
-      content="Record sales, track stock with an immutable ledger, and print instant receipts anywhere, even when the internet is down."
-    />
-    <meta property="og:image" content="/og-cover.png" />
-
-    <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="StockPadi — The Smart Offline POS & Inventory App" />
-    <meta
-      name="twitter:description"
-      content="Record sales in 2 minutes, print thermal receipts, and eliminate stock loss across 1 to 6 branches."
-    />
-    <meta name="twitter:image" content="/og-cover.png" />
-
     <!-- Typography: Plus Jakarta Sans & Roboto -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -54,6 +36,8 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Roboto:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- SEO_HEAD -->
   </head>
   <body>
     <div id="root"></div>

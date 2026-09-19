@@ -10,9 +10,9 @@ export const MobileFloatingBar: React.FC<MobileFloatingBarProps> = ({ onStartFre
 
   return (
     <aside className="mobile-conversion-bar" aria-label="Quick registration bar">
-      <span>Record your first sale today.</span>
+      <span className="mobile-conversion-text">Record your first sale today.</span>
       <button type="button" className="mobile-conversion-btn" onClick={onStartFree}>
-        <span>Start free</span>
+        Start free
       </button>
     </aside>
   );

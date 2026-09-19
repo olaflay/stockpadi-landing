@@ -119,7 +119,7 @@ export const PRICING_PLANS: PricingPlan[] = [
     subtitle: '1 shop with up to 75 products. 100% free to start.',
     features: [
       '1 store branch (1 till)',
-      '100% offline — works without data',
+      '100% offline, works without data',
       'WhatsApp & digital receipts',
       'Customer credit & debt book',
       'Phone camera barcode scan',
@@ -228,5 +228,29 @@ export const FAQ_LIST: FaqItem[] = [
     question: 'Can someone help me set up my inventory?',
     answer:
       'Yes. Our team can help you upload your product catalog from Excel or help you configure your store directly via WhatsApp at zero extra cost.',
+  },
+  {
+    id: 'faq-7',
+    question: 'How much does StockPadi cost in Nigeria?',
+    answer:
+      'StockPadi pricing is in Naira with no hidden fees or transaction cuts. The Free Plan costs ₦0 forever for one shop with up to 75 products. Pro is ₦5,000 per month for up to 3 branches, and Enterprise is ₦15,000 per month for up to 6 branches. No card required to start.',
+  },
+  {
+    id: 'faq-8',
+    question: 'Can StockPadi work during power outages or network shutdowns?',
+    answer:
+      'Yes. StockPadi is built for network shutdowns, load-shedding, and zero-data areas. Sales, receipts, inventory, and debt tracking all keep working with no internet at all. The moment you reconnect, your records sync securely to the cloud automatically.',
+  },
+  {
+    id: 'faq-9',
+    question: 'Can I use a normal phone as a POS machine for my shop?',
+    answer:
+      'Yes. Any standard Android phone, tablet, or laptop becomes your POS machine. Install StockPadi, add your products once, and your cashier just taps items to make sales, scan barcodes with the phone camera, and send receipts straight to customer WhatsApp. No expensive dedicated POS hardware needed.',
+  },
+  {
+    id: 'faq-10',
+    question: 'Does StockPadi work for supermarkets, pharmacies, and boutiques?',
+    answer:
+      'Yes. StockPadi is built for every Nigerian retail type — provisions stores, supermarkets, pharmacies, fashion boutiques, and multi-branch chains. The inventory ledger tracks expiry for pharmacies, barcode scanning suits supermarkets and confectioneries, and the credit book works for any shop that sells on trust.',
   },
 ];
