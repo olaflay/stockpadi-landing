@@ -999,27 +999,10 @@ button:focus-visible, a:focus-visible {
   flex-direction: column;
 }
 
-.testimonial-card-meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 22px;
-}
-
-.testimonial-stars {
-  display: flex;
-  gap: 3px;
-  color: var(--color-brand-accent);
-}
-
-.testimonial-star-icon {
-  fill: currentColor;
-  color: var(--color-brand-accent);
-}
-
 .testimonial-quote-icon {
   color: var(--color-brand-accent);
   opacity: 0.85;
+  margin-bottom: 20px;
 }
 
 .testimonial-quote-text {
@@ -1272,14 +1255,18 @@ button:focus-visible, a:focus-visible {
   margin: 0 auto;
   background: var(--color-brand-accent);
   border-radius: var(--shape-lg);
-  padding: 40px 48px;
+  padding: 44px 48px 0;
   color: var(--color-brand-accent-contrast);
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: 36px;
-  align-items: center;
+  align-items: flex-end;
   position: relative;
   overflow: hidden;
+}
+
+.final-cta-text-col {
+  padding-bottom: 44px;
 }
 
 .final-cta-headline {
@@ -1332,7 +1319,10 @@ button:focus-visible, a:focus-visible {
 .final-mockup-wrapper {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
+  align-self: flex-end;
+  margin-bottom: 0;
+  line-height: 0;
 }
 
 .final-mockup-hand-img {
@@ -1340,20 +1330,31 @@ button:focus-visible, a:focus-visible {
   height: auto;
   max-height: 350px;
   object-fit: contain;
+  object-position: bottom center;
   filter: drop-shadow(0 20px 32px rgba(0, 0, 0, 0.25));
   display: block;
+  vertical-align: bottom;
+  margin-bottom: 0;
 }
 
 @media (max-width: 800px) {
   .final-cta-card {
     grid-template-columns: 1fr;
-    padding: 32px 24px;
-    gap: 28px;
+    padding: 32px 24px 0;
+    gap: 20px;
     text-align: left;
+  }
+  .final-cta-text-col {
+    padding-bottom: 0;
+  }
+  .final-mockup-wrapper {
+    align-self: center;
+    margin-bottom: 0;
   }
   .final-mockup-hand-img {
     max-height: 280px;
     margin: 0 auto;
+    vertical-align: bottom;
   }
 }
 
@@ -1593,7 +1594,7 @@ button:focus-visible, a:focus-visible {
   max-width: 1060px;
   margin: 36px auto 0;
   padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: none;
   display: flex;
   justify-content: space-between;
   align-items: center;

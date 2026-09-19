@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { TESTIMONIALS } from '../data/content';
 
 export const Testimonials: React.FC = () => {
@@ -50,13 +50,8 @@ export const Testimonials: React.FC = () => {
                   onClick={() => setVirtualIndex(idx)}
                 >
                   <div className="testimonial-card-top">
-                    <div className="testimonial-card-meta">
-                      <div className="testimonial-stars" aria-label="5 star rating">
-                        {[...Array(5)].map((_, starIdx) => (
-                          <Star key={starIdx} size={15} className="testimonial-star-icon" />
-                        ))}
-                      </div>
-                      <Quote size={20} className="testimonial-quote-icon" />
+                    <div className="testimonial-quote-icon">
+                      <Quote size={22} />
                     </div>
 
                     <p className="testimonial-quote-text">

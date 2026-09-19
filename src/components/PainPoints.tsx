@@ -40,14 +40,14 @@ export const PainPoints: React.FC = () => {
           {/* Left Narrative Column */}
           <div className="painpoint-narrative">
             <h2 id="painpoint-title" className="painpoint-title">
-              You're probably losing money you don't know about.
+              Stop losing money you don't know about.
             </h2>
             <div className="painpoint-narrative-copy">
               <p className="painpoint-desc-lead">
-                Not to theft. Not to bad luck.
+                It's not bad luck. It's unrecorded sales.
               </p>
               <p className="painpoint-desc">
-                To the gaps between the sales happening and someone remembering to record them. StockPadi closes those gaps, so you know exactly where every kobo and item goes.
+                When the shop gets busy, sales get forgotten and cash doesn't balance. StockPadi makes recording so fast that every kobo and product is accounted for.
               </p>
             </div>
           </div>
