@@ -1,27 +1,31 @@
 import React from 'react';
 import { Instagram, Facebook, MessageCircle, Twitter } from 'lucide-react';
 import {
-  getWebAppUrl,
-  getSupportEmail,
   getBusinessName,
   getSocialLinks,
-  buildContactLink,
 } from '../config/env';
 import { BrandMark } from './BrandLogo';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigateHome?: () => void;
+  onNavigatePricing?: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onNavigateHome, onNavigatePricing }) => {
   const businessName = getBusinessName();
-  const webAppUrl = getWebAppUrl();
-  const supportEmail = getSupportEmail();
   const socialLinks = getSocialLinks();
-  const onboardingLink = buildContactLink(
-    `Hi ${businessName}, I want to set up my retail store with your POS system.`,
-    `${businessName} Store Onboarding Inquiry`
-  );
 
   const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    if (onNavigateHome) {
+      onNavigateHome();
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const hasSocials = Boolean(
@@ -36,78 +40,75 @@ export const Footer: React.FC = () => {
       <div className="footer-grid">
         {/* Brand Column */}
         <div className="footer-brand">
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-            <BrandMark size={36} />
-            <span style={{ fontSize: 22, fontWeight: 800, color: '#FFFFFF' }}>{businessName}</span>
+          <div className="footer-brand-header">
+            <BrandMark size={28} />
+            <span className="footer-brand-name">{businessName}</span>
           </div>
-          <p>
-            The offline-first recording, inventory ledger, and digital receipt platform built for retail businesses. Know your true numbers. Prove every sale.
+          <p className="footer-brand-tagline">
+            Offline-first recording, inventory ledger, and WhatsApp receipts for retail stores.
           </p>
         </div>
 
         {/* Product Navigation */}
         <div className="footer-column">
-          <strong>PRODUCT</strong>
-          <button type="button" onClick={() => scrollTo('how-it-works')}>How it works</button>
+          <span className="footer-col-title">PRODUCT</span>
+          <button type="button" onClick={() => scrollTo('how-it-works')}>How It Works</button>
           <button type="button" onClick={() => scrollTo('features')}>Features</button>
-          <button type="button" onClick={() => scrollTo('pricing')}>Pricing</button>
+          <button type="button" onClick={() => onNavigatePricing ? onNavigatePricing() : scrollTo('pricing')}>
+            Pricing
+          </button>
           <button type="button" onClick={() => scrollTo('faq')}>FAQ</button>
-          <a href={webAppUrl}>Web application</a>
         </div>
 
         {/* Community & Contact */}
         <div className="footer-column">
-          <strong>COMMUNITY & CONTACT</strong>
+          <span className="footer-col-title">COMMUNITY</span>
           {hasSocials ? (
             <div className="footer-social-links">
               {socialLinks.instagram && (
-                <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" aria-label={`${businessName} on Instagram`} style={{ color: '#94A3B8' }}>
-                  <Instagram size={20} />
+                <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                  <Instagram size={18} />
                 </a>
               )}
               {socialLinks.facebook && (
-                <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer" aria-label={`${businessName} on Facebook`} style={{ color: '#94A3B8' }}>
-                  <Facebook size={20} />
+                <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                  <Facebook size={18} />
                 </a>
               )}
               {socialLinks.tiktok && (
-                <a href={socialLinks.tiktok} target="_blank" rel="noopener noreferrer" aria-label={`${businessName} on TikTok`} style={{ color: '#94A3B8' }}>
-                  <MessageCircle size={20} />
+                <a href={socialLinks.tiktok} target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                  <MessageCircle size={18} />
                 </a>
               )}
               {socialLinks.twitter && (
-                <a href={socialLinks.twitter} target="_blank" rel="noopener noreferrer" aria-label={`${businessName} on Twitter/X`} style={{ color: '#94A3B8' }}>
-                  <Twitter size={20} />
+                <a href={socialLinks.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                  <Twitter size={18} />
                 </a>
               )}
             </div>
           ) : (
-            <div style={{ color: '#94A3B8', fontSize: 13 }}>
-              Support: {supportEmail}
-            </div>
+            <p className="footer-brand-tagline" style={{ fontSize: 12 }}>
+              Built for independent retail stores.
+            </p>
           )}
-          <a href={onboardingLink} target="_blank" rel="noopener noreferrer">
-            Setup & onboarding
-          </a>
-          <a href={`mailto:${supportEmail}`}>Email support</a>
-          <div style={{ marginTop: 24, fontSize: 13, color: '#64748B' }}>
-            Lagos • Ibadan • Abuja • Kano
-          </div>
         </div>
       </div>
 
       <div className="footer-copyright-row">
-        <div>© {new Date().getFullYear()} {businessName} Technologies. All rights reserved.</div>
-        <div style={{ display: 'flex', gap: 20 }}>
-          <a href="#privacy" style={{ color: 'inherit' }}>Privacy Policy</a>
-          <a href="#terms" style={{ color: 'inherit' }}>Terms of Service</a>
-          <a href="#security" style={{ color: 'inherit' }}>Security</a>
+        <div>© {new Date().getFullYear()} {businessName}. All rights reserved.</div>
+        <div className="footer-legal-links">
+          <a href="#privacy">Privacy</a>
+          <a href="#terms">Terms</a>
+          <a href="#security">Security</a>
         </div>
       </div>
 
-      <div className="footer-watermark" aria-hidden="true">
-        {businessName.toUpperCase()}
+      {/* Brand Watermark (positioned very low so only about half of text shows) */}
+      <div className="footer-figo-watermark" aria-hidden="true">
+        {businessName.toLowerCase()}
       </div>
     </footer>
   );
 };
+
+

@@ -37,9 +37,9 @@ export const DynamicJsonLd = () => {
 
     if (siteUrl) {
       setMeta('og:url', `${siteUrl}/`, true);
-      setMeta('og:image', `${siteUrl}/og-stockpadi.png`, true);
+      setMeta('og:image', `${siteUrl}/og-cover.png`, true);
       setMeta('twitter:url', `${siteUrl}/`);
-      setMeta('twitter:image', `${siteUrl}/og-stockpadi.png`);
+      setMeta('twitter:image', `${siteUrl}/og-cover.png`);
     }
     setMeta('og:site_name', businessName, true);
 

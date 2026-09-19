@@ -6,63 +6,47 @@ export const FeaturesSection: React.FC = () => {
   const getFeatureIcon = (id: string) => {
     switch (id) {
       case 'feat-inventory':
-        return <Database size={24} color="var(--color-brand-accent)" />;
+        return <Database size={20} color="var(--color-brand-accent)" />;
       case 'feat-receipts':
-        return <MessageCircle size={24} color="var(--color-brand-accent)" />;
+        return <MessageCircle size={20} color="var(--color-brand-accent)" />;
       case 'feat-credit':
-        return <BookOpenCheck size={24} color="var(--color-brand-accent)" />;
+        return <BookOpenCheck size={20} color="var(--color-brand-accent)" />;
       default:
-        return <Layers size={24} color="var(--color-brand-accent)" />;
+        return <Layers size={20} color="var(--color-brand-accent)" />;
     }
   };
 
   return (
     <section id="features" className="features-section" aria-labelledby="features-title">
       <div className="features-header">
-        <div>
-          <span
-            style={{
-              fontSize: 12,
-              fontWeight: 700,
-              color: 'var(--color-brand-accent)',
-              letterSpacing: '0.08em',
-              display: 'inline-block',
-              marginBottom: 12,
-            }}
-          >
-            CORE ARCHITECTURE
-          </span>
-          <h2 id="features-title">
-            Running a store used to mean guessing. Now you know.
-          </h2>
-        </div>
-        <p>
-          StockPadi gives you tools that record, calculate, share, and audit every transaction, so your business stays completely transparent whether you are at the counter or traveling.
+        <h2 id="features-title" className="features-headline">
+          Running a business used to mean guessing, not knowing.
+        </h2>
+        <p className="features-sub">
+          StockPadi records and audits every sale so your numbers remain transparent whether you are at the counter or traveling.
         </p>
       </div>
 
       <div className="feature-grid">
         {CORE_FEATURES.map((feat) => (
           <article key={feat.id} className="feature-card">
-            <div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-                <span className="feature-tag">{feat.tag}</span>
-                {getFeatureIcon(feat.id)}
-              </div>
-              <h3>{feat.title}</h3>
-              <p>{feat.copy}</p>
-
-              {feat.image && (
-                <div style={{ marginTop: 18, marginBottom: 14, overflow: 'hidden', borderRadius: 'var(--shape-md)', display: 'flex', justifyContent: 'center', background: 'var(--color-surface)' }}>
-                  <img
-                    src={feat.image}
-                    alt={feat.title}
-                    loading="lazy"
-                    style={{ width: '100%', maxHeight: 220, objectFit: 'contain', display: 'block' }}
-                  />
-                </div>
-              )}
+            <div className="feature-card-header">
+              <span className="feature-tag">{feat.tag}</span>
+              {getFeatureIcon(feat.id)}
             </div>
+            <h3 className="feature-title">{feat.title}</h3>
+            <p className="feature-copy">{feat.copy}</p>
+
+            {feat.image && (
+              <div className="feature-img-wrapper">
+                <img
+                  src={feat.image}
+                  alt={feat.title}
+                  loading="lazy"
+                  className="feature-img"
+                />
+              </div>
+            )}
 
             <div className="feature-highlight-box">
               <span>{feat.highlight}</span>
@@ -73,3 +57,4 @@ export const FeaturesSection: React.FC = () => {
     </section>
   );
 };
+

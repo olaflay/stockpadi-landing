@@ -19,7 +19,8 @@ export interface PainPointItem {
   title: string;
   description: string;
   quote: string;
-  badge: string;
+  badge?: string;
+  image?: string;
 }
 
 export interface FeatureItem {
@@ -29,15 +30,6 @@ export interface FeatureItem {
   copy: string;
   highlight: string;
   image?: string;
-}
-
-export interface PersonaStoryItem {
-  id: string;
-  eyebrow: string;
-  label: string;
-  description: string;
-  metricLabel: string;
-  metricValue: string;
 }
 
 export interface PricingPlan {

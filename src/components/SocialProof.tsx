@@ -1,107 +1,111 @@
-import React from 'react';
-import { Store, TrendingUp, ArrowRight } from 'lucide-react';
-import { SOCIAL_PROOF_AVATARS } from '../data/content';
+import React, { useRef, useState, useEffect } from 'react';
+import { MapPin } from 'lucide-react';
+import { SOCIAL_PROOF_CARDS } from '../data/content';
 
 interface SocialProofProps {
   onStartFree: () => void;
 }
 
 export const SocialProof: React.FC<SocialProofProps> = ({ onStartFree }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const totalScrollDistance = rect.height - windowHeight;
+
+      if (totalScrollDistance <= 0) return;
+
+      const currentScroll = -rect.top;
+      const progress = Math.max(0, Math.min(1, currentScroll / totalScrollDistance));
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <section className="social-proof-section" aria-labelledby="social-proof-title">
-      <div className="proof-grid">
-        {/* Left Column: Tilting Merchant Badges */}
-        <div className="proof-column proof-column-left" aria-hidden="true">
-          {SOCIAL_PROOF_AVATARS.leftPillars.map((item, idx) => (
-            <div key={idx} className="avatar-pill">
-              <div
-                style={{
-                  width: 36,
-                  height: 36,
-                  borderRadius: 10,
-                  background: 'var(--color-brand-container)',
-                  color: 'var(--color-on-brand-container)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <Store size={18} />
-              </div>
-              <div style={{ textAlign: 'left' }}>
-                <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--color-on-surface)' }}>{item.name}</div>
-                <div style={{ fontSize: 11, color: 'var(--color-on-surface-muted)' }}>
-                  {item.city} • {item.tag}
-                </div>
-              </div>
-              <span style={{ marginLeft: 'auto', fontSize: 11, fontWeight: 600, color: 'var(--color-brand-accent)' }}>
-                {item.growth}
-              </span>
-            </div>
-          ))}
-        </div>
-
-        {/* Center Headline & Direct Conversion CTA */}
-        <div className="proof-center-copy">
-          <div
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 6,
-              fontSize: 12,
-              fontWeight: 700,
-              color: 'var(--color-brand-accent)',
-              background: 'var(--color-brand-container)',
-              padding: '6px 14px',
-              borderRadius: 9999,
-            }}
-          >
-            <TrendingUp size={14} />
-            <span>DAILY ACTIVE RETAILERS</span>
-          </div>
-
-          <h2 id="social-proof-title">
-            {SOCIAL_PROOF_AVATARS.headline}
+    <section ref={containerRef} className="social-proof-scroll-track" aria-labelledby="social-proof-title">
+      <div className="social-proof-sticky-frame">
+        <div className="proof-header">
+          <h2 id="social-proof-title" className="proof-headline">
+            Join 1,000+ retail stores that closed today knowing exactly what they made.
           </h2>
-
-          <button type="button" className="btn-primary" onClick={onStartFree}>
-            <span>{SOCIAL_PROOF_AVATARS.ctaText}</span>
-            <ArrowRight size={18} />
+          <button type="button" className="btn-primary proof-cta" onClick={onStartFree}>
+            <span>Get started</span>
           </button>
         </div>
 
-        {/* Right Column: Tilting Merchant Badges */}
-        <div className="proof-column proof-column-right" aria-hidden="true">
-          {SOCIAL_PROOF_AVATARS.rightPillars.map((item, idx) => (
-            <div key={idx} className="avatar-pill">
-              <div
+        {/* Stacking Card Stage */}
+        <div className="stacked-cards-container">
+          {SOCIAL_PROOF_CARDS.map((card, idx) => {
+            let opacity = 1;
+            let translateY = 0;
+            let scale = 1;
+
+            if (idx === 0) {
+              opacity = 1;
+              translateY = 0;
+              scale = 0.97;
+            } else if (idx === 1) {
+              const start = 0.18;
+              const end = 0.45;
+              const progress = Math.max(0, Math.min(1, (scrollProgress - start) / (end - start)));
+              opacity = progress;
+              translateY = 14 + (1 - progress) * 110;
+              scale = 0.985;
+            } else if (idx === 2) {
+              const start = 0.52;
+              const end = 0.80;
+              const progress = Math.max(0, Math.min(1, (scrollProgress - start) / (end - start)));
+              opacity = progress;
+              translateY = 28 + (1 - progress) * 110;
+              scale = 1.0;
+            }
+
+            return (
+              <article
+                key={card.id}
+                className={`proof-stack-card proof-card-${idx}`}
                 style={{
-                  width: 36,
-                  height: 36,
-                  borderRadius: 10,
-                  background: 'var(--color-brand-container)',
-                  color: 'var(--color-on-brand-container)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
+                  zIndex: idx + 1,
+                  transform: `translateY(${translateY}px) scale(${scale})`,
+                  opacity: opacity,
+                  pointerEvents: opacity < 0.2 ? 'none' : 'auto',
+                  ['--mobile-top' as any]: `${76 + idx * 14}px`,
                 }}
               >
-                <Store size={18} />
-              </div>
-              <div style={{ textAlign: 'left' }}>
-                <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--color-on-surface)' }}>{item.name}</div>
-                <div style={{ fontSize: 11, color: 'var(--color-on-surface-muted)' }}>
-                  {item.city} • {item.tag}
+                <div className="stack-card-img-wrap">
+                  <img
+                    src={card.image}
+                    alt={card.title}
+                    loading="lazy"
+                    className="stack-card-img"
+                  />
                 </div>
-              </div>
-              <span style={{ marginLeft: 'auto', fontSize: 11, fontWeight: 600, color: 'var(--color-brand-accent)' }}>
-                {item.growth}
-              </span>
-            </div>
-          ))}
+                <div className="stack-card-content">
+                  <div className="stack-card-meta">
+                    <span className="stack-card-tag">{card.tag}</span>
+                    <span className="stack-card-location">
+                      <MapPin size={12} /> {card.location}
+                    </span>
+                  </div>
+                  <h3 className="stack-card-title">{card.title}</h3>
+                  <div className="stack-card-highlight">{card.highlight}</div>
+                  <p className="stack-card-subtext">{card.subtext}</p>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
   );
 };
+
 

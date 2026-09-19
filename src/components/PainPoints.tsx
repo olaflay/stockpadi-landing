@@ -1,77 +1,115 @@
-import React from 'react';
-import { AlertCircle, Clock, PackageX, WifiOff } from 'lucide-react';
+import React, { useRef, useState, useEffect } from 'react';
 import { PAIN_POINTS } from '../data/content';
 
 export const PainPoints: React.FC = () => {
-  const getIcon = (id: string) => {
-    switch (id) {
-      case 'pain-1':
-        return <Clock size={20} color="#F87171" />;
-      case 'pain-2':
-        return <PackageX size={20} color="#F87171" />;
-      default:
-        return <WifiOff size={20} color="#F87171" />;
-    }
-  };
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!trackRef.current) return;
+      const rect = trackRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const totalScrollDistance = rect.height - windowHeight;
+
+      if (totalScrollDistance <= 0) return;
+
+      const currentScroll = -rect.top;
+      const progress = Math.max(0, Math.min(1, currentScroll / totalScrollDistance));
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <section id="how-it-works" className="painpoint-section" aria-labelledby="painpoint-title">
-      <div className="painpoint-container">
-        {/* Sticky Left Narrative */}
-        <div className="painpoint-intro">
-          <div
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 6,
-              fontSize: 12,
-              fontWeight: 700,
-              color: '#F87171',
-              background: 'rgba(248, 113, 113, 0.12)',
-              padding: '6px 14px',
-              borderRadius: 9999,
-              marginBottom: 20,
-            }}
-          >
-            <AlertCircle size={14} />
-            <span>THE REALITY OF RETAIL</span>
+    <section id="how-it-works" ref={trackRef} className="painpoint-scroll-track" aria-labelledby="painpoint-title">
+      <div className="painpoint-sticky-viewport">
+        <div className="painpoint-content-wrapper">
+          {/* Left Narrative Column */}
+          <div className="painpoint-narrative">
+            <h2 id="painpoint-title" className="painpoint-title">
+              You're probably losing money you don't know about.
+            </h2>
+            <div className="painpoint-narrative-copy">
+              <p className="painpoint-desc-lead">
+                Not to theft. Not to bad luck.
+              </p>
+              <p className="painpoint-desc">
+                To the gaps between the sales happening and someone remembering to record them. StockPadi closes those gaps, so you know exactly where every kobo and item goes.
+              </p>
+            </div>
           </div>
 
-          <h2 id="painpoint-title">
-            You are probably losing money you do not know about.
-          </h2>
-          <p>Not to bad luck. Not to bad staff.</p>
-          <p>
-            You lose it to the gaps between a sale happening at the counter and someone remembering to record it in a paper book.
-          </p>
-          <p>
-            StockPadi closes those gaps completely: every transaction is written to an immutable offline ledger, so you see what sold, what is left, and what you actually earned.
-          </p>
-        </div>
+          {/* Right Stacking Problem Cards (Taller, Narrower Paper-Textured Cards) */}
+          <div className="painpoint-stack-stage">
+            {PAIN_POINTS.map((item, idx) => {
+              let opacity = 1;
+              let translateY = 0;
+              let translateX = 0;
+              let rotate = 0;
 
-        {/* Right Stack of Fanned Problem Cards */}
-        <div className="painpoint-stack">
-          {PAIN_POINTS.map((item, idx) => (
-            <article
-              key={item.id}
-              className="painpoint-card"
-              style={{
-                transform: idx === 0 ? 'rotate(-0.8deg)' : idx === 2 ? 'rotate(0.8deg)' : 'none',
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
-                <span className="painpoint-badge">{item.badge}</span>
-                {getIcon(item.id)}
-              </div>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-              <div className="painpoint-quote">
-                “{item.quote}”
-              </div>
-            </article>
-          ))}
+              if (idx === 0) {
+                // Card 0: Base card, visible from start
+                opacity = 1;
+                translateX = -8;
+                translateY = 0;
+                rotate = -2;
+              } else if (idx === 1) {
+                // Card 1: Fades in between 0.20 and 0.48, then stays parked until 0.75
+                const start = 0.20;
+                const end = 0.48;
+                const progress = Math.max(0, Math.min(1, (scrollProgress - start) / (end - start)));
+                opacity = progress;
+                translateY = 20 + (1 - progress) * 160;
+                translateX = 10;
+                rotate = 2.2;
+              } else if (idx === 2) {
+                // Card 2: Fades in between 0.58 and 0.85, then stays parked
+                const start = 0.58;
+                const end = 0.85;
+                const progress = Math.max(0, Math.min(1, (scrollProgress - start) / (end - start)));
+                opacity = progress;
+                translateY = 38 + (1 - progress) * 160;
+                translateX = -4;
+                rotate = -1.2;
+              }
+
+              return (
+                <article
+                  key={item.id}
+                  className={`painpoint-stack-card painpoint-paper-card painpoint-card-${idx}`}
+                  style={{
+                    zIndex: idx + 1,
+                    transform: `translate3d(${translateX}px, ${translateY}px, 0) rotate(${rotate}deg)`,
+                    opacity: opacity,
+                    pointerEvents: opacity < 0.3 ? 'none' : 'auto',
+                  }}
+                >
+                  <div className="painpoint-photo-frame">
+                    {item.image && (
+                      <img
+                        src={item.image}
+                        alt={item.quote}
+                        className="painpoint-card-img"
+                        loading="lazy"
+                      />
+                    )}
+                  </div>
+                  <div className="painpoint-caption-area">
+                    <p className="painpoint-paper-quote">
+                      “{item.quote}”
+                    </p>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
   );
 };
+

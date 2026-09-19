@@ -1,98 +1,104 @@
 import React, { useState } from 'react';
-import { Menu, X, Sun, Moon } from 'lucide-react';
-import { getWebAppUrl, getBusinessName } from '../config/env';
+import { Menu, X } from 'lucide-react';
+import { getBusinessName } from '../config/env';
 import { BrandMark } from './BrandLogo';
 
 interface NavbarProps {
   onStartFree: () => void;
-  theme: 'light' | 'dark';
-  onToggleTheme: () => void;
+  onNavigateHome?: () => void;
+  onNavigatePricing?: () => void;
+  currentRoute?: 'home' | 'pricing';
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onStartFree, theme, onToggleTheme }) => {
+export const Navbar: React.FC<NavbarProps> = ({
+  onStartFree,
+  onNavigateHome,
+  onNavigatePricing,
+  currentRoute = 'home',
+}) => {
   const [isOpen, setIsOpen] = useState(false);
-  const webAppUrl = getWebAppUrl();
   const businessName = getBusinessName();
 
-  const scrollToSection = (id: string) => {
+  const handleHowItWorksClick = () => {
     setIsOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (currentRoute !== 'home' && onNavigateHome) {
+      onNavigateHome();
+      setTimeout(() => {
+        const el = document.getElementById('how-it-works');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      const el = document.getElementById('how-it-works');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleFeaturesClick = () => {
+    setIsOpen(false);
+    if (currentRoute !== 'home' && onNavigateHome) {
+      onNavigateHome();
+      setTimeout(() => {
+        const el = document.getElementById('features');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      const el = document.getElementById('features');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handlePricingClick = () => {
+    setIsOpen(false);
+    if (onNavigatePricing) {
+      onNavigatePricing();
+    }
+  };
+
+  const handleBrandClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (onNavigateHome) {
+      onNavigateHome();
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <header className="landing-nav" role="banner">
-      <a
-        href="#"
-        className="nav-brand"
-        onClick={(e) => {
-          e.preventDefault();
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}
-      >
-        <BrandMark size={32} />
+      <a href="/" className="nav-brand" onClick={handleBrandClick}>
+        <BrandMark size={28} />
         <span>{businessName}</span>
       </a>
 
       <nav className={`nav-links ${isOpen ? 'open' : ''}`} aria-label="Main navigation">
-        <button type="button" className="nav-item" onClick={() => scrollToSection('how-it-works')}>
-          How it works
+        <button type="button" className="nav-item" onClick={handleHowItWorksClick}>
+          How It Works
         </button>
-        <button type="button" className="nav-item" onClick={() => scrollToSection('features')}>
+        <button type="button" className="nav-item" onClick={handleFeaturesClick}>
           Features
         </button>
-        <button type="button" className="nav-item" onClick={() => scrollToSection('pricing')}>
-          Pricing
-        </button>
-        <button type="button" className="nav-item" onClick={() => scrollToSection('faq')}>
-          FAQ
-        </button>
-        <a
-          href={`${webAppUrl}/auth`}
-          className="nav-item"
-          style={{ fontWeight: 600 }}
-        >
-          Login
-        </a>
-
-        {/* Theme Toggle Button */}
         <button
           type="button"
-          onClick={onToggleTheme}
-          className="theme-toggle-btn"
-          aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
-          title={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+          className={`nav-item ${currentRoute === 'pricing' ? 'active' : ''}`}
+          onClick={handlePricingClick}
         >
-          {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+          Pricing
         </button>
 
         <button type="button" className="nav-cta" onClick={onStartFree}>
-          Start free
+          Start Free
         </button>
       </nav>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-        <button
-          type="button"
-          onClick={onToggleTheme}
-          className="theme-toggle-btn-mobile"
-          aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
-        >
-          {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-        </button>
-
-        <button
-          type="button"
-          className="mobile-nav-toggle"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
-          aria-expanded={isOpen}
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
+      <button
+        type="button"
+        className="mobile-nav-toggle"
+        onClick={() => setIsOpen(!isOpen)}
+        aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+        aria-expanded={isOpen}
+      >
+        {isOpen ? <X size={22} /> : <Menu size={22} />}
+      </button>
     </header>
   );
 };
+

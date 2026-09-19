@@ -4,41 +4,40 @@ import { HeroSection } from './components/HeroSection';
 import { SocialProof } from './components/SocialProof';
 import { PainPoints } from './components/PainPoints';
 import { FeaturesSection } from './components/FeaturesSection';
-import { PricingPlans } from './components/PricingPlans';
-import { ExperienceStory } from './components/ExperienceStory';
-
 import { Testimonials } from './components/Testimonials';
 import { FaqSection } from './components/FaqSection';
 import { FinalCta } from './components/FinalCta';
 import { Footer } from './components/Footer';
+import { PricingPage } from './components/PricingPage';
 import { MobileFloatingBar } from './components/MobileFloatingBar';
 import { DynamicJsonLd } from './components/DynamicJsonLd';
 
-import { getWebAppUrl, buildContactLink, getBusinessName } from './config/env';
+import { getWebAppUrl } from './config/env';
 
 export function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showMobileBar, setShowMobileBar] = useState(false);
-  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+  const [currentRoute, setCurrentRoute] = useState<'home' | 'pricing'>(() => {
     if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('stockpadi-theme');
-      if (saved === 'dark' || saved === 'light') return saved;
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      return window.location.pathname === '/pricing' || window.location.hash === '#pricing'
+        ? 'pricing'
+        : 'home';
     }
-    return 'light';
+    return 'home';
   });
 
   const webAppUrl = getWebAppUrl();
-  const businessName = getBusinessName();
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('stockpadi-theme', theme);
-  }, [theme]);
+    const handlePopState = () => {
+      const isPricing =
+        window.location.pathname === '/pricing' || window.location.hash === '#pricing';
+      setCurrentRoute(isPricing ? 'pricing' : 'home');
+    };
 
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
-  };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   useEffect(() => {
     let ticking = false;
@@ -50,10 +49,11 @@ export function App() {
           const progress = Math.min(scrollY / 500, 1);
           setScrollProgress(progress);
 
-          const isPastHero = scrollY > window.innerHeight * 0.65;
+          const isPastHero = scrollY > window.innerHeight * 0.45;
           const isNearBottom =
-            window.innerHeight + scrollY >= document.documentElement.scrollHeight - 350;
+            window.innerHeight + scrollY >= document.documentElement.scrollHeight - 250;
           setShowMobileBar(isPastHero && !isNearBottom);
+
           ticking = false;
         });
         ticking = true;
@@ -65,27 +65,42 @@ export function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const navigateToPricing = () => {
+    setCurrentRoute('pricing');
+    window.history.pushState({}, '', '/pricing');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const navigateToHome = () => {
+    setCurrentRoute('home');
+    window.history.pushState({}, '', '/');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const handleStartFree = () => {
     window.location.href = `${webAppUrl}/auth/signup`;
   };
 
-  const handleUpgradePro = () => {
-    window.location.href = `${webAppUrl}/auth/signup?plan=pro`;
-  };
-
-  const handleContactEnterprise = () => {
-    const message = `Hello ${businessName}! I am interested in the Enterprise Plan (up to 6 branches, custom receipt branding, and inter-branch transfers) for my retail chain.`;
-    const contactUrl = buildContactLink(message, `${businessName} Enterprise Plan Inquiry`);
-    window.open(contactUrl, '_blank');
-  };
+  if (currentRoute === 'pricing') {
+    return (
+      <div className="stockpadi-landing-root">
+        <DynamicJsonLd />
+        <PricingPage
+          onNavigateHome={navigateToHome}
+          onStartFree={handleStartFree}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="stockpadi-landing-root">
       <DynamicJsonLd />
       <Navbar
         onStartFree={handleStartFree}
-        theme={theme}
-        onToggleTheme={toggleTheme}
+        onNavigateHome={navigateToHome}
+        onNavigatePricing={navigateToPricing}
+        currentRoute={currentRoute}
       />
 
       <main>
@@ -93,22 +108,18 @@ export function App() {
         <SocialProof onStartFree={handleStartFree} />
         <PainPoints />
         <FeaturesSection />
-        <PricingPlans
-          onStartFree={handleStartFree}
-          onUpgradePro={handleUpgradePro}
-          onContactEnterprise={handleContactEnterprise}
-        />
-        <ExperienceStory />
-
         <Testimonials />
         <FaqSection />
         <FinalCta
           onStartFree={handleStartFree}
-          onUpgradePro={handleUpgradePro}
+          onNavigatePricing={navigateToPricing}
         />
       </main>
 
-      <Footer />
+      <Footer
+        onNavigateHome={navigateToHome}
+        onNavigatePricing={navigateToPricing}
+      />
 
       <MobileFloatingBar onStartFree={handleStartFree} visible={showMobileBar} />
     </div>
@@ -116,3 +127,4 @@ export function App() {
 }
 
 export default App;
+

@@ -1,63 +1,83 @@
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react';
 import { TESTIMONIALS } from '../data/content';
 
 export const Testimonials: React.FC = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  // Start in middle segment of infinite repeated list
+  const count = TESTIMONIALS.length;
+  const [virtualIndex, setVirtualIndex] = useState(count * 5);
 
   const prev = () => {
-    setActiveIndex((current) => (current - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
+    setVirtualIndex((v) => v - 1);
   };
 
   const next = () => {
-    setActiveIndex((current) => (current + 1) % TESTIMONIALS.length);
+    setVirtualIndex((v) => v + 1);
   };
 
-  const currentItem = TESTIMONIALS[activeIndex];
+  const activeIndex = ((virtualIndex % count) + count) % count;
+
+  // 11 repetitions ensure smooth forward and backward looping without hitting boundaries
+  const repeatedList = Array.from({ length: 11 }, () => TESTIMONIALS).flat();
 
   return (
     <section className="testimonials-section" aria-labelledby="testimonials-title">
-      <span
-        style={{
-          fontSize: 12,
-          fontWeight: 700,
-          color: 'var(--color-brand-accent)',
-          letterSpacing: '0.08em',
-          display: 'inline-block',
-          marginBottom: 12,
-        }}
-      >
-        MERCHANT VOICES
-      </span>
+      <div className="testimonials-header">
+        <span className="testimonials-eyebrow">REVIEWS</span>
+        <h2 id="testimonials-title" className="testimonials-headline">
+          From people who tried it
+        </h2>
+      </div>
 
-      <h2 id="testimonials-title" style={{ fontSize: 'clamp(32px, 3.8vw, 48px)' }}>
-        From retailers who tested it on the counter
-      </h2>
+      <div className="testimonial-carousel-wrapper">
+        {/* Edge blur vignettes */}
+        <div className="carousel-blur-edge blur-left" aria-hidden="true" />
+        <div className="carousel-blur-edge blur-right" aria-hidden="true" />
 
-      <div className="testimonial-stage">
-        <article className="testimonial-card-single" role="region" aria-label={`Testimonial from ${currentItem.name}`}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--color-brand-accent)', marginBottom: 16 }}>
-            <Quote size={28} />
+        <div className="testimonial-track-container">
+          <div
+            className="testimonial-track"
+            style={{
+              transform: `translateX(calc(50% - (var(--t-card-w, 340px) / 2) - ${virtualIndex} * (var(--t-card-w, 340px) + var(--t-card-gap, 20px))))`,
+            }}
+          >
+            {repeatedList.map((item, idx) => {
+              const isActive = idx === virtualIndex;
+              return (
+                <article
+                  key={`${item.id}-${idx}`}
+                  className={`testimonial-card-compact ${isActive ? 'active' : 'inactive'}`}
+                  onClick={() => setVirtualIndex(idx)}
+                >
+                  <div className="testimonial-card-top">
+                    <div className="testimonial-card-meta">
+                      <div className="testimonial-stars" aria-label="5 star rating">
+                        {[...Array(5)].map((_, starIdx) => (
+                          <Star key={starIdx} size={15} className="testimonial-star-icon" />
+                        ))}
+                      </div>
+                      <Quote size={20} className="testimonial-quote-icon" />
+                    </div>
+
+                    <p className="testimonial-quote-text">
+                      “{item.quote}”
+                    </p>
+                  </div>
+
+                  <div className="testimonial-author-row">
+                    <div className="author-avatar" style={{ backgroundColor: item.avatarBg }}>
+                      {item.initials}
+                    </div>
+                    <div>
+                      <div className="author-name">{item.name}</div>
+                      <div className="author-role">{item.role} • {item.location}</div>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
           </div>
-
-          <p className="testimonial-quote-text">
-            “{currentItem.quote}”
-          </p>
-
-          <div className="testimonial-author-row">
-            <div className="author-avatar" style={{ backgroundColor: currentItem.avatarBg }}>
-              {currentItem.initials}
-            </div>
-            <div>
-              <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--color-on-surface)' }}>
-                {currentItem.name}
-              </div>
-              <div style={{ fontSize: 13, color: 'var(--color-on-surface-muted)' }}>
-                {currentItem.role} • {currentItem.location}
-              </div>
-            </div>
-          </div>
-        </article>
+        </div>
 
         {/* Carousel Navigation Controls */}
         <div className="testimonial-controls">
@@ -67,16 +87,19 @@ export const Testimonials: React.FC = () => {
             onClick={prev}
             aria-label="Previous testimonial"
           >
-            <ChevronLeft size={20} />
+            <ChevronLeft size={18} />
           </button>
 
-          <div style={{ display: 'flex', gap: 8 }} role="tablist" aria-label="Testimonial pagination">
+          <div className="testimonial-dots" role="tablist" aria-label="Testimonial pagination">
             {TESTIMONIALS.map((item, idx) => (
               <button
                 key={item.id}
                 type="button"
                 className={`testimonial-dot ${activeIndex === idx ? 'active' : ''}`}
-                onClick={() => setActiveIndex(idx)}
+                onClick={() => {
+                  const diff = idx - activeIndex;
+                  setVirtualIndex((v) => v + diff);
+                }}
                 aria-label={`Go to testimonial from ${item.name}`}
                 aria-selected={activeIndex === idx}
                 role="tab"
@@ -90,10 +113,12 @@ export const Testimonials: React.FC = () => {
             onClick={next}
             aria-label="Next testimonial"
           >
-            <ChevronRight size={20} />
+            <ChevronRight size={18} />
           </button>
         </div>
       </div>
     </section>
   );
 };
+
+
