@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { getBusinessName } from '../config/env';
 
 interface FinalCtaProps {
   onStartFree: () => void;
@@ -7,13 +8,16 @@ interface FinalCtaProps {
 }
 
 export const FinalCta: React.FC<FinalCtaProps> = ({ onStartFree, onNavigatePricing }) => {
+  const brand = getBusinessName();
+  const brandDisplay = brand === 'OjaPadi' ? 'OjàPadi' : brand;
+
   return (
     <section className="final-cta-section" aria-labelledby="cta-title">
       <div className="final-cta-card">
         <div className="final-cta-text-col">
           <h2 id="cta-title" className="final-cta-headline">Start recording sales in 2 minutes.</h2>
           <p className="final-cta-subtext">
-            No complicated setup or training needed. Open StockPadi on your phone, add your products, and record your first sale right away.
+            No complicated setup or training needed. Open {brandDisplay} on your phone, add your products, and record your first sale right away.
           </p>
 
           <div className="final-cta-actions">
@@ -33,11 +37,11 @@ export const FinalCta: React.FC<FinalCtaProps> = ({ onStartFree, onNavigatePrici
           </div>
         </div>
 
-        {/* Generated StockPadi Phone Cutout Illustration with Zero Background */}
+        {/* Dynamic Phone Cutout Illustration with Zero Background */}
         <div className="final-mockup-wrapper">
           <img
             src="/cta-hand-phone.webp"
-            alt="StockPadi POS and Inventory App on Smartphone"
+            alt={`${brandDisplay} POS and Inventory App on Smartphone`}
             className="final-mockup-hand-img"
             loading="lazy"
             decoding="async"

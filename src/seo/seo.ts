@@ -30,13 +30,13 @@ export const APP_DESCRIPTION =
   '100% offline-first retail POS and inventory management platform for 1 to 6 store branches, with digital WhatsApp receipt sharing, a permanent stock ledger, and customer credit tracking.';
 
 export const HOME_TITLE =
-  'StockPadi: Offline-First Retail POS, Inventory Management & Receipt Printing';
+  'OjàPadi: Offline-First Retail POS, Inventory Management & Receipt Printing';
 
 export const HOME_DESCRIPTION =
   'Record sales, track inventory, manage customer credit, and print wireless Bluetooth receipts without internet. The 100% offline-first POS platform built for Nigerian retail businesses and multi-branch stores.';
 
 export const PRICING_TITLE =
-  'StockPadi Pricing: Free, Pro & Enterprise Plans for 1–6 Branch Retailers';
+  'OjàPadi Pricing: Free, Pro & Enterprise Plans for 1–6 Branch Retailers';
 
 export const PRICING_DESCRIPTION =
   'Start free with zero risk. Transparent naira pricing: Free (₦0 forever), Pro (₦5,000/month, up to 3 branches), Enterprise (₦15,000/month, up to 6 branches). No transaction cuts, no card required.';
@@ -54,7 +54,7 @@ const brandingDescription =
  */
 export function buildSeoHead(route: SeoRoute, env: SeoEnv): SeoHead {
   const siteUrl = env.siteUrl.replace(/\/$/, '');
-  const name = env.businessName || 'StockPadi';
+  const name = env.businessName || 'OjaPadi';
 
   const isPricing = route === 'pricing';
   const pageUrl = isPricing ? `${siteUrl}/pricing` : `${siteUrl}/`;

@@ -1,8 +1,12 @@
 import React from 'react';
 import { Database, MessageCircle, BookOpenCheck, Layers } from 'lucide-react';
 import { CORE_FEATURES } from '../data/content';
+import { getBusinessName } from '../config/env';
 
 export const FeaturesSection: React.FC = () => {
+  const brand = getBusinessName();
+  const brandDisplay = brand === 'OjaPadi' ? 'OjàPadi' : brand;
+
   const getFeatureIcon = (id: string) => {
     switch (id) {
       case 'feat-inventory':
@@ -23,7 +27,7 @@ export const FeaturesSection: React.FC = () => {
           Running a business used to mean guessing, not knowing.
         </h2>
         <p className="features-sub">
-          StockPadi records and audits every sale so your numbers remain transparent whether you are at the counter or traveling.
+          {brandDisplay} records and audits every sale so your numbers remain transparent whether you are at the counter or traveling.
         </p>
       </div>
 

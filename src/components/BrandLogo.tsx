@@ -13,8 +13,9 @@ const SIZE_MAP = {
 };
 
 /**
- * Precision geometric StockPadi brand mark.
- * Combines the offline ledger foundation with ascending trade momentum (Padi companion arch).
+ * Precision geometric OjàPadi brand mark.
+ * Features the Infinite Market Loop ("O") embodying unbroken offline trade continuity,
+ * paired with the illuminated sunburst trade accent representing the authentic "Ojà" tone mark.
  */
 export function BrandMark({ size = 32, className = '' }: { size?: number; className?: string }) {
   return (
@@ -25,32 +26,50 @@ export function BrandMark({ size = 32, className = '' }: { size?: number; classN
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={`shrink-0 ${className}`}
-      aria-label="StockPadi Mark"
+      aria-label="OjàPadi Mark"
     >
       <defs>
-        <linearGradient id="brandLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#0e835c" />
-          <stop offset="100%" stopColor="#07533a" />
+        <linearGradient id="ojapadiBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#0b7a55" />
+          <stop offset="100%" stopColor="#044730" />
         </linearGradient>
-        <linearGradient id="markLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <linearGradient id="ojapadiLoopGrad" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="#ffffff" />
-          <stop offset="100%" stopColor="#d7f2df" />
+          <stop offset="100%" stopColor="#d1fae5" />
+        </linearGradient>
+        <linearGradient id="ojapadiAccentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#fbbf24" />
+          <stop offset="100%" stopColor="#f59e0b" />
         </linearGradient>
       </defs>
 
-      <rect width="512" height="512" rx="112" fill="url(#brandLogoGrad)" />
-      <rect x="24" y="24" width="464" height="464" rx="88" stroke="#ffffff" strokeOpacity="0.1" strokeWidth="4" />
+      {/* Rounded Squircle Container */}
+      <rect width="512" height="512" rx="112" fill="url(#ojapadiBgGrad)" />
+      <rect x="24" y="24" width="464" height="464" rx="88" stroke="#ffffff" strokeOpacity="0.14" strokeWidth="4" />
 
+      {/* Primary Market Loop ("O") */}
       <path
-        d="M152 192C152 156.654 180.654 128 216 128H296C337.421 128 371 161.579 371 203C371 244.421 337.421 278 296 278H216C174.579 278 141 311.579 141 353C141 394.421 174.579 428 216 428H296C331.346 428 360 399.346 360 364"
-        stroke="url(#markLogoGrad)"
-        strokeWidth="38"
+        d="M256 148C194.144 148 144 198.144 144 260C144 321.856 194.144 372 256 372C317.856 372 368 321.856 368 260C368 227.156 353.844 197.62 331.258 177.2"
+        stroke="url(#ojapadiLoopGrad)"
+        strokeWidth="42"
         strokeLinecap="round"
-        strokeLinejoin="round"
       />
 
-      <circle cx="256" cy="278" r="26" fill="#ffffff" />
-      <circle cx="296" cy="128" r="19" fill="#ffffff" />
+      {/* Internal Continuous Flow Arc */}
+      <path
+        d="M208 260C208 233.49 229.49 212 256 212C282.51 212 304 233.49 304 260C304 286.51 282.51 308 256 308"
+        stroke="#ffffff"
+        strokeOpacity="0.4"
+        strokeWidth="18"
+        strokeLinecap="round"
+      />
+
+      {/* Central Trade Equilibrium Node */}
+      <circle cx="256" cy="260" r="22" fill="#ffffff" />
+
+      {/* Sunburst Tone Accent (Symbolizing 'Ojà' Tone Mark & Live Trade Status) */}
+      <circle cx="348" cy="154" r="24" fill="url(#ojapadiAccentGrad)" />
+      <circle cx="348" cy="154" r="10" fill="#ffffff" />
     </svg>
   );
 }
@@ -73,7 +92,7 @@ export function BrandLogo({
       <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <span style={{ fontWeight: 800, letterSpacing: '-0.02em', fontSize: '1.18em' }}>
-            Stock<span style={{ color: 'var(--color-brand-accent)' }}>Padi</span>
+            Ojà<span style={{ color: 'var(--color-brand-accent)' }}>Padi</span>
           </span>
           <span
             style={{

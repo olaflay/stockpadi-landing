@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { FAQ_LIST } from '../data/content';
+import { getBusinessName } from '../config/env';
 
 export const FaqSection: React.FC = () => {
   const [openId, setOpenId] = useState<string | null>(FAQ_LIST[0]?.id || null);
+  const brand = getBusinessName();
+  const brandDisplay = brand === 'OjaPadi' ? 'OjàPadi' : brand;
 
   const toggle = (id: string) => {
     setOpenId((prev) => (prev === id ? null : id));
@@ -17,7 +20,7 @@ export const FaqSection: React.FC = () => {
             A few useful answers.
           </h2>
           <p className="faq-subtext">
-            Everything you need to choose StockPadi and start recording sales with zero setup stress.
+            Everything you need to choose {brandDisplay} and start recording sales with zero setup stress.
           </p>
         </div>
 

@@ -1,9 +1,12 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { PAIN_POINTS } from '../data/content';
+import { getBusinessName } from '../config/env';
 
 export const PainPoints: React.FC = () => {
   const trackRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const brand = getBusinessName();
+  const brandDisplay = brand === 'OjaPadi' ? 'OjàPadi' : brand;
 
   useEffect(() => {
     let ticking = false;
@@ -47,7 +50,7 @@ export const PainPoints: React.FC = () => {
                 It's not bad luck. It's unrecorded sales.
               </p>
               <p className="painpoint-desc">
-                When the shop gets busy, sales get forgotten and cash doesn't balance. StockPadi makes recording so fast that every kobo and product is accounted for.
+                When the shop gets busy, sales get forgotten and cash doesn't balance. {brandDisplay} makes recording so fast that every kobo and product is accounted for.
               </p>
             </div>
           </div>

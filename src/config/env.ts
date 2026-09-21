@@ -5,9 +5,27 @@
  * NO hard-coded domains or contact links anywhere in the codebase.
  */
 
+const getEnvVar = (key: string): string => {
+  try {
+    if (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env[key]) {
+      return String(import.meta.env[key]);
+    }
+  } catch {
+    // ignore
+  }
+  try {
+    if (typeof process !== 'undefined' && process.env && process.env[key]) {
+      return String(process.env[key]);
+    }
+  } catch {
+    // ignore
+  }
+  return '';
+};
+
 export const getSiteUrl = (): string => {
-  const envUrl = import.meta.env.VITE_SITE_URL;
-  if (envUrl && typeof envUrl === 'string' && envUrl.trim() !== '') {
+  const envUrl = getEnvVar('VITE_SITE_URL');
+  if (envUrl && envUrl.trim() !== '') {
     return envUrl.trim().replace(/\/$/, '');
   }
   if (typeof window !== 'undefined' && window.location?.origin) {
@@ -17,8 +35,8 @@ export const getSiteUrl = (): string => {
 };
 
 export const getWebAppUrl = (): string => {
-  const envUrl = import.meta.env.VITE_WEB_APP_URL;
-  if (envUrl && typeof envUrl === 'string' && envUrl.trim() !== '') {
+  const envUrl = getEnvVar('VITE_WEB_APP_URL');
+  if (envUrl && envUrl.trim() !== '') {
     return envUrl.trim().replace(/\/$/, '');
   }
   // Default to relative /app or fallback to current origin
@@ -26,8 +44,8 @@ export const getWebAppUrl = (): string => {
 };
 
 export const getWhatsAppNumber = (): string => {
-  const num = import.meta.env.VITE_WHATSAPP_NUMBER;
-  if (num && typeof num === 'string') {
+  const num = getEnvVar('VITE_WHATSAPP_NUMBER');
+  if (num) {
     // Strip non-digits
     return num.replace(/\D/g, '');
   }
@@ -35,30 +53,30 @@ export const getWhatsAppNumber = (): string => {
 };
 
 export const getSupportEmail = (): string => {
-  const email = import.meta.env.VITE_SUPPORT_EMAIL;
-  if (email && typeof email === 'string' && email.trim() !== '') {
+  const email = getEnvVar('VITE_SUPPORT_EMAIL');
+  if (email && email.trim() !== '') {
     return email.trim();
   }
   return 'support@example.com';
 };
 
 export const getBusinessName = (): string => {
-  return import.meta.env.VITE_BUSINESS_NAME || 'StockPadi';
+  return getEnvVar('VITE_BUSINESS_NAME') || 'OjaPadi';
 };
 
 export const getSocialLinks = () => {
   return {
-    instagram: import.meta.env.VITE_SOCIAL_INSTAGRAM || '',
-    tiktok: import.meta.env.VITE_SOCIAL_TIKTOK || '',
-    facebook: import.meta.env.VITE_SOCIAL_FACEBOOK || '',
-    twitter: import.meta.env.VITE_SOCIAL_TWITTER || '',
+    instagram: getEnvVar('VITE_SOCIAL_INSTAGRAM'),
+    tiktok: getEnvVar('VITE_SOCIAL_TIKTOK'),
+    facebook: getEnvVar('VITE_SOCIAL_FACEBOOK'),
+    twitter: getEnvVar('VITE_SOCIAL_TWITTER'),
   };
 };
 
 /**
  * Builds a dynamic WhatsApp or Email contact URL based on environment availability
  */
-export const buildContactLink = (message: string, subject = 'StockPadi Inquiry'): string => {
+export const buildContactLink = (message: string, subject = 'OjàPadi Inquiry'): string => {
   const phone = getWhatsAppNumber();
   if (phone) {
     return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
