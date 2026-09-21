@@ -88,6 +88,10 @@ export function buildSeoHead(route: SeoRoute, env: SeoEnv): SeoHead {
         { position: 4, name: 'Pricing', item: `${siteUrl}/#pricing` },
       ];
 
+  const homeTitle = `${name}: Offline-First Retail POS, Inventory Management & Receipt Printing`;
+  const pricingTitle = `${name} Pricing: Free, Pro & Enterprise Plans for 1–6 Branch Retailers`;
+  const pageTitle = isPricing ? pricingTitle : homeTitle;
+
   const schemaGraph = [
     {
       '@type': 'SoftwareApplication',
@@ -141,7 +145,7 @@ export function buildSeoHead(route: SeoRoute, env: SeoEnv): SeoHead {
       '@type': 'WebPage',
       '@id': isPricing ? `${siteUrl}/pricing#webpage` : `${siteUrl}/#webpage`,
       url: pageUrl,
-      name: isPricing ? PRICING_TITLE : HOME_TITLE,
+      name: pageTitle,
       description: isPricing ? PRICING_DESCRIPTION : HOME_DESCRIPTION,
       inLanguage: 'en',
       isPartOf: { '@id': `${siteUrl}/#website` },
@@ -173,7 +177,7 @@ export function buildSeoHead(route: SeoRoute, env: SeoEnv): SeoHead {
   };
 
   return {
-    title: isPricing ? PRICING_TITLE : HOME_TITLE,
+    title: pageTitle,
     description: isPricing ? PRICING_DESCRIPTION : HOME_DESCRIPTION,
     keywords:
       'offline pos software, retail inventory management app, bluetooth thermal receipt printer, customer debt book ledger, multi-branch retail software, point of sale software nigeria, inventory management software nigeria',

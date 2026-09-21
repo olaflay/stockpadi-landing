@@ -76,10 +76,12 @@ export const getSocialLinks = () => {
 /**
  * Builds a dynamic WhatsApp or Email contact URL based on environment availability
  */
-export const buildContactLink = (message: string, subject = 'OjàPadi Inquiry'): string => {
+export const buildContactLink = (message: string, subject?: string): string => {
   const phone = getWhatsAppNumber();
+  const defaultSubject = `${getBusinessName()} Inquiry`;
+  const finalSubject = subject || defaultSubject;
   if (phone) {
     return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
   }
-  return `mailto:${getSupportEmail()}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+  return `mailto:${getSupportEmail()}?subject=${encodeURIComponent(finalSubject)}&body=${encodeURIComponent(message)}`;
 };
