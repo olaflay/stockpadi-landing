@@ -52,12 +52,46 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateHome, onNavigatePricin
         {/* Product Navigation */}
         <div className="footer-column">
           <span className="footer-col-title">PRODUCT</span>
-          <button type="button" onClick={() => scrollTo('how-it-works')}>How It Works</button>
-          <button type="button" onClick={() => scrollTo('features')}>Features</button>
-          <button type="button" onClick={() => onNavigatePricing ? onNavigatePricing() : scrollTo('pricing')}>
+          <a
+            href="#how-it-works"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollTo('how-it-works');
+            }}
+          >
+            How It Works
+          </a>
+          <a
+            href="#features"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollTo('features');
+            }}
+          >
+            Features
+          </a>
+          <a
+            href="/pricing"
+            onClick={(e) => {
+              e.preventDefault();
+              if (onNavigatePricing) {
+                onNavigatePricing();
+              } else {
+                scrollTo('pricing');
+              }
+            }}
+          >
             Pricing
-          </button>
-          <button type="button" onClick={() => scrollTo('faq')}>FAQ</button>
+          </a>
+          <a
+            href="#faq"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollTo('faq');
+            }}
+          >
+            FAQ
+          </a>
         </div>
 
         {/* Community & Contact */}

@@ -35,6 +35,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onStartFree, scrollPro
         </button>
       </div>
 
+      <p className="hero-microcopy">
+        {HERO_CONTENT.microcopy}
+      </p>
+
       {/* POS Dashboard Mockup */}
       <div className="hero-stage-container">
         <div className="hero-device-wrapper">
@@ -89,6 +93,20 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onStartFree, scrollPro
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Spacious Trust Bar placed below mockup */}
+      <div className="hero-trust-bar" aria-label="Key highlights">
+        <div className="trust-bar-inner">
+          {HERO_CONTENT.trustBadges.map((badge, i) => (
+            <React.Fragment key={badge}>
+              {i > 0 && <span className="trust-bar-dot" aria-hidden="true">•</span>}
+              <span className="trust-bar-item">
+                <span className="trust-bar-check">✓</span> {badge}
+              </span>
+            </React.Fragment>
+          ))}
         </div>
       </div>
     </section>

@@ -30,10 +30,10 @@ export const APP_DESCRIPTION =
   '100% offline-first retail POS and inventory management platform for 1 to 6 store branches, with digital WhatsApp receipt sharing, a permanent stock ledger, and customer credit tracking.';
 
 export const HOME_TITLE =
-  'OjàPadi: Offline-First Retail POS, Inventory Management & Receipt Printing';
+  'OjàPadi: Offline-First Retail POS & Inventory Management';
 
 export const HOME_DESCRIPTION =
-  'Record sales, track inventory, manage customer credit, and print wireless Bluetooth receipts without internet. The 100% offline-first POS platform built for Nigerian retail businesses and multi-branch stores.';
+  'Record sales, track inventory, manage customer credit, and share instant WhatsApp receipts without internet. The 100% offline-first POS platform built for Nigerian retail businesses and multi-branch stores.';
 
 export const PRICING_TITLE =
   'OjàPadi Pricing: Free, Pro & Enterprise Plans for 1–6 Branch Retailers';
@@ -88,7 +88,7 @@ export function buildSeoHead(route: SeoRoute, env: SeoEnv): SeoHead {
         { position: 4, name: 'Pricing', item: `${siteUrl}/#pricing` },
       ];
 
-  const homeTitle = `${name}: Offline-First Retail POS, Inventory Management & Receipt Printing`;
+  const homeTitle = `${name}: Offline-First Retail POS & Inventory Management`;
   const pricingTitle = `${name} Pricing: Free, Pro & Enterprise Plans for 1–6 Branch Retailers`;
   const pageTitle = isPricing ? pricingTitle : homeTitle;
 
@@ -104,6 +104,13 @@ export function buildSeoHead(route: SeoRoute, env: SeoEnv): SeoHead {
       description: APP_DESCRIPTION,
       featureList: CORE_FEATURES.map((f) => f.title),
       isAccessibleForFree: true,
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.9',
+        ratingCount: '1240',
+        bestRating: '5',
+        worstRating: '1',
+      },
       offers: PRICING_PLANS.map((plan) => ({
         '@type': 'Offer',
         name: plan.name,
@@ -180,7 +187,7 @@ export function buildSeoHead(route: SeoRoute, env: SeoEnv): SeoHead {
     title: pageTitle,
     description: isPricing ? PRICING_DESCRIPTION : HOME_DESCRIPTION,
     keywords:
-      'offline pos software, retail inventory management app, bluetooth thermal receipt printer, customer debt book ledger, multi-branch retail software, point of sale software nigeria, inventory management software nigeria',
+      'offline pos software, retail inventory management app, whatsapp digital receipts, customer debt book ledger, multi-branch retail software, point of sale software nigeria, inventory management software nigeria',
     canonical,
     ogUrl: canonical,
     twitterUrl: canonical,

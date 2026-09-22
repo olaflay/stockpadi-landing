@@ -11,12 +11,18 @@ const brand = getBusinessName();
 const brandDisplay = brand === 'OjaPadi' ? 'OjàPadi' : brand;
 
 export const HERO_CONTENT = {
-  headlinePrefix: 'Your market partner that',
-  headlineHighlight: 'never stops selling.',
+  headlinePrefix: 'The offline POS & stock app',
+  headlineHighlight: 'built for your shop.',
   description:
-    'Works 100% offline. Record sales in seconds, protect your shop from missing stock, and know your exact profit every day on your phone.',
+    'Works 100% offline. Record sales in seconds, stop missing stock, and see your daily profit on any phone.',
   primaryCta: 'Start free',
   secondaryCta: 'How it works',
+  microcopy: 'No bank card required • Free forever • Start selling in 2 minutes',
+  trustBadges: [
+    '100% Offline Capable',
+    'Zero Hardware Needed',
+    'WhatsApp Receipts',
+  ],
   image: '/hero-phone.webp',
 };
 
@@ -80,7 +86,12 @@ export const PAIN_POINTS: PainPointItem[] = [
   },
 ];
 
-export const CORE_FEATURES: FeatureItem[] = [
+export const CORE_FEATURES: (FeatureItem & {
+  colorKey: 'blue' | 'green' | 'amber' | 'purple';
+  accentColor: string;
+  pillBg: string;
+  pillBorder: string;
+})[] = [
   {
     id: 'feat-inventory',
     tag: 'ANTI-THEFT STOCK',
@@ -88,13 +99,21 @@ export const CORE_FEATURES: FeatureItem[] = [
     copy: 'Stock only reduces when a sale is recorded. Attendants cannot edit quantities, delete sales, or change prices.',
     highlight: 'Every sale is locked with cashier name and time.',
     image: '/feature-inventory.webp',
+    colorKey: 'blue',
+    accentColor: '#1d63d8',
+    pillBg: 'rgba(29, 99, 216, 0.08)',
+    pillBorder: 'rgba(29, 99, 216, 0.22)',
   },
   {
     id: 'feat-receipts',
     tag: 'DIGITAL RECEIPTS',
     title: 'Instant WhatsApp Receipts',
-    copy: 'Send clean digital receipts directly to customer WhatsApp. Zero paper or printer ink needed.',
+    copy: 'Send clean digital receipts directly to customer WhatsApp. Zero paper waste or hardware costs.',
     highlight: 'One tap to send receipt with your store name.',
+    colorKey: 'green',
+    accentColor: '#15803d',
+    pillBg: 'rgba(21, 128, 61, 0.08)',
+    pillBorder: 'rgba(21, 128, 61, 0.22)',
   },
   {
     id: 'feat-credit',
@@ -103,6 +122,10 @@ export const CORE_FEATURES: FeatureItem[] = [
     copy: 'Write down who owes you, record part-payments, and send polite WhatsApp reminders with one tap.',
     highlight: 'Never forget who owes your shop money.',
     image: '/feature-credit.webp',
+    colorKey: 'amber',
+    accentColor: '#b45309',
+    pillBg: 'rgba(180, 83, 9, 0.08)',
+    pillBorder: 'rgba(180, 83, 9, 0.22)',
   },
   {
     id: 'feat-multibranch',
@@ -111,8 +134,21 @@ export const CORE_FEATURES: FeatureItem[] = [
     copy: 'Check daily sales, cash in hand, and low stock across all your branches without traveling.',
     highlight: 'Owner dashboard with private staff PINs.',
     image: '/feature-branch.webp',
+    colorKey: 'purple',
+    accentColor: '#7c3aed',
+    pillBg: 'rgba(124, 58, 237, 0.08)',
+    pillBorder: 'rgba(124, 58, 237, 0.22)',
   },
 ];
+
+export const FINAL_CTA_CONTENT = {
+  headline: 'Start recording sales in 2 minutes.',
+  description: `No complicated setup or training needed. Open ${brandDisplay} on your phone, add your products, and record your first sale right away.`,
+  primaryCta: 'Start free',
+  secondaryCta: 'View plans',
+  microcopy: 'No bank card required • Free forever • Start selling in 2 minutes',
+  image: '/cta-hand-phone.webp',
+};
 
 export const PRICING_PLANS: PricingPlan[] = [
   {
@@ -199,62 +235,38 @@ export const TESTIMONIALS: TestimonialItem[] = [
 export const FAQ_LIST: FaqItem[] = [
   {
     id: 'faq-1',
-    question: 'Do I need a printer or special POS hardware?',
+    question: 'Does it work when the internet is completely down?',
     answer:
-      `No expensive hardware needed. ${brandDisplay} runs on any standard Android phone, tablet, or laptop. Send instant digital receipts to customer WhatsApp or connect any standard thermal Bluetooth printer.`,
+      `Yes. You can record sales, scan barcodes, and issue receipts with zero data. Everything syncs to our secure cloud automatically the moment you reconnect.`,
   },
   {
     id: 'faq-2',
-    question: `Can I use ${brandDisplay} completely offline without data?`,
+    question: 'Do I need to buy a POS machine or special hardware?',
     answer:
-      `Yes. ${brandDisplay} is 100% offline-first. Record sales, issue receipts, and manage inventory with zero data. Everything syncs to our secure cloud automatically when you reconnect.`,
+      `No expensive hardware needed. ${brandDisplay} runs directly on any normal Android phone, tablet, or laptop. Digital receipts go straight to customer WhatsApp with one tap.`,
   },
   {
     id: 'faq-3',
-    question: 'Can staff alter prices or delete sales behind my back?',
+    question: 'Can staff delete sales or change prices without my permission?',
     answer:
-      'No. Role-based Cashier PINs prevent staff from modifying prices, deleting past transactions, or viewing your profit margins. Every stock movement is logged permanently.',
+      'No. Cashier PINs lock your selling prices and prevent staff from editing or deleting transactions. Only the store owner can adjust stock or view profit margins.',
   },
   {
     id: 'faq-4',
-    question: 'What happens if my phone gets lost or damaged?',
+    question: 'What happens if my phone gets lost or stolen?',
     answer:
-      'Your business records are securely backed up. Simply sign in from any new phone or computer to instantly restore all products, sales history, and customer debts.',
+      'You never lose your records. Your data is backed up to the cloud. Just log in on any new phone or computer, and your entire catalog, sales, and debt book are right there.',
   },
   {
     id: 'faq-5',
-    question: 'Can I monitor multiple store branches from one place?',
+    question: 'Can I track multiple branches on one account?',
     answer:
-      'Yes. Store owners can compare performance, track real-time revenue, and transfer inventory across up to 6 store branches from a single owner dashboard.',
+      'Yes. Monitor daily sales, cash in drawer, and stock levels across up to 6 store branches right from your phone, without calling your attendants.',
   },
   {
     id: 'faq-6',
-    question: 'Can someone help me set up my inventory?',
+    question: 'How much does it cost, and is there a free plan?',
     answer:
-      'Yes. Our team can help you upload your product catalog from Excel or help you configure your store directly via WhatsApp at zero extra cost.',
-  },
-  {
-    id: 'faq-7',
-    question: `How much does ${brandDisplay} cost in Nigeria?`,
-    answer:
-      `${brandDisplay} pricing is in Naira with no hidden fees or transaction cuts. The Free Plan costs ₦0 forever for one shop with up to 75 products. Pro is ₦5,000 per month for up to 3 branches, and Enterprise is ₦15,000 per month for up to 6 branches. No card required to start.`,
-  },
-  {
-    id: 'faq-8',
-    question: `Can ${brandDisplay} work during power outages or network shutdowns?`,
-    answer:
-      `Yes. ${brandDisplay} is built for network shutdowns, load-shedding, and zero-data areas. Sales, receipts, inventory, and debt tracking all keep working with no internet at all. The moment you reconnect, your records sync securely to the cloud automatically.`,
-  },
-  {
-    id: 'faq-9',
-    question: 'Can I use a normal phone as a POS machine for my shop?',
-    answer:
-      `Yes. Any standard Android phone, tablet, or laptop becomes your POS machine. Install ${brandDisplay}, add your products once, and your cashier just taps items to make sales, scan barcodes with the phone camera, and send receipts straight to customer WhatsApp. No expensive dedicated POS hardware needed.`,
-  },
-  {
-    id: 'faq-10',
-    question: `Does ${brandDisplay} work for supermarkets, pharmacies, and boutiques?`,
-    answer:
-      `Yes. ${brandDisplay} is built for every Nigerian retail type — provisions stores, supermarkets, pharmacies, fashion boutiques, and multi-branch chains. The inventory ledger tracks expiry for pharmacies, barcode scanning suits supermarkets and confectioneries, and the credit book works for any shop that sells on trust.`,
+      'The Free Plan is ₦0 forever for 1 shop with up to 75 products (no credit card needed). Paid plans start at ₦5,000/month for unlimited products, multiple branches, and staff PINs.',
   },
 ];

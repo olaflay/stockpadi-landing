@@ -65,14 +65,14 @@ export const SocialProof: React.FC<SocialProofProps> = ({ onStartFree }) => {
               const start = 0.18;
               const end = 0.45;
               const progress = Math.max(0, Math.min(1, (scrollProgress - start) / (end - start)));
-              opacity = progress;
+              opacity = progress > 0.04 ? 1 : progress * 25;
               translateY = 14 + (1 - progress) * 110;
               scale = 0.985;
             } else if (idx === 2) {
               const start = 0.52;
               const end = 0.80;
               const progress = Math.max(0, Math.min(1, (scrollProgress - start) / (end - start)));
-              opacity = progress;
+              opacity = progress > 0.04 ? 1 : progress * 25;
               translateY = 28 + (1 - progress) * 110;
               scale = 1.0;
             }

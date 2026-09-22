@@ -8,7 +8,7 @@
 - Offline-first: sales, receipts, inventory, and customer credit work with zero data; everything syncs to the cloud when connection returns.
 - Anti-theft: staff cannot edit prices, delete sales, or alter stock quantities. Every sale is logged with the cashier's name and time.
 - Multi-branch: owners monitor sales, cash in hand, and low stock across up to 6 branches from one dashboard.
-- No hardware lock-in: bring your own Android phone, tablet, or laptop plus any Bluetooth thermal printer.
+- No hardware lock-in: runs directly on any Android phone, tablet, or laptop.
 - Free to start, naira pricing, no transaction cuts, no card required.
 
 ## Key pages
@@ -21,7 +21,7 @@
 
 ## FAQ
 
-1. Do I need a printer or special POS hardware? No. StockPadi runs on any standard Android phone, tablet, or laptop. Send instant digital receipts to customer WhatsApp or connect any standard thermal Bluetooth printer.
+1. Do I need a POS machine or special hardware? No. StockPadi runs on any standard Android phone, tablet, or laptop. Send instant digital receipts directly to customer WhatsApp with zero paper waste.
 2. Can I use StockPadi completely offline without data? Yes. StockPadi is 100% offline-first. Record sales, issue receipts, and manage inventory with zero data. Everything syncs to secure cloud backup automatically when you reconnect.
 3. Can staff alter prices or delete sales behind my back? No. Role-based Cashier PINs prevent staff from modifying prices, deleting past transactions, or viewing profit margins. Every stock movement is logged permanently.
 4. What happens if my phone gets lost or damaged? Your business records are securely backed up. Sign in from any new phone or computer to instantly restore all products, sales history, and customer debts.

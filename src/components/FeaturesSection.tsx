@@ -7,16 +7,16 @@ export const FeaturesSection: React.FC = () => {
   const brand = getBusinessName();
   const brandDisplay = brand === 'OjaPadi' ? 'OjàPadi' : brand;
 
-  const getFeatureIcon = (id: string) => {
+  const getFeatureIcon = (id: string, color: string) => {
     switch (id) {
       case 'feat-inventory':
-        return <Database size={20} color="var(--color-brand-accent)" />;
+        return <Database size={20} color={color} />;
       case 'feat-receipts':
-        return <MessageCircle size={20} color="var(--color-brand-accent)" />;
+        return <MessageCircle size={20} color={color} />;
       case 'feat-credit':
-        return <BookOpenCheck size={20} color="var(--color-brand-accent)" />;
+        return <BookOpenCheck size={20} color={color} />;
       default:
-        return <Layers size={20} color="var(--color-brand-accent)" />;
+        return <Layers size={20} color={color} />;
     }
   };
 
@@ -35,8 +35,17 @@ export const FeaturesSection: React.FC = () => {
         {CORE_FEATURES.map((feat) => (
           <article key={feat.id} className="feature-card">
             <div className="feature-card-header">
-              <span className="feature-tag">{feat.tag}</span>
-              {getFeatureIcon(feat.id)}
+              <span
+                className="feature-tag"
+                style={{
+                  color: feat.accentColor,
+                  backgroundColor: feat.pillBg,
+                  borderColor: feat.pillBorder,
+                }}
+              >
+                {feat.tag}
+              </span>
+              {getFeatureIcon(feat.id, feat.accentColor)}
             </div>
             <h3 className="feature-title">{feat.title}</h3>
             <p className="feature-copy">{feat.copy}</p>

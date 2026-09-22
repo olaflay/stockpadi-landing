@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { TESTIMONIALS } from '../data/content';
 
@@ -20,6 +20,49 @@ export const Testimonials: React.FC = () => {
   // 11 repetitions ensure smooth forward and backward looping without hitting boundaries
   const repeatedList = Array.from({ length: 11 }, () => TESTIMONIALS).flat();
 
+  // Touch and pointer swipe tracking
+  const touchStartX = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
+  const touchDeltaX = useRef<number>(0);
+  const isSwiping = useRef<boolean>(false);
+
+  const handleTouchStart = (e: React.TouchEvent | React.MouseEvent) => {
+    const clientX = 'touches' in e ? e.touches[0].clientX : (e as React.MouseEvent).clientX;
+    const clientY = 'touches' in e ? e.touches[0].clientY : (e as React.MouseEvent).clientY;
+    touchStartX.current = clientX;
+    touchStartY.current = clientY;
+    touchDeltaX.current = 0;
+    isSwiping.current = true;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent | React.MouseEvent) => {
+    if (!isSwiping.current || touchStartX.current === null) return;
+    const clientX = 'touches' in e ? e.touches[0].clientX : (e as React.MouseEvent).clientX;
+    const clientY = 'touches' in e ? e.touches[0].clientY : (e as React.MouseEvent).clientY;
+    const diffX = clientX - touchStartX.current;
+    const diffY = clientY - (touchStartY.current ?? clientY);
+
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+      touchDeltaX.current = diffX;
+    }
+  };
+
+  const handleTouchEnd = () => {
+    if (!isSwiping.current) return;
+    const threshold = 35; // Responsive swipe threshold
+
+    if (touchDeltaX.current < -threshold) {
+      next();
+    } else if (touchDeltaX.current > threshold) {
+      prev();
+    }
+
+    touchStartX.current = null;
+    touchStartY.current = null;
+    touchDeltaX.current = 0;
+    isSwiping.current = false;
+  };
+
   return (
     <section className="testimonials-section" aria-labelledby="testimonials-title">
       <div className="testimonials-header">
@@ -34,7 +77,16 @@ export const Testimonials: React.FC = () => {
         <div className="carousel-blur-edge blur-left" aria-hidden="true" />
         <div className="carousel-blur-edge blur-right" aria-hidden="true" />
 
-        <div className="testimonial-track-container">
+        <div
+          className="testimonial-track-container"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          onMouseDown={handleTouchStart}
+          onMouseMove={handleTouchMove}
+          onMouseUp={handleTouchEnd}
+          onMouseLeave={handleTouchEnd}
+        >
           <div
             className="testimonial-track"
             style={{
@@ -47,7 +99,11 @@ export const Testimonials: React.FC = () => {
                 <article
                   key={`${item.id}-${idx}`}
                   className={`testimonial-card-compact ${isActive ? 'active' : 'inactive'}`}
-                  onClick={() => setVirtualIndex(idx)}
+                  onClick={() => {
+                    if (Math.abs(touchDeltaX.current) < 10) {
+                      setVirtualIndex(idx);
+                    }
+                  }}
                 >
                   <div className="testimonial-card-top">
                     <div className="testimonial-quote-icon">
