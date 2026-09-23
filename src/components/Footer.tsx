@@ -3,6 +3,8 @@ import { Instagram, Facebook, MessageCircle, Twitter } from 'lucide-react';
 import {
   getBusinessName,
   getSocialLinks,
+  getSupportEmail,
+  getWhatsAppNumber,
 } from '../config/env';
 import { BrandMark } from './BrandLogo';
 
@@ -14,6 +16,8 @@ interface FooterProps {
 export const Footer: React.FC<FooterProps> = ({ onNavigateHome, onNavigatePricing }) => {
   const businessName = getBusinessName();
   const socialLinks = getSocialLinks();
+  const supportEmail = getSupportEmail();
+  const whatsappNumber = getWhatsAppNumber();
 
   const scrollTo = (id: string) => {
     if (onNavigateHome) {
@@ -94,11 +98,23 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateHome, onNavigatePricin
           </a>
         </div>
 
-        {/* Community & Contact */}
+        {/* Contact & Community */}
         <div className="footer-column">
-          <span className="footer-col-title">COMMUNITY</span>
-          {hasSocials ? (
-            <div className="footer-social-links">
+          <span className="footer-col-title">CONTACT</span>
+          <a href={`mailto:${supportEmail}`}>
+            Email us
+          </a>
+          {whatsappNumber && (
+            <a
+              href={`https://wa.me/${whatsappNumber}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp
+            </a>
+          )}
+          {hasSocials && (
+            <div className="footer-social-links" style={{ marginTop: 12 }}>
               {socialLinks.instagram && (
                 <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                   <Instagram size={18} />
@@ -120,10 +136,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateHome, onNavigatePricin
                 </a>
               )}
             </div>
-          ) : (
-            <p className="footer-brand-tagline" style={{ fontSize: 12 }}>
-              Built for independent retail stores.
-            </p>
           )}
         </div>
       </div>

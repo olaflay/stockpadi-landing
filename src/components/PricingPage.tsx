@@ -3,7 +3,7 @@ import { Check, ArrowRight, ShieldCheck } from 'lucide-react';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 import { PRICING_PLANS } from '../data/content';
-import { getWebAppUrl, buildContactLink, getBusinessName } from '../config/env';
+import { buildContactLink, getBusinessName } from '../config/env';
 
 interface PricingPageProps {
   onNavigateHome: () => void;
@@ -14,12 +14,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({
   onNavigateHome,
   onStartFree,
 }) => {
-  const webAppUrl = getWebAppUrl();
   const businessName = getBusinessName();
-
-  const handleUpgradePro = () => {
-    window.location.href = `${webAppUrl}/auth/signup?plan=pro`;
-  };
 
   const handleContactEnterprise = () => {
     const message = `Hello ${businessName}! I am interested in the Enterprise Plan (up to 6 branches, custom receipt branding, and inter-branch transfers) for my retail store.`;
@@ -49,11 +44,9 @@ export const PricingPage: React.FC<PricingPageProps> = ({
           {PRICING_PLANS.map((plan) => {
             const isPro = plan.isPopular;
             const handleClick =
-              plan.id === 'plan-free'
-                ? onStartFree
-                : plan.id === 'plan-pro'
-                ? handleUpgradePro
-                : handleContactEnterprise;
+              plan.id === 'plan-enterprise'
+                ? handleContactEnterprise
+                : onStartFree;
 
             return (
               <article

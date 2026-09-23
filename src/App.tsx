@@ -11,12 +11,12 @@ import { Footer } from './components/Footer';
 import { PricingPage } from './components/PricingPage';
 import { MobileFloatingBar } from './components/MobileFloatingBar';
 import { DynamicJsonLd } from './components/DynamicJsonLd';
-
-import { getWebAppUrl } from './config/env';
+import { ComingSoonModal } from './components/ComingSoonModal';
 
 export function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showMobileBar, setShowMobileBar] = useState(false);
+  const [showComingSoon, setShowComingSoon] = useState(false);
   const [currentRoute, setCurrentRoute] = useState<'home' | 'pricing'>(() => {
     if (typeof window !== 'undefined') {
       return window.location.pathname === '/pricing' || window.location.hash === '#pricing'
@@ -25,8 +25,6 @@ export function App() {
     }
     return 'home';
   });
-
-  const webAppUrl = getWebAppUrl();
 
   useEffect(() => {
     const handlePopState = () => {
@@ -78,7 +76,7 @@ export function App() {
   };
 
   const handleStartFree = () => {
-    window.location.href = `${webAppUrl}/auth/signup`;
+    setShowComingSoon(true);
   };
 
   if (currentRoute === 'pricing') {
@@ -89,6 +87,7 @@ export function App() {
           onNavigateHome={navigateToHome}
           onStartFree={handleStartFree}
         />
+        <ComingSoonModal isOpen={showComingSoon} onClose={() => setShowComingSoon(false)} />
       </div>
     );
   }
@@ -122,6 +121,7 @@ export function App() {
       />
 
       <MobileFloatingBar onStartFree={handleStartFree} visible={showMobileBar} />
+      <ComingSoonModal isOpen={showComingSoon} onClose={() => setShowComingSoon(false)} />
     </div>
   );
 }
