@@ -19,9 +19,9 @@ export const HERO_CONTENT = {
   secondaryCta: 'How it works',
   microcopy: 'No bank card required • Free forever • Start selling in 2 minutes',
   trustBadges: [
-    '100% Offline Capable',
-    'Zero Hardware Needed',
-    'WhatsApp Receipts',
+    '100% offline',
+    '0% hardware',
+    'WhatsApp receipts',
   ],
   image: '/hero-phone.webp',
 };
@@ -94,10 +94,10 @@ export const CORE_FEATURES: (FeatureItem & {
 })[] = [
   {
     id: 'feat-inventory',
-    tag: 'ANTI-THEFT STOCK',
-    title: 'Staff Cannot Alter Stock',
-    copy: 'Stock only reduces when a sale is recorded. Attendants cannot edit quantities, delete sales, or change prices.',
-    highlight: 'Every sale is locked with cashier name and time.',
+    tag: 'ANTI-THEFT',
+    title: 'Tamper-Proof Stock',
+    copy: 'Stock moves only when sales occur. Cashiers cannot delete records, alter counts, or edit prices.',
+    highlight: 'Locked with staff name & timestamp.',
     image: '/feature-inventory.webp',
     colorKey: 'blue',
     accentColor: '#1d63d8',
@@ -106,10 +106,11 @@ export const CORE_FEATURES: (FeatureItem & {
   },
   {
     id: 'feat-receipts',
-    tag: 'DIGITAL RECEIPTS',
-    title: 'Instant WhatsApp Receipts',
-    copy: 'Send clean digital receipts directly to customer WhatsApp. Zero paper waste or hardware costs.',
-    highlight: 'One tap to send receipt with your store name.',
+    tag: 'RECEIPTS',
+    title: 'WhatsApp Receipts',
+    copy: 'Send instant digital receipts directly to customer WhatsApp. Zero paper, zero printer cost.',
+    highlight: '1-tap send with your shop name.',
+    image: '/feature-receipt.webp',
     colorKey: 'green',
     accentColor: '#15803d',
     pillBg: 'rgba(21, 128, 61, 0.08)',
@@ -118,9 +119,9 @@ export const CORE_FEATURES: (FeatureItem & {
   {
     id: 'feat-credit',
     tag: 'DEBT BOOK',
-    title: 'Customer Credit & Debt Book',
-    copy: 'Write down who owes you, record part-payments, and send polite WhatsApp reminders with one tap.',
-    highlight: 'Never forget who owes your shop money.',
+    title: 'Customer Debt Ledger',
+    copy: 'Track customer credit, record part-payments, and send polite WhatsApp reminders in one tap.',
+    highlight: 'Zero forgotten customer balances.',
     image: '/feature-credit.webp',
     colorKey: 'amber',
     accentColor: '#b45309',
@@ -130,9 +131,9 @@ export const CORE_FEATURES: (FeatureItem & {
   {
     id: 'feat-multibranch',
     tag: 'MULTI-BRANCH',
-    title: 'Manage 1 to 6 Shops on One Phone',
-    copy: 'Check daily sales, cash in hand, and low stock across all your branches without traveling.',
-    highlight: 'Owner dashboard with private staff PINs.',
+    title: '1 to 6 Shops, One Phone',
+    copy: 'Check live sales, cash-in-hand, and low stock across all branches without traveling.',
+    highlight: 'Owner view with private staff PINs.',
     image: '/feature-branch.webp',
     colorKey: 'purple',
     accentColor: '#7c3aed',
@@ -147,7 +148,7 @@ export const FINAL_CTA_CONTENT = {
   primaryCta: 'Start free',
   secondaryCta: 'View plans',
   microcopy: 'No bank card required • Free forever • Start selling in 2 minutes',
-  image: '/cta-hand-phone.webp',
+  image: '/cta-bottom-phone.svg',
 };
 
 export const PRICING_PLANS: PricingPlan[] = [

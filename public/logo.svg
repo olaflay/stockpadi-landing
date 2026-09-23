@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 160" fill="none">
+  <defs>
+    <linearGradient id="logoBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b7a55" />
+      <stop offset="100%" stop-color="#044730" />
+    </linearGradient>
+    <linearGradient id="logoLoopGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#d1fae5" />
+    </linearGradient>
+    <linearGradient id="logoAccentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+  </defs>
+
+  <!-- Squircle Mark on the left (120x120 centered at y=20) -->
+  <g transform="translate(20, 20)">
+    <rect width="120" height="120" rx="28" fill="url(#logoBgGrad)" />
+    <rect x="6" y="6" width="108" height="108" rx="22" stroke="#ffffff" stroke-opacity="0.14" stroke-width="1.5" />
+    
+    <!-- Loop scaled from 512 base -->
+    <path
+      d="M60 34.7C45.5 34.7 33.7 46.4 33.7 60.9C33.7 75.4 45.5 87.2 60 87.2C74.5 87.2 86.2 75.4 86.2 60.9C86.2 53.2 82.9 46.3 77.6 41.5"
+      stroke="url(#logoLoopGrad)"
+      stroke-width="9.8"
+      stroke-linecap="round"
+    />
+    <path
+      d="M48.7 60.9C48.7 54.7 53.8 49.7 60 49.7C66.2 49.7 71.2 54.7 71.2 60.9C71.2 67.1 66.2 72.2 60 72.2"
+      stroke="#ffffff"
+      stroke-opacity="0.4"
+      stroke-width="4.2"
+      stroke-linecap="round"
+    />
+    <circle cx="60" cy="60.9" r="5.1" fill="#ffffff" />
+    <circle cx="81.5" cy="36.1" r="5.6" fill="url(#logoAccentGrad)" />
+    <circle cx="81.5" cy="36.1" r="2.3" fill="#ffffff" />
+  </g>
+
+  <!-- Typography: OjàPadi -->
+  <text x="168" y="98" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="64" font-weight="800" fill="#0f172a" letter-spacing="-1.5">
+    Ojà<tspan fill="#0b7a55">Padi</tspan>
+  </text>
+  <circle cx="438" cy="88" r="7" fill="#0b7a55" />
+
+  <!-- Tagline -->
+  <text x="170" y="128" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="600" fill="#64748b" letter-spacing="2.5">
+    OFFLINE-FIRST POS &amp; INVENTORY
+  </text>
+</svg>

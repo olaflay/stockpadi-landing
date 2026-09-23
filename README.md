@@ -1,14 +1,14 @@
-# StockPadi Landing Page
+# OjàPadi Landing Page
 
-The high-converting, offline-first marketing landing page for **StockPadi** (Point of Sale & Inventory Management for retail businesses in Nigeria and emerging markets).
+The high-converting, offline-first marketing landing page for **OjàPadi** (Point of Sale & Inventory Management for retail businesses in Nigeria and emerging markets).
 
-Modeled with precision after the spatial orientation, motion cadence, and conversion psychology of **FigoBooks**, while deeply grounded in **StockPadi's PRD, multi-tenant business model, and strict design rules** (Samsung One UI thumb reach, sentence case, zero AI slop, WCAG AA).
+Modeled with precision after the spatial orientation, motion cadence, and conversion psychology of modern SaaS landing pages, while deeply grounded in **OjàPadi's PRD, multi-tenant business model, and strict design rules** (Samsung One UI thumb reach, sentence case, zero AI slop, WCAG AA).
 
 ---
 
 ## Key Highlights
 
-- **100% Standalone Repository**: Completely separated from the main StockPadi web app codebase.
+- **100% Standalone Repository**: Completely separated from the main OjàPadi web app codebase.
 - **Ultra-Fast & Zero Bloat**: Built with Vite + React 19 + TypeScript. Production bundle is < 50kB gzipped.
 - **FigoBooks Spatial Rhythm**:
   - Sticky glassmorphic blur navbar with mobile drawer.
@@ -59,8 +59,8 @@ This repository is ready to be pushed to its own GitHub repository:
 
 ```bash
 git add .
-git commit -m "feat: initial release of StockPadi landing page"
-git remote add origin https://github.com/your-username/stockpadi-landing.git
+git commit -m "feat: initial release of OjàPadi landing page"
+git remote add origin https://github.com/your-username/ojapadi-landing.git
 git branch -M main
 git push -u origin main
 ```

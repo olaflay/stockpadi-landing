@@ -1,4 +1,4 @@
-# robots.txt for StockPadi
+# robots.txt for OjàPadi
 User-agent: *
 Allow: /
 Disallow: /api/

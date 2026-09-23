@@ -85,7 +85,7 @@ export default defineConfig(({ mode }) => {
 
   const seoEnv: SeoEnv = {
     siteUrl,
-    businessName: env.VITE_BUSINESS_NAME || 'StockPadi',
+    businessName: env.VITE_BUSINESS_NAME || 'OjaPadi',
     supportEmail: env.VITE_SUPPORT_EMAIL || 'support@example.com',
     socialLinks: {
       instagram: env.VITE_SOCIAL_INSTAGRAM || '',

@@ -1,4 +1,4 @@
-# StockPadi Landing — Customer & SEO Research
+# OjàPadi Landing — Customer & SEO Research
 
 Source: competitor landing pages (Kasuwa 360, Moniebook, SwiftPOS, Moniepoint,
 PiperSoft, FigoBooks) + web searches on Nigerian retail POS/inventory terms.
@@ -49,7 +49,7 @@ Secondary long-tail (lower volume, higher conversion — use in FAQ/H2s):
 ## Key insight (why this wins)
 
 Competitors lead with *hardware* (buy our printer, sign a terminal lease).
-StockPadi must NEVER do that — it's the reverse. Lead with the *ledger +
+OjàPadi must NEVER do that — it's the reverse. Lead with the *ledger +
 offline + debt book*. Hardware is a "bring your own", never a selling point.
 
 ## Copy blueprint for the rewritten page

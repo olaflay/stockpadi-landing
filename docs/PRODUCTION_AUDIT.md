@@ -1,4 +1,4 @@
-# StockPadi Landing — Production Audit & System Architecture
+# OjàPadi Landing — Production Audit & System Architecture
 
 Audited against running production `dist/` build (`npm run build`, preview server) and reviewed source. Date: 2026-09-19.
 
@@ -71,7 +71,7 @@ Properties that make the concurrency target achievable:
 
 The realistic ceiling is therefore the hosting plan's static-file SLA, not the landing's architecture. 1,000 concurrent active users, or even a 10× spike (viral/social flood), is absorbed by the CDN with no tuning. Load is bounded by Google Fonts availability — negligible, and removable by self-hosting the two woff2 files if a vendor dependency is ever unacceptable.
 
-The application itself (POS/ledger) is the part of StockPadi that handles concurrent writes, and it is governed by the repo rules under `.agents/rules/` — `database-and-rls.md`, `offline-sync-and-ledger.md`, and `performance-and-scalability.md`, with the 5,000+ product performance standard. None of that applies to this stateless landing page.
+The application itself (POS/ledger) is the part of OjàPadi that handles concurrent writes, and it is governed by the repo rules under `.agents/rules/` — `database-and-rls.md`, `offline-sync-and-ledger.md`, and `performance-and-scalability.md`, with the 5,000+ product performance standard. None of that applies to this stateless landing page.
 
 ## Verification commands
 

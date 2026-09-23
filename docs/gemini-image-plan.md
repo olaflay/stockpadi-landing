@@ -1,4 +1,4 @@
-# StockPadi Landing — Gemini Image Generation Plan
+# OjàPadi Landing — Gemini Image Generation Plan
 
 Bar: figobooks.com. Quality target = crisp, high-contrast, product-only
 screens. Nothing fake. Nothing decorative.
@@ -23,7 +23,7 @@ screens. Nothing fake. Nothing decorative.
 | 2 | `feature-inventory.png` | Features | 3:4 | Inventory/ledger screen close-up, no printer |
 | 3 | `feature-credit.png` | Features | 3:4 | Debt book / customer balances screen close-up |
 | 4 | `feature-branch.png` | Features | 3:4 | Multi-branch overview screen close-up |
-| 5 | `og-cover.png` | SEO/social share | 16:9 | StockPadi brand cover, logo + tagline, no product demo |
+| 5 | `og-cover.png` | SEO/social share | 16:9 | OjàPadi brand cover, logo + tagline, no product demo |
 | 6 | `store-photo-1.png` ... `store-photo-3.png` | Social proof | 3:2 | Real shop interior, no people, Nigerian market context |
 
 ## Gemini prompt template
@@ -32,7 +32,7 @@ Use consistently. Fill in {SLOT} per image.
 
 ```
 Generate a high-fidelity, realistic product user-interface screenshot for a
-Nigerian retail point-of-sale mobile app called StockPadi.
+Nigerian retail point-of-sale mobile app called OjàPadi.
 
 STYLE:
 - Flat modern UI, high contrast, readable at small size
@@ -57,7 +57,7 @@ OUTPUT: single clean image, no text watermark, no logo watermark.
 
 1. hero: `A single home screen showing today's sales total, number of
    transactions, low-stock alerts, and a green "New Sale" button. Language
-   header reads "StockPadi".`
+   header reads "OjàPadi".`
 2. feature-inventory: `Inventory list screen with product names, current stock
    quantities, barcode/scan icons, and one line highlighted as "low stock".`
 3. feature-credit: `Customer debt book screen listing customer names, owed
@@ -65,7 +65,7 @@ OUTPUT: single clean image, no text watermark, no logo watermark.
    punctuation errors; use plain denominations like N 5,000.`
 4. feature-branch: `Multi-branch overview with 3 store tiles showing sales and
    stock per branch and a green "+ Add Branch" button.`
-5. og-cover: `Clean brand cover: deep green background, white "StockPadi" wordmark
+5. og-cover: `Clean brand cover: deep green background, white "OjàPadi" wordmark
    centered, short tagline "Record sales. Manage stock anywhere." No product
    demo, no phone.`
 6. store-photo-N: `Photorealistic interior of a small Nigerian grocery /

@@ -16,11 +16,20 @@ scratch
 .env.*
 !.env.example
 
+# Local internal assets & scratch files
+scratch
+scratch/
+ojapadi real screens/
+scripts/
+*.py[cod]
+__pycache__/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
 .DS_Store
+Thumbs.db
 *.suo
 *.ntvs*
 *.njsproj

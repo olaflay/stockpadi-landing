@@ -83,7 +83,7 @@ export function App() {
 
   if (currentRoute === 'pricing') {
     return (
-      <div className="stockpadi-landing-root">
+      <div className="landing-root">
         <DynamicJsonLd />
         <PricingPage
           onNavigateHome={navigateToHome}
@@ -94,7 +94,7 @@ export function App() {
   }
 
   return (
-    <div className="stockpadi-landing-root">
+    <div className="landing-root">
       <DynamicJsonLd />
       <Navbar
         onStartFree={handleStartFree}

@@ -1,9 +1,9 @@
-# Search Visibility, Indexing & Growth Plan — StockPadi Landing
+# Search Visibility, Indexing & Growth Plan — OjàPadi Landing
 
 Grounded in 2026 Google Search documentation and current ranking research (sources:
 Google Search Central sitemap/ownership docs, Zyppy 2026 ranking-factors expert survey,
 Search Engine Land, yellowHEAD/SEO.com factor syntheses, Nigeria local-SEO guides). This file
-is the source of truth for getting stockpadicom.vercel.app indexed and ranked, and every item
+is the source of truth for getting ojapadicom.vercel.app indexed and ranked, and every item
 is either already shipped in this repo or requires an owner action listed at the bottom.
 
 ## 1. What actually moves rankings in 2026 (evidence)
@@ -50,18 +50,18 @@ Reference: Google Search Central "Verify your site ownership" + "Build and submi
 
 1. Go to https://search.google.com/search-console → **Add property**.
 2. Two options:
-   - **URL prefix property**: `https://stockpadicom.vercel.app` (or your production domain).
+   - **URL prefix property**: `https://ojapadicom.vercel.app` (or your production domain).
    - **Domain property** (recommended once you own a real domain): requires a DNS TXT record
      at the domain provider. Covers http/https/www/subdomains in one property.
 3. Verification method (Vercel-hosted static build supports all of these):
    - **HTML tag** — paste the `<meta name="google-site-verification" content="...">` tag
-     into `stockpadi-landing/index.html` inside `<head>` and redeploy. Easiest on Vercel.
-   - **HTML file upload** — drop the `google<token>.html` file into `stockpadi-landing/public/`
+     into `ojapadi-landing/index.html` inside `<head>` and redeploy. Easiest on Vercel.
+   - **HTML file upload** — drop the `google<token>.html` file into `ojapadi-landing/public/`
      and redeploy; served at the exact requested path.
    - **DNS TXT** — only for a Domain property.
 4. **Submit the sitemap**: Sitemaps → `sitemap.xml`. (~2 URLs. Google will tell you
    `lastmod` is good since it equals build date.)
-5. **URL Inspection → Request indexing** for `https://stockpadicom.vercel.app/` and
+5. **URL Inspection → Request indexing** for `https://ojapadicom.vercel.app/` and
    `/pricing` (only if still "not indexed"; after a fresh deploy the pages usually index
    via sitemap within a few days).
 6. Settings → verify **country target = Nigeria** (Settings → Country) once production URL
@@ -79,33 +79,33 @@ signals freshness).
   import (one click at webmasters.google... → Bing). Bing fetches the Google sitemap.
 - **IndexNow** (Bing/Seznam/Yandex — powers some AI/answer surfaces): key
   `b65da858-67c0-4fa3-b673-72f58a94673a` is already hosted at
-  `https://stockpadicom.vercel.app/b65da858-67c0-4fa3-b673-72f58a94673a.txt`.
+  `https://ojapadicom.vercel.app/b65da858-67c0-4fa3-b673-72f58a94673a.txt`.
   After a real deployment, submit once per sitemap URL:
   `curl -X POST https://api.indexnow.org/indexnow -H 'Content-Type: application/json' -d '{"host":"VITE_SITE_URL","key":"b65da858-67c0-4fa3-b673-72f58a94673a","keyLocation":"https://VITE_SITE_URL/b65da858-67c0-4fa3-b673-72f58a94673a.txt","urlList":["https://VITE_SITE_URL/","https://VITE_SITE_URL/pricing"]}'`
 
 ## 5. Nigeria local search (Google Business Profile + citations)
 
 Local pack beats organic for "pos for small business near me" queries. Do this even though
-StockPadi is a national product — a claimed, verified profile with Nigeria presence is a
+OjàPadi is a national product — a claimed, verified profile with Nigeria presence is a
 strong entity/trust signal.
 
 1. **Google Business Profile** (business.google.com):
-   - Name exactly: **StockPadi Technologies** (matches site + Organization schema).
+   - Name exactly: **OjàPadi Technologies** (matches site + Organization schema).
    - Category: Primary **Software company**; secondary *"POS software company"* or
      *"Information technology company"* if listed.
    - Service areas: Lagos, Abuja, Kano, Port Harcourt, Ibadan + nationwide.
-   - Phone `+234 902 645 4008` (matches site), email `Stockpadi.support@gmail.com`
+   - Phone `+234 902 645 4008` (matches site), email `OjàPadi.support@gmail.com`
      (matches schema contactPoint), website = production URL, Naira pricing.
    - Photos: dashboard, receipt, store owner + cashier; respond to every review within 24h.
    - Reviews: after successful onboarding, ask happy founders via WhatsApp for a review
      (see FAQ-6 support flow). Never buy reviews — profile suspension risk.
 
 2. **NAP consistency kit** — use *exactly* this everywhere:
-   - Name: StockPadi Technologies
+   - Name: OjàPadi Technologies
    - Phone: +234 902 645 4008
-   - Email: Stockpadi.support@gmail.com
-   - Website: (production URL, currently stockpadicom.vercel.app until domain lands)
-   - Description (90 words): "StockPadi is a 100% offline-first retail POS, inventory and
+   - Email: OjàPadi.support@gmail.com
+   - Website: (production URL, currently ojapadicom.vercel.app until domain lands)
+   - Description (90 words): "OjàPadi is a 100% offline-first retail POS, inventory and
      customer-credit platform for Nigerian shops with 1 to 6 branches. Record sales,
      track stock on a permanent ledger, send WhatsApp receipts, and stop staff theft —
      all without internet."
@@ -117,10 +117,10 @@ strong entity/trust signal.
 
 ## 6. Domain — the single highest-leverage fix
 
-`stockpadicom.vercel.app` can technically rank, but a real domain wins on every axis:
+`ojapadicom.vercel.app` can technically rank, but a real domain wins on every axis:
 anchor-text relevance, entity trust, GEO/E-E-A-T, and Google's domain property. Recommend:
 
-1. Buy `stockpadi.com` (or `stockpadi.com.ng` for the strongest NG geo signal per 2026
+1. Buy `ojapadi.com` (or `ojapadi.com.ng` for the strongest NG geo signal per 2026
    country-level guidance). .com.ng requires CAC/Nigerian entity evidence; pick per CAC status.
 2. Add a custom domain on Vercel → auto TLS.
 3. Canonical it: Vercel uses the deploy URL only for previews. Set the production domain to
@@ -193,7 +193,7 @@ anchor spam.
 
 1. Log in to GSC → add property → verify (HTML tag or file; or DNS once domain lands) → submit `sitemap.xml` → request indexing for `/` and `/pricing`.
 2. Equivalent in Bing Webmaster Tools (import from GSC) + run IndexNow POST (section 4).
-3. Buy a real domain (`stockpadi.com` / `.com.ng`), attach in Vercel, 301 the vercel.app alias, set `VITE_SITE_URL`, redeploy.
+3. Buy a real domain (`ojapadi.com` / `.com.ng`), attach in Vercel, 301 the vercel.app alias, set `VITE_SITE_URL`, redeploy.
 4. Create + fully verify Google Business Profile (section 5) and fill the 7 directory citations with the exact NAP.
 5. Fill `VITE_SOCIAL_INSTAGRAM`, `VITE_SOCIAL_TIKTOK`, `VITE_SOCIAL_FACEBOOK`, `VITE_SOCIAL_TWITTER` in `.env` (currently empty) and redeploy — this powers the Organization `sameAs` entity links in schema, a real E-E-A-T/entity signal.
 6. Launch on Product Hunt / AlternativeTo / Capterra; run the 6 backlink plays from section 7.

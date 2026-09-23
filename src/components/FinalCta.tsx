@@ -50,8 +50,8 @@ export const FinalCta: React.FC<FinalCtaProps> = ({ onStartFree, onNavigatePrici
             className="final-mockup-hand-img"
             loading="lazy"
             decoding="async"
-            width={480}
-            height={358}
+            width={585}
+            height={427}
           />
         </div>
       </div>
