@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { SocialProof } from './components/SocialProof';
@@ -88,6 +89,7 @@ export function App() {
           onStartFree={handleStartFree}
         />
         <ComingSoonModal isOpen={showComingSoon} onClose={() => setShowComingSoon(false)} />
+        <Analytics />
       </div>
     );
   }
@@ -122,9 +124,9 @@ export function App() {
 
       <MobileFloatingBar onStartFree={handleStartFree} visible={showMobileBar} />
       <ComingSoonModal isOpen={showComingSoon} onClose={() => setShowComingSoon(false)} />
+      <Analytics />
     </div>
   );
 }
 
 export default App;
-
