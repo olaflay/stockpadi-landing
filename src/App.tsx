@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { SocialProof } from './components/SocialProof';
@@ -88,6 +89,7 @@ export function App() {
           onStartFree={handleStartFree}
         />
         <ComingSoonModal isOpen={showComingSoon} onClose={() => setShowComingSoon(false)} />
+        <SpeedInsights />
       </div>
     );
   }
@@ -122,9 +124,9 @@ export function App() {
 
       <MobileFloatingBar onStartFree={handleStartFree} visible={showMobileBar} />
       <ComingSoonModal isOpen={showComingSoon} onClose={() => setShowComingSoon(false)} />
+      <SpeedInsights />
     </div>
   );
 }
 
 export default App;
-
