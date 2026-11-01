@@ -9,7 +9,7 @@ interface ComingSoonModalProps {
 
 export const ComingSoonModal: React.FC<ComingSoonModalProps> = ({ isOpen, onClose }) => {
   const brand = getBusinessName();
-  const brandDisplay = brand === 'OjaPadi' ? 'OjàPadi' : brand;
+  const brandDisplay = brand;
   const whatsappNumber = getWhatsAppNumber();
   const supportEmail = getSupportEmail();
   const overlayRef = useRef<HTMLDivElement>(null);

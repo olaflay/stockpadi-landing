@@ -611,6 +611,7 @@ button:focus-visible, a:focus-visible {
   position: sticky;
   top: 0;
   height: 100vh;
+  height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1655,6 +1656,7 @@ button:focus-visible, a:focus-visible {
  * ----------------------------------------------------------- */
 .pricing-page-root {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   background: var(--color-surface-container-low);
@@ -1949,10 +1951,8 @@ button:focus-visible, a:focus-visible {
     bottom: calc(14px + env(safe-area-inset-bottom, 0px));
     left: 14px;
     right: 14px;
-    background: linear-gradient(135deg, rgba(10, 110, 77, 0.88) 0%, rgba(6, 78, 59, 0.9) 100%);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    border: none;
+    background: var(--color-brand-accent);
+    border: 1px solid color-mix(in srgb, var(--color-brand-accent-contrast) 18%, transparent);
     border-radius: var(--shape-md);
     padding: 12px 18px;
     gap: 16px;
@@ -1975,6 +1975,7 @@ button:focus-visible, a:focus-visible {
     color: #0a6e4d;
     font-size: 13px;
     font-weight: 700;
+    min-height: 48px;
     padding: 9px 20px;
     border-radius: var(--shape-sm);
     flex-shrink: 0;
@@ -1986,6 +1987,7 @@ button:focus-visible, a:focus-visible {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    touch-action: manipulation;
   }
 
   .mobile-conversion-btn:hover,

@@ -2,10 +2,8 @@ import { useEffect, useState } from 'react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
-import { SocialProof } from './components/SocialProof';
 import { PainPoints } from './components/PainPoints';
 import { FeaturesSection } from './components/FeaturesSection';
-import { Testimonials } from './components/Testimonials';
 import { FaqSection } from './components/FaqSection';
 import { FinalCta } from './components/FinalCta';
 import { Footer } from './components/Footer';
@@ -106,10 +104,8 @@ export function App() {
 
       <main>
         <HeroSection onStartFree={handleStartFree} scrollProgress={scrollProgress} />
-        <SocialProof onStartFree={handleStartFree} />
         <PainPoints />
         <FeaturesSection />
-        <Testimonials />
         <FaqSection />
         <FinalCta
           onStartFree={handleStartFree}

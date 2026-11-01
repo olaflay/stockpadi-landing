@@ -5,7 +5,7 @@ import { getBusinessName } from '../config/env';
 export const FaqSection: React.FC = () => {
   const [openId, setOpenId] = useState<string | null>(FAQ_LIST[0]?.id || null);
   const brand = getBusinessName();
-  const brandDisplay = brand === 'OjaPadi' ? 'OjàPadi' : brand;
+  const brandDisplay = brand;
 
   const toggle = (id: string) => {
     setOpenId((prev) => (prev === id ? null : id));

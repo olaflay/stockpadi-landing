@@ -1,4 +1,4 @@
-import { FAQ_LIST, PRICING_PLANS, CORE_FEATURES } from '../data/content';
+import { FAQ_LIST, CORE_FEATURES } from '../data/content';
 
 export type SeoRoute = 'home' | 'pricing';
 
@@ -27,19 +27,13 @@ export interface SeoHead {
 }
 
 export const APP_DESCRIPTION =
-  '100% offline-first retail POS and inventory management platform for 1 to 6 store branches, with digital WhatsApp receipt sharing, a permanent stock ledger, and customer credit tracking.';
-
-export const HOME_TITLE =
-  'OjàPadi: Offline-First Retail POS & Inventory Management';
+  'Offline-first retail POS and inventory management with digital receipt sharing, an append-only stock ledger, and customer credit tracking.';
 
 export const HOME_DESCRIPTION =
-  'Record sales, track inventory, manage customer credit, and share instant WhatsApp receipts without internet. The 100% offline-first POS platform built for Nigerian retail businesses and multi-branch stores.';
-
-export const PRICING_TITLE =
-  'OjàPadi Pricing: Free, Pro & Enterprise Plans for 1–6 Branch Retailers';
+  'After setup, record core sales during an outage, track inventory movements, manage customer credit, and share digital receipts.';
 
 export const PRICING_DESCRIPTION =
-  'Start free with zero risk. Transparent naira pricing: Free (₦0 forever), Pro (₦5,000/month, up to 3 branches), Enterprise (₦15,000/month, up to 6 branches). No transaction cuts, no card required.';
+  'Commercial packaging is being validated with pilot merchants. Request current pilot terms without entering payment card details in the app.';
 
 const ROBOTS = 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
 
@@ -54,7 +48,7 @@ const brandingDescription =
  */
 export function buildSeoHead(route: SeoRoute, env: SeoEnv): SeoHead {
   const siteUrl = env.siteUrl.replace(/\/$/, '');
-  const name = env.businessName || 'OjaPadi';
+  const name = env.businessName;
 
   const isPricing = route === 'pricing';
   const pageUrl = isPricing ? `${siteUrl}/pricing` : `${siteUrl}/`;
@@ -104,21 +98,6 @@ export function buildSeoHead(route: SeoRoute, env: SeoEnv): SeoHead {
       description: APP_DESCRIPTION,
       featureList: CORE_FEATURES.map((f) => f.title),
       isAccessibleForFree: true,
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '4.9',
-        ratingCount: '1240',
-        bestRating: '5',
-        worstRating: '1',
-      },
-      offers: PRICING_PLANS.map((plan) => ({
-        '@type': 'Offer',
-        name: plan.name,
-        price: plan.price.replace(/[^\d.]/g, ''),
-        priceCurrency: 'NGN',
-        priceValidUntil: '2028-12-31',
-        description: plan.subtitle,
-      })),
       publisher: { '@id': `${siteUrl}/#organization` },
     },
     {

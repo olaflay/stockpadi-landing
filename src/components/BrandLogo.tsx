@@ -1,3 +1,5 @@
+import { getBusinessName } from '../config/env';
+
 interface BrandLogoProps {
   variant?: 'mark' | 'full' | 'lockup';
   size?: 'sm' | 'md' | 'lg' | 'xl' | number;
@@ -26,7 +28,7 @@ export function BrandMark({ size = 32, className = '' }: { size?: number; classN
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={`shrink-0 ${className}`}
-      aria-label="OjàPadi Mark"
+      aria-label={`${getBusinessName()} mark`}
     >
       <defs>
         <linearGradient id="ojapadiBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">

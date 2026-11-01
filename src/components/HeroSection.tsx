@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { HERO_CONTENT } from '../data/content';
+import { getBusinessName } from '../config/env';
 
 interface HeroSectionProps {
   onStartFree: () => void;
@@ -44,7 +45,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onStartFree, scrollPro
         <div className="hero-device-wrapper">
           <img
             src="/hero-merchant-phone.webp"
-            alt="OjàPadi Retail POS and Inventory Interface in Real Store"
+            alt={`${getBusinessName()} retail POS and inventory interface`}
             className="hero-phone-img"
             loading="eager"
             decoding="async"

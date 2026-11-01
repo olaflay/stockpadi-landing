@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export const FeaturesSection: React.FC = () => {
   const brand = getBusinessName();
-  const brandDisplay = brand === 'OjaPadi' ? 'OjàPadi' : brand;
+  const brandDisplay = brand;
   const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
 

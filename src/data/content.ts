@@ -1,5 +1,4 @@
 import {
-  TestimonialItem,
   FaqItem,
   PainPointItem,
   FeatureItem,
@@ -8,53 +7,23 @@ import {
 import { getBusinessName } from '../config/env';
 
 const brand = getBusinessName();
-const brandDisplay = brand === 'OjaPadi' ? 'OjàPadi' : brand;
+const brandDisplay = brand;
 
 export const HERO_CONTENT = {
   headlinePrefix: 'The offline POS & stock app',
   headlineHighlight: 'built for your shop.',
   description:
-    'Works 100% offline. Record sales in seconds, stop missing stock, and see your daily profit on any phone.',
+    'After setup, keep recording sales during an outage, track stock movements, and review your day from your phone.',
   primaryCta: 'Start free',
   secondaryCta: 'How it works',
-  microcopy: 'No bank card required • Free forever • Start selling in 2 minutes',
+  microcopy: 'No payment card data collected • Mobile-first • Offline sales after setup',
   trustBadges: [
-    '100% offline',
-    '0% hardware',
+    'Offline-first sales',
+    'No special hardware required',
     'WhatsApp receipts',
   ],
   image: '/hero-phone.webp',
 };
-
-export const SOCIAL_PROOF_CARDS = [
-  {
-    id: 'sp-1',
-    title: 'Kano Provision Store',
-    location: 'Kano State',
-    highlight: '₦340k daily sales recorded with zero data',
-    subtext: '3 checkout counters synced automatically when back online.',
-    tag: 'Supermarket',
-    image: '/store-photo-1.webp',
-  },
-  {
-    id: 'sp-2',
-    title: 'Ikeja Fashion Boutique',
-    location: 'Lagos',
-    highlight: 'Zero stock missing in 6 months',
-    subtext: 'Every piece scanned before leaving the counter.',
-    tag: 'Fashion & Retail',
-    image: '/feature-inventory.webp',
-  },
-  {
-    id: 'sp-3',
-    title: 'Wuse Multi-Branch Mart',
-    location: 'Abuja (3 Branches)',
-    highlight: 'Track 3 branches without calling attendants',
-    subtext: 'See sales and cash in hand for each branch right on your phone.',
-    tag: 'Multi-Branch',
-    image: '/feature-branch.webp',
-  },
-];
 
 export const PAIN_POINTS: PainPointItem[] = [
   {
@@ -147,89 +116,25 @@ export const FINAL_CTA_CONTENT = {
   description: `No complicated setup or training needed. Open ${brandDisplay} on your phone, add your products, and record your first sale right away.`,
   primaryCta: 'Start free',
   secondaryCta: 'View plans',
-  microcopy: 'No bank card required • Free forever • Start selling in 2 minutes',
+  microcopy: 'No payment card data collected • Mobile-first • Guided setup',
   image: '/cta-bottom-phone.svg',
 };
 
 export const PRICING_PLANS: PricingPlan[] = [
   {
-    id: 'plan-free',
-    name: 'Free Plan',
-    price: '₦0',
-    cadence: '/ forever',
-    subtitle: '1 shop with up to 75 products. 100% free to start.',
+    id: 'plan-pilot',
+    name: 'Pilot access',
+    price: 'Contact us',
+    cadence: '',
+    subtitle: 'Plan limits and paid packaging are being validated with pilot merchants.',
     features: [
-      '1 store branch (1 till)',
-      '100% offline, works without data',
+      'Offline sales after authenticated setup',
+      'Append-only stock movement history',
       'WhatsApp & digital receipts',
       'Customer credit & debt book',
-      'Phone camera barcode scan',
+      'Owner-controlled data export',
     ],
-    ctaText: 'Start free',
-  },
-  {
-    id: 'plan-pro',
-    name: 'Pro Plan',
-    price: '₦5,000',
-    cadence: '/ month',
-    subtitle: 'Stop staff theft and track multiple branches from your phone.',
-    isPopular: true,
-    features: [
-      'Up to 3 store branches',
-      'Unlimited products & stock ledger',
-      'Owner vs Cashier PINs (anti-theft)',
-      'Profit & loss reports & stock alerts',
-      'Automatic WhatsApp debt reminders',
-    ],
-    ctaText: 'Upgrade to Pro',
-  },
-  {
-    id: 'plan-enterprise',
-    name: 'Enterprise Plan',
-    price: '₦15,000',
-    cadence: '/ month',
-    subtitle: 'For supermarkets, pharmacies, and retail chains with 4 to 6 outlets.',
-    features: [
-      'Up to 6 store branches',
-      'Inter-branch stock transfers',
-      'Custom store logo on receipts',
-      'Dedicated priority WhatsApp support',
-      'Automated daily cloud backups',
-    ],
-    ctaText: 'Contact Enterprise',
-  },
-];
-
-export const TESTIMONIALS: TestimonialItem[] = [
-  {
-    id: 't-1',
-    quote:
-      'Before, cashiers would sell items at higher prices and pocket the difference. Now selling prices are locked, receipts go straight to customer WhatsApp, and daily balancing takes under 5 minutes.',
-    name: 'Alhaji Musa Garba',
-    role: 'MD, Garba Provisions',
-    location: 'Kano (3 Branches)',
-    avatarBg: 'var(--color-brand-accent)',
-    initials: 'MG',
-  },
-  {
-    id: 't-2',
-    quote:
-      `When our shop network fails or NEPA takes light, ${brandDisplay} never stops. My staff keep selling, scanning barcodes, and issuing receipts without skipping a beat.`,
-    name: 'Folashade Adeleke',
-    role: 'Founder, Shade’s Mart',
-    location: 'Ikeja, Lagos',
-    avatarBg: '#1a7f3c',
-    initials: 'FA',
-  },
-  {
-    id: 't-3',
-    quote:
-      `I run 3 supermarket branches in Abuja. With ${brandDisplay}, I know exactly what each branch sold and the cash in the drawer by 8pm without making a single call.`,
-    name: 'Emeka Okafor',
-    role: 'CEO, Prime Line Retail',
-    location: 'Wuse 2, Abuja',
-    avatarBg: '#0f5132',
-    initials: 'EO',
+    ctaText: 'Request pilot access',
   },
 ];
 
@@ -238,7 +143,7 @@ export const FAQ_LIST: FaqItem[] = [
     id: 'faq-1',
     question: 'Does it work when the internet is completely down?',
     answer:
-      `Yes. You can record sales, scan barcodes, and issue receipts with zero data. Everything syncs to our secure cloud automatically the moment you reconnect.`,
+      `After initial setup and while the local session remains valid, core sales can continue without an active connection. Pending work remains visible and retries when the authenticated service is reachable.`,
   },
   {
     id: 'faq-2',
@@ -250,24 +155,24 @@ export const FAQ_LIST: FaqItem[] = [
     id: 'faq-3',
     question: 'Can staff delete sales or change prices without my permission?',
     answer:
-      'No. Cashier PINs lock your selling prices and prevent staff from editing or deleting transactions. Only the store owner can adjust stock or view profit margins.',
+      'Roles and server-side authorization restrict sensitive actions. Access depends on the assigned role, capability, branch, and authenticated server policy.',
   },
   {
     id: 'faq-4',
     question: 'What happens if my phone gets lost or stolen?',
     answer:
-      'You never lose your records. Your data is backed up to the cloud. Just log in on any new phone or computer, and your entire catalog, sales, and debt book are right there.',
+      'Synchronized records can be recovered from the service, and authorized owners can export local data. Unsynchronized work exists only on its device, so pending work and recovery actions remain visible.',
   },
   {
     id: 'faq-5',
     question: 'Can I track multiple branches on one account?',
     answer:
-      'Yes. Monitor daily sales, cash in drawer, and stock levels across up to 6 store branches right from your phone, without calling your attendants.',
+      'The product data model supports businesses with 1 to 6 branches. Consolidated workflows remain subject to role, branch, synchronization, and pilot validation.',
   },
   {
     id: 'faq-6',
     question: 'How much does it cost, and is there a free plan?',
     answer:
-      'The Free Plan is ₦0 forever for 1 shop with up to 75 products (no credit card needed). Paid plans start at ₦5,000/month for unlimited products, multiple branches, and staff PINs.',
+      'Commercial limits and paid packaging are being validated with pilot merchants. Contact the team for current pilot terms; the app does not collect customer card details.',
   },
 ];

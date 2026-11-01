@@ -10,7 +10,7 @@ interface FinalCtaProps {
 
 export const FinalCta: React.FC<FinalCtaProps> = ({ onStartFree, onNavigatePricing }) => {
   const brand = getBusinessName();
-  const brandDisplay = brand === 'OjaPadi' ? 'OjàPadi' : brand;
+  const brandDisplay = brand;
 
   return (
     <section className="final-cta-section" aria-labelledby="cta-title">
