@@ -1,14 +1,12 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { HERO_CONTENT } from '../data/content';
-import { getBusinessName } from '../config/env';
 
 interface HeroSectionProps {
   onStartFree: () => void;
-  scrollProgress: number;
 }
 
-export const HeroSection: React.FC<HeroSectionProps> = ({ onStartFree, scrollProgress }) => {
+export const HeroSection: React.FC<HeroSectionProps> = ({ onStartFree }) => {
   const scrollToAbout = () => {
     const el = document.getElementById('how-it-works');
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -36,25 +34,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onStartFree, scrollPro
         </button>
       </div>
 
-      <p className="hero-microcopy">
-        {HERO_CONTENT.microcopy}
-      </p>
-
-      {/* Modern Phone Mockup with Real Interface */}
       <div className="hero-stage-container">
         <div className="hero-device-wrapper">
           <img
-            src="/hero-merchant-phone.webp"
-            alt={`${getBusinessName()} retail POS and inventory interface`}
+            src={HERO_CONTENT.image}
+            alt="Shopkeeper using a phone behind her provisions counter"
             className="hero-phone-img"
             loading="eager"
             fetchPriority="high"
             decoding="async"
-            width={480}
-            height={360}
-            style={{
-              transform: `translateY(${Math.min(scrollProgress * 14, 16)}px)`,
-            }}
+            width={960}
+            height={640}
           />
         </div>
       </div>

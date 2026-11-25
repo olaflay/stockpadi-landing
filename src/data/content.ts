@@ -15,13 +15,12 @@ export const HERO_CONTENT = {
     'After setup, keep recording sales during an outage, track stock movements, and review your day from your phone.',
   primaryCta: 'Create your account',
   secondaryCta: 'How it works',
-  microcopy: 'No payment card data collected • Mobile-first • Offline sales after setup',
   trustBadges: [
     'Offline-first sales',
     'No special hardware required',
     'Digital receipt sharing',
   ],
-  image: '/hero-phone.webp',
+  image: '/merchant-counter.webp',
 };
 
 export const PAIN_POINTS: PainPointItem[] = [
@@ -114,8 +113,6 @@ export const FINAL_CTA_CONTENT = {
   headline: 'Give every sale a proper record.',
   description: `Create your ${brandDisplay} account, set up your shop, and keep sales, stock movements, and customer credit in one place.`,
   primaryCta: 'Create your account',
-  microcopy: 'No payment card data collected • Mobile-first • Guided setup',
-  image: '/cta-bottom-phone.svg',
 };
 
 export const FAQ_LIST: FaqItem[] = [

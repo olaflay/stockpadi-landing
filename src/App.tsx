@@ -12,7 +12,6 @@ import { DynamicJsonLd } from './components/DynamicJsonLd';
 import { getRegistrationUrl } from './config/env';
 
 export function App() {
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [showMobileBar, setShowMobileBar] = useState(false);
 
   useEffect(() => {
@@ -22,8 +21,6 @@ export function App() {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const scrollY = window.scrollY;
-          const progress = Math.min(scrollY / 500, 1);
-          setScrollProgress(progress);
 
           const isPastHero = scrollY > window.innerHeight * 0.45;
           const isNearBottom =
@@ -61,7 +58,7 @@ export function App() {
       />
 
       <main>
-        <HeroSection onStartFree={() => handleRegister('hero')} scrollProgress={scrollProgress} />
+        <HeroSection onStartFree={() => handleRegister('hero')} />
         <PainPoints />
         <FeaturesSection />
         <FaqSection />

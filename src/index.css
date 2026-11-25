@@ -399,7 +399,7 @@ button:focus-visible, a:focus-visible {
 
 .hero-stage-container {
   width: 100%;
-  max-width: 480px;
+  max-width: 720px;
   margin: 32px auto 0;
 }
 
@@ -413,12 +413,20 @@ button:focus-visible, a:focus-visible {
 
 .hero-phone-img {
   width: 100%;
-  max-width: 440px;
+  max-width: 100%;
   height: auto;
   border-radius: var(--shape-md);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
   display: block;
-  will-change: transform;
+}
+
+.final-cta-section .final-cta-card {
+  grid-template-columns: minmax(0, 1fr);
+  padding: clamp(28px, 6vw, 64px);
+}
+
+.final-cta-section .final-cta-text-col {
+  padding: 0;
 }
 
 /* -------------------------------------------------------------

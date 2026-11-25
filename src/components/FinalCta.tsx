@@ -1,16 +1,12 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { FINAL_CTA_CONTENT } from '../data/content';
-import { getBusinessName } from '../config/env';
 
 interface FinalCtaProps {
   onStartFree: () => void;
 }
 
 export const FinalCta: React.FC<FinalCtaProps> = ({ onStartFree }) => {
-  const brand = getBusinessName();
-  const brandDisplay = brand;
-
   return (
     <section className="final-cta-section" aria-labelledby="cta-title">
       <div className="final-cta-card">
@@ -27,22 +23,6 @@ export const FinalCta: React.FC<FinalCtaProps> = ({ onStartFree }) => {
             </button>
           </div>
 
-          <p className="final-cta-microcopy">
-            {FINAL_CTA_CONTENT.microcopy}
-          </p>
-        </div>
-
-        {/* Dynamic Phone Cutout Illustration with Zero Background */}
-        <div className="final-mockup-wrapper">
-          <img
-            src={FINAL_CTA_CONTENT.image}
-            alt={`${brandDisplay} POS and Inventory App on Smartphone`}
-            className="final-mockup-hand-img"
-            loading="lazy"
-            decoding="async"
-            width={585}
-            height={427}
-          />
         </div>
       </div>
     </section>
