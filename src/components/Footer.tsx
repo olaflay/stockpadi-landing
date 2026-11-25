@@ -10,10 +10,9 @@ import { BrandMark } from './BrandLogo';
 
 interface FooterProps {
   onNavigateHome?: () => void;
-  onNavigatePricing?: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onNavigateHome, onNavigatePricing }) => {
+export const Footer: React.FC<FooterProps> = ({ onNavigateHome }) => {
   const businessName = getBusinessName();
   const socialLinks = getSocialLinks();
   const supportEmail = getSupportEmail();
@@ -73,19 +72,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateHome, onNavigatePricin
             }}
           >
             Features
-          </a>
-          <a
-            href="/pricing"
-            onClick={(e) => {
-              e.preventDefault();
-              if (onNavigatePricing) {
-                onNavigatePricing();
-              } else {
-                scrollTo('pricing');
-              }
-            }}
-          >
-            Pricing
           </a>
           <a
             href="#faq"

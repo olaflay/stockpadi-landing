@@ -7,34 +7,13 @@ import { FeaturesSection } from './components/FeaturesSection';
 import { FaqSection } from './components/FaqSection';
 import { FinalCta } from './components/FinalCta';
 import { Footer } from './components/Footer';
-import { PricingPage } from './components/PricingPage';
 import { MobileFloatingBar } from './components/MobileFloatingBar';
 import { DynamicJsonLd } from './components/DynamicJsonLd';
-import { ComingSoonModal } from './components/ComingSoonModal';
+import { getRegistrationUrl } from './config/env';
 
 export function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showMobileBar, setShowMobileBar] = useState(false);
-  const [showComingSoon, setShowComingSoon] = useState(false);
-  const [currentRoute, setCurrentRoute] = useState<'home' | 'pricing'>(() => {
-    if (typeof window !== 'undefined') {
-      return window.location.pathname === '/pricing' || window.location.hash === '#pricing'
-        ? 'pricing'
-        : 'home';
-    }
-    return 'home';
-  });
-
-  useEffect(() => {
-    const handlePopState = () => {
-      const isPricing =
-        window.location.pathname === '/pricing' || window.location.hash === '#pricing';
-      setCurrentRoute(isPricing ? 'pricing' : 'home');
-    };
-
-    window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
-  }, []);
 
   useEffect(() => {
     let ticking = false;
@@ -62,64 +41,39 @@ export function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navigateToPricing = () => {
-    setCurrentRoute('pricing');
-    window.history.pushState({}, '', '/pricing');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   const navigateToHome = () => {
-    setCurrentRoute('home');
-    window.history.pushState({}, '', '/');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleStartFree = () => {
-    setShowComingSoon(true);
-  };
-
-  if (currentRoute === 'pricing') {
-    return (
-      <div className="landing-root">
-        <DynamicJsonLd />
-        <PricingPage
-          onNavigateHome={navigateToHome}
-          onStartFree={handleStartFree}
-        />
-        <ComingSoonModal isOpen={showComingSoon} onClose={() => setShowComingSoon(false)} />
-        <SpeedInsights />
-      </div>
+  const handleRegister = (location: string) => {
+    window.dispatchEvent(
+      new CustomEvent('registration_cta_clicked', { detail: { location } })
     );
-  }
+    window.location.assign(getRegistrationUrl());
+  };
 
   return (
     <div className="landing-root">
       <DynamicJsonLd />
       <Navbar
-        onStartFree={handleStartFree}
+        onStartFree={() => handleRegister('navbar')}
         onNavigateHome={navigateToHome}
-        onNavigatePricing={navigateToPricing}
-        currentRoute={currentRoute}
       />
 
       <main>
-        <HeroSection onStartFree={handleStartFree} scrollProgress={scrollProgress} />
+        <HeroSection onStartFree={() => handleRegister('hero')} scrollProgress={scrollProgress} />
         <PainPoints />
         <FeaturesSection />
         <FaqSection />
-        <FinalCta
-          onStartFree={handleStartFree}
-          onNavigatePricing={navigateToPricing}
-        />
+        <FinalCta onStartFree={() => handleRegister('final')} />
       </main>
 
-      <Footer
-        onNavigateHome={navigateToHome}
-        onNavigatePricing={navigateToPricing}
-      />
+      <Footer onNavigateHome={navigateToHome} />
 
-      <MobileFloatingBar onStartFree={handleStartFree} visible={showMobileBar} />
-      <ComingSoonModal isOpen={showComingSoon} onClose={() => setShowComingSoon(false)} />
+      <MobileFloatingBar
+        onStartFree={() => handleRegister('mobile_floating_bar')}
+        visible={showMobileBar}
+      />
       <SpeedInsights />
     </div>
   );

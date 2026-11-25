@@ -2,7 +2,6 @@ import {
   FaqItem,
   PainPointItem,
   FeatureItem,
-  PricingPlan,
 } from '../types';
 import { getBusinessName } from '../config/env';
 
@@ -14,13 +13,13 @@ export const HERO_CONTENT = {
   headlineHighlight: 'built for your shop.',
   description:
     'After setup, keep recording sales during an outage, track stock movements, and review your day from your phone.',
-  primaryCta: 'Start free',
+  primaryCta: 'Create your account',
   secondaryCta: 'How it works',
   microcopy: 'No payment card data collected • Mobile-first • Offline sales after setup',
   trustBadges: [
     'Offline-first sales',
     'No special hardware required',
-    'WhatsApp receipts',
+    'Digital receipt sharing',
   ],
   image: '/hero-phone.webp',
 };
@@ -63,10 +62,10 @@ export const CORE_FEATURES: (FeatureItem & {
 })[] = [
   {
     id: 'feat-inventory',
-    tag: 'ANTI-THEFT',
-    title: 'Tamper-Proof Stock',
-    copy: 'Stock moves only when sales occur. Cashiers cannot delete records, alter counts, or edit prices.',
-    highlight: 'Locked with staff name & timestamp.',
+    tag: 'STOCK HISTORY',
+    title: 'Traceable stock movements',
+    copy: 'Sales and stock adjustments create movement records, so owners can follow how a stock figure was produced.',
+    highlight: 'Built around an append-only movement ledger.',
     image: '/feature-inventory.webp',
     colorKey: 'blue',
     accentColor: '#1d63d8',
@@ -76,9 +75,9 @@ export const CORE_FEATURES: (FeatureItem & {
   {
     id: 'feat-receipts',
     tag: 'RECEIPTS',
-    title: 'WhatsApp Receipts',
-    copy: 'Send instant digital receipts directly to customer WhatsApp. Zero paper, zero printer cost.',
-    highlight: '1-tap send with your shop name.',
+    title: 'Shareable digital receipts',
+    copy: 'Create a digital receipt and share it through supported apps, including WhatsApp when available on the device.',
+    highlight: 'Keep a receipt record without relying on a printer.',
     image: '/feature-receipt.webp',
     colorKey: 'green',
     accentColor: '#15803d',
@@ -89,8 +88,8 @@ export const CORE_FEATURES: (FeatureItem & {
     id: 'feat-credit',
     tag: 'DEBT BOOK',
     title: 'Customer Debt Ledger',
-    copy: 'Track customer credit, record part-payments, and send polite WhatsApp reminders in one tap.',
-    highlight: 'Zero forgotten customer balances.',
+    copy: 'Record customer credit and part-payments in a movement history instead of relying on loose paper notes.',
+    highlight: 'Balances remain tied to their recorded movements.',
     image: '/feature-credit.webp',
     colorKey: 'amber',
     accentColor: '#b45309',
@@ -100,9 +99,9 @@ export const CORE_FEATURES: (FeatureItem & {
   {
     id: 'feat-multibranch',
     tag: 'MULTI-BRANCH',
-    title: '1 to 6 Shops, One Phone',
-    copy: 'Check live sales, cash-in-hand, and low stock across all branches without traveling.',
-    highlight: 'Owner view with private staff PINs.',
+    title: 'Built for 1 to 6 branches',
+    copy: 'The product supports branch-scoped staff access and business-wide records, subject to role and pilot validation.',
+    highlight: 'Branch access is controlled by assigned permissions.',
     image: '/feature-branch.webp',
     colorKey: 'purple',
     accentColor: '#7c3aed',
@@ -112,31 +111,12 @@ export const CORE_FEATURES: (FeatureItem & {
 ];
 
 export const FINAL_CTA_CONTENT = {
-  headline: 'Start recording sales in 2 minutes.',
-  description: `No complicated setup or training needed. Open ${brandDisplay} on your phone, add your products, and record your first sale right away.`,
-  primaryCta: 'Start free',
-  secondaryCta: 'View plans',
+  headline: 'Give every sale a proper record.',
+  description: `Create your ${brandDisplay} account, set up your shop, and keep sales, stock movements, and customer credit in one place.`,
+  primaryCta: 'Create your account',
   microcopy: 'No payment card data collected • Mobile-first • Guided setup',
   image: '/cta-bottom-phone.svg',
 };
-
-export const PRICING_PLANS: PricingPlan[] = [
-  {
-    id: 'plan-pilot',
-    name: 'Pilot access',
-    price: 'Contact us',
-    cadence: '',
-    subtitle: 'Plan limits and paid packaging are being validated with pilot merchants.',
-    features: [
-      'Offline sales after authenticated setup',
-      'Append-only stock movement history',
-      'WhatsApp & digital receipts',
-      'Customer credit & debt book',
-      'Owner-controlled data export',
-    ],
-    ctaText: 'Request pilot access',
-  },
-];
 
 export const FAQ_LIST: FaqItem[] = [
   {
@@ -149,7 +129,7 @@ export const FAQ_LIST: FaqItem[] = [
     id: 'faq-2',
     question: 'Do I need to buy a POS machine or special hardware?',
     answer:
-      `No expensive hardware needed. ${brandDisplay} runs directly on any normal Android phone, tablet, or laptop. Digital receipts go straight to customer WhatsApp with one tap.`,
+      `${brandDisplay} is a web app designed for modern phones, tablets, and laptops. A compatible browser and an internet connection are needed for initial setup and synchronization.`,
   },
   {
     id: 'faq-3',
@@ -171,8 +151,8 @@ export const FAQ_LIST: FaqItem[] = [
   },
   {
     id: 'faq-6',
-    question: 'How much does it cost, and is there a free plan?',
+    question: 'Where can I confirm current access and pricing?',
     answer:
-      'Commercial limits and paid packaging are being validated with pilot merchants. Contact the team for current pilot terms; the app does not collect customer card details.',
+      'Commercial packaging is not yet published on this website. Create an account to begin registration, and contact the team if you need current access information.',
   },
 ];

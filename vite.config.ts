@@ -46,17 +46,7 @@ function staticSeoPrerender(seoEnv: SeoEnv): Plugin {
           .replace(/<!-- SEO_HEAD -->/, () => renderHeadHtml(head));
 
       // Home route: bake the full route head into the served document.
-      fs.writeFileSync(baseHtmlPath, applyHead(baseHtml, buildSeoHead('home', seoEnv)), 'utf-8');
-
-      // /pricing route: emit a static HTML shell with the pricing head so
-      // direct loads and zero-JS crawlers get correct title/meta/schema.
-      const pricingDir = path.join(distDir, 'pricing');
-      fs.mkdirSync(pricingDir, { recursive: true });
-      fs.writeFileSync(
-        path.join(pricingDir, 'index.html'),
-        applyHead(baseHtml, buildSeoHead('pricing', seoEnv)),
-        'utf-8'
-      );
+      fs.writeFileSync(baseHtmlPath, applyHead(baseHtml, buildSeoHead(seoEnv)), 'utf-8');
 
       // Refresh sitemap: absolute locations + build-date lastmod.
       const sitemapPath = path.join(distDir, 'sitemap.xml');

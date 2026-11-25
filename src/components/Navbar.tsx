@@ -6,52 +6,23 @@ import { BrandMark } from './BrandLogo';
 interface NavbarProps {
   onStartFree: () => void;
   onNavigateHome?: () => void;
-  onNavigatePricing?: () => void;
-  currentRoute?: 'home' | 'pricing';
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   onStartFree,
   onNavigateHome,
-  onNavigatePricing,
-  currentRoute = 'home',
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const businessName = getBusinessName();
 
   const handleHowItWorksClick = () => {
     setIsOpen(false);
-    if (currentRoute !== 'home' && onNavigateHome) {
-      onNavigateHome();
-      setTimeout(() => {
-        const el = document.getElementById('how-it-works');
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
-    } else {
-      const el = document.getElementById('how-it-works');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }
+    document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleFeaturesClick = () => {
     setIsOpen(false);
-    if (currentRoute !== 'home' && onNavigateHome) {
-      onNavigateHome();
-      setTimeout(() => {
-        const el = document.getElementById('features');
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
-    } else {
-      const el = document.getElementById('features');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const handlePricingClick = () => {
-    setIsOpen(false);
-    if (onNavigatePricing) {
-      onNavigatePricing();
-    }
+    document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleBrandClick = (e: React.MouseEvent) => {
@@ -76,16 +47,10 @@ export const Navbar: React.FC<NavbarProps> = ({
         <button type="button" className="nav-item" onClick={handleFeaturesClick}>
           Features
         </button>
-        <button
-          type="button"
-          className={`nav-item ${currentRoute === 'pricing' ? 'active' : ''}`}
-          onClick={handlePricingClick}
-        >
-          Pricing
-        </button>
+        <a className="nav-item" href="#faq" onClick={() => setIsOpen(false)}>FAQ</a>
 
         <button type="button" className="nav-cta" onClick={onStartFree}>
-          Start Free
+          Create account
         </button>
       </nav>
 

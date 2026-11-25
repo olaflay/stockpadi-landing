@@ -5,10 +5,9 @@ import { getBusinessName } from '../config/env';
 
 interface FinalCtaProps {
   onStartFree: () => void;
-  onNavigatePricing?: () => void;
 }
 
-export const FinalCta: React.FC<FinalCtaProps> = ({ onStartFree, onNavigatePricing }) => {
+export const FinalCta: React.FC<FinalCtaProps> = ({ onStartFree }) => {
   const brand = getBusinessName();
   const brandDisplay = brand;
 
@@ -26,15 +25,6 @@ export const FinalCta: React.FC<FinalCtaProps> = ({ onStartFree, onNavigatePrici
               <span>{FINAL_CTA_CONTENT.primaryCta}</span>
               <ArrowRight size={15} />
             </button>
-            {onNavigatePricing && (
-              <button
-                type="button"
-                onClick={onNavigatePricing}
-                className="btn-secondary final-btn-secondary"
-              >
-                <span>{FINAL_CTA_CONTENT.secondaryCta}</span>
-              </button>
-            )}
           </div>
 
           <p className="final-cta-microcopy">

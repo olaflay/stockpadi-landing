@@ -12,7 +12,7 @@ export const MobileFloatingBar: React.FC<MobileFloatingBarProps> = ({ onStartFre
     <aside className="mobile-conversion-bar" aria-label="Quick registration bar">
       <span className="mobile-conversion-text">Record your first sale today.</span>
       <button type="button" className="mobile-conversion-btn" onClick={onStartFree}>
-        Start free
+        Create account
       </button>
     </aside>
   );

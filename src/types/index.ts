@@ -32,14 +32,3 @@ export interface FeatureItem {
   image?: string;
 }
 
-export interface PricingPlan {
-  id: string;
-  name: string;
-  badge?: string;
-  price: string;
-  cadence: string;
-  subtitle: string;
-  features: string[];
-  isPopular?: boolean;
-  ctaText: string;
-}

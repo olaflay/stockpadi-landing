@@ -43,6 +43,15 @@ export const getWebAppUrl = (): string => {
   return '/app';
 };
 
+export const getRegistrationUrl = (): string => {
+  const registrationUrl = getEnvVar('VITE_REGISTRATION_URL');
+  if (registrationUrl && registrationUrl.trim() !== '') {
+    return registrationUrl.trim();
+  }
+
+  return `${getWebAppUrl().replace(/\/$/, '')}/register`;
+};
+
 export const getWhatsAppNumber = (): string => {
   const num = getEnvVar('VITE_WHATSAPP_NUMBER');
   if (num) {
