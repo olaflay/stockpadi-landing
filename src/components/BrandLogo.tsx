@@ -15,7 +15,7 @@ const SIZE_MAP = {
 };
 
 /**
- * Precision geometric OjàPadi brand mark.
+ * Precision geometric brand mark.
  * Features the Infinite Market Loop ("O") embodying unbroken offline trade continuity,
  * paired with the illuminated sunburst trade accent representing the authentic "Ojà" tone mark.
  */
@@ -94,7 +94,7 @@ export function BrandLogo({
       <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <span style={{ fontWeight: 800, letterSpacing: '-0.02em', fontSize: '1.18em' }}>
-            Ojà<span style={{ color: 'var(--color-brand-accent)' }}>Padi</span>
+            {getBusinessName()}
           </span>
           <span
             style={{

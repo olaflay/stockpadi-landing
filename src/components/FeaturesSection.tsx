@@ -71,7 +71,7 @@ export const FeaturesSection: React.FC = () => {
             </h2>
           </div>
           <p className="features-sub">
-            {brandDisplay} audits every sale and stock movement instantly. Full clarity whether at the counter or away.
+            {brandDisplay} keeps sales, stock movements, and customer credit connected to the records that produced them.
           </p>
         </div>
 

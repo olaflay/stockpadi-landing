@@ -1,7 +1,8 @@
+/* Generated using AppDeploy UI skill */
 @charset "UTF-8";
 
 /**
- * Material Design 3 (M3) Tonal & Borderless Design System: OjàPadi
+ * Tonal and borderless retail landing-page design system.
  * Principles:
  * - Scaled-down, structured typography (concise & readable)
  * - Tonal containers & filled surfaces instead of harsh strokes/borders
@@ -60,8 +61,8 @@
   --color-painpoint-muted: #8b979f;
 
   /* Typography */
-  --font-family-ui: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-family-number: 'Roboto', 'Neue Helvetica', 'Helvetica Neue', 'Noto Sans', -apple-system, sans-serif;
+  --font-family-ui: 'Manrope', system-ui, sans-serif;
+  --font-family-number: 'Manrope', system-ui, sans-serif;
 
   /* Shape System */
   --shape-xs: 4px;
@@ -173,7 +174,7 @@ button:focus-visible, a:focus-visible {
 }
 
 /* -------------------------------------------------------------
- * Navigation Bar (Minimal: How It Works, Features, Pricing + Start Free)
+ * Navigation bar
  * ----------------------------------------------------------- */
 .landing-nav {
   position: fixed;
@@ -1649,160 +1650,6 @@ button:focus-visible, a:focus-visible {
     margin: 0 auto;
     vertical-align: bottom;
   }
-}
-
-/* -------------------------------------------------------------
- * Dedicated Pricing Page (/pricing - Zero Pills, Zero Hardcoding)
- * ----------------------------------------------------------- */
-.pricing-page-root {
-  min-height: 100vh;
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  background: var(--color-surface-container-low);
-}
-
-.pricing-page-main {
-  flex: 1;
-  padding: 100px 6vw 60px;
-  max-width: 1060px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.pricing-hero {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.pricing-hero-title {
-  font-size: clamp(24px, 3.4vw, 38px);
-  line-height: 1.15;
-  margin-bottom: 10px;
-}
-
-.pricing-hero-sub {
-  font-size: 14.5px;
-  color: var(--color-on-surface-muted);
-  max-width: 560px;
-  margin: 0 auto;
-  line-height: 1.55;
-}
-
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  align-items: stretch;
-}
-
-.pricing-card {
-  position: relative;
-  background: var(--color-surface);
-  border: 1px solid var(--color-outline-variant);
-  border-radius: var(--shape-lg);
-  padding: 30px 24px 26px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
-  text-align: left;
-}
-
-.pricing-card.featured-card {
-  background: var(--color-surface);
-  box-shadow: 0 10px 30px rgba(10, 110, 77, 0.12);
-  border: 1.5px solid var(--color-brand-accent);
-}
-
-.plan-popular-badge {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: var(--color-brand-accent);
-  color: #ffffff;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  padding: 4px 14px;
-  border-radius: var(--shape-full);
-  white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(10, 110, 77, 0.25);
-  z-index: 5;
-}
-
-.plan-name {
-  font-size: 17px;
-  margin-bottom: 8px;
-}
-
-.plan-price-row {
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-  margin-bottom: 8px;
-}
-
-.plan-price {
-  font-size: 30px;
-  font-weight: 800;
-  color: var(--color-on-surface);
-}
-
-.plan-cadence {
-  font-size: 13px;
-  color: var(--color-on-surface-muted);
-}
-
-.plan-subtitle {
-  color: var(--color-on-surface-muted);
-  font-size: 13px;
-  line-height: 1.5;
-  margin-bottom: 20px;
-  min-height: 38px;
-}
-
-.plan-features-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 24px;
-}
-
-.plan-features-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  font-size: 13px;
-  color: var(--color-on-surface);
-  line-height: 1.4;
-}
-
-.feature-check-icon {
-  color: var(--color-brand-accent);
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.plan-btn {
-  width: 100%;
-  justify-content: center;
-}
-
-.pricing-guarantee-footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 36px;
-  color: var(--color-on-surface-muted);
-  font-size: 12.5px;
-}
-
-@media (max-width: 860px) {
-  .pricing-grid { grid-template-columns: 1fr; }
 }
 
 /* -------------------------------------------------------------

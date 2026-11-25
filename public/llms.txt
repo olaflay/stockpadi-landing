@@ -1,33 +1,26 @@
-# OjàPadi
+# Retail sales and inventory application
 
-> OjàPadi is a 100% offline-first retail POS, inventory and customer-credit platform for Nigerian retail stores with 1 to 6 branches. Record sales, track stock on a permanent ledger, send WhatsApp receipts, and stop staff theft — all without internet.
+> An offline-capable retail web application for Nigerian businesses. After initial setup and while a local authenticated session remains valid, merchants can record core sales during an outage and synchronize pending work when the service becomes reachable.
 
-## About
+## Verified capabilities
 
-- Retail POS for provisions stores, supermarkets, pharmacies, boutiques, and multi-branch chains.
-- Offline-first: sales, receipts, inventory, and customer credit work with zero data; everything syncs to the cloud when connection returns.
-- Anti-theft: staff cannot edit prices, delete sales, or alter stock quantities. Every sale is logged with the cashier's name and time.
-- Multi-branch: owners monitor sales, cash in hand, and low stock across up to 6 branches from one dashboard.
-- No hardware lock-in: runs directly on any Android phone, tablet, or laptop.
-- Free to start, naira pricing, no transaction cuts, no card required.
+- Record sales and sale items.
+- Track stock through append-only stock movements.
+- Record customer credit and part-payments through a credit movement ledger.
+- Generate and share digital receipts.
+- Scope staff access by role and branch.
+- Support businesses with 1 to 6 branches; consolidated workflows remain subject to pilot validation.
+
+## Important limitations
+
+- Initial setup, authentication, synchronization, refunds, and voids require an internet connection.
+- Pending unsynchronized work remains on the device where it was created until synchronization succeeds.
+- This website does not publish subscription tiers, prices, trial periods, or free-plan guarantees.
+- The application records payment methods as tags; it does not process card or wallet payments.
 
 ## Key pages
 
-- [Home](/) — features, proof, and FAQ for offline-first retail POS and inventory.
-- [Pricing](/pricing) — Free (₦0 forever), Pro (₦5,000/month), Enterprise (₦15,000/month).
+- [Home](/) — product overview, verified capabilities, limitations, and registration.
 - [How it works](/#how-it-works)
 - [Features](/#features)
 - [FAQ](/#faq)
-
-## FAQ
-
-1. Do I need a POS machine or special hardware? No. OjàPadi runs on any standard Android phone, tablet, or laptop. Send instant digital receipts directly to customer WhatsApp with zero paper waste.
-2. Can I use OjàPadi completely offline without data? Yes. OjàPadi is 100% offline-first. Record sales, issue receipts, and manage inventory with zero data. Everything syncs to secure cloud backup automatically when you reconnect.
-3. Can staff alter prices or delete sales behind my back? No. Role-based Cashier PINs prevent staff from modifying prices, deleting past transactions, or viewing profit margins. Every stock movement is logged permanently.
-4. What happens if my phone gets lost or damaged? Your business records are securely backed up. Sign in from any new phone or computer to instantly restore all products, sales history, and customer debts.
-5. Can I monitor multiple store branches from one place? Yes. Owners compare performance, track real-time revenue, and transfer inventory across up to 6 branches from a single dashboard.
-6. Can someone help me set up my inventory? Yes. The OjàPadi team helps upload product catalogs from Excel or configure your store via WhatsApp at zero extra cost.
-7. How much does OjàPadi cost in Nigeria? Pricing is in Naira with no transaction cuts. Free Plan ₦0 forever (1 shop, 75 products), Pro ₦5,000/month (up to 3 branches), Enterprise ₦15,000/month (up to 6 branches). No card required.
-8. Can OjàPadi work during power outages or network shutdowns? Yes. Sales, receipts, inventory, and debt tracking keep working with no internet. Records sync automatically when you reconnect.
-9. Can I use a normal phone as a POS machine for my shop? Yes. Any Android phone, tablet, or laptop becomes your POS machine: tap items to sell, scan barcodes with the camera, send WhatsApp receipts. No expensive hardware.
-10. Does OjàPadi work for supermarkets, pharmacies, and boutiques? Yes. Built for provisions stores, supermarkets, pharmacies, fashion boutiques, and multi-branch chains — expiry tracking, barcode scanning, and credit book included.

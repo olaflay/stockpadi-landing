@@ -1,7 +1,5 @@
 import { FAQ_LIST, CORE_FEATURES } from '../data/content';
 
-export type SeoRoute = 'home' | 'pricing';
-
 export interface SeoEnv {
   siteUrl: string;
   businessName: string;
@@ -32,9 +30,6 @@ export const APP_DESCRIPTION =
 export const HOME_DESCRIPTION =
   'After setup, record core sales during an outage, track inventory movements, manage customer credit, and share digital receipts.';
 
-export const PRICING_DESCRIPTION =
-  'Commercial packaging is being validated with pilot merchants. Request current pilot terms without entering payment card details in the app.';
-
 const ROBOTS = 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
 
 const brandingDescription =
@@ -46,13 +41,12 @@ const brandingDescription =
  * static prerender plugin, so the baked HTML and the client-updated head
  * can never drift apart. Kept free of `import.meta.env` so it runs in Node.
  */
-export function buildSeoHead(route: SeoRoute, env: SeoEnv): SeoHead {
+export function buildSeoHead(env: SeoEnv): SeoHead {
   const siteUrl = env.siteUrl.replace(/\/$/, '');
   const name = env.businessName;
 
-  const isPricing = route === 'pricing';
-  const pageUrl = isPricing ? `${siteUrl}/pricing` : `${siteUrl}/`;
-  const canonical = isPricing ? `${siteUrl}/pricing` : `${siteUrl}/`;
+  const pageUrl = `${siteUrl}/`;
+  const canonical = `${siteUrl}/`;
   const ogImage = `${siteUrl}/og-cover.png`;
 
   const activeSocials = Object.values(env.socialLinks || {}).filter(
@@ -70,21 +64,15 @@ export function buildSeoHead(route: SeoRoute, env: SeoEnv): SeoHead {
         }
       : undefined;
 
-  const breadcrumbItems = isPricing
-    ? [
-        { position: 1, name: 'Home', item: `${siteUrl}/` },
-        { position: 2, name: 'Pricing', item: `${siteUrl}/pricing` },
-      ]
-    : [
-        { position: 1, name: 'Home', item: `${siteUrl}/` },
-        { position: 2, name: 'How It Works', item: `${siteUrl}/#how-it-works` },
-        { position: 3, name: 'Features', item: `${siteUrl}/#features` },
-        { position: 4, name: 'Pricing', item: `${siteUrl}/#pricing` },
-      ];
+  const breadcrumbItems = [
+    { position: 1, name: 'Home', item: `${siteUrl}/` },
+    { position: 2, name: 'How it works', item: `${siteUrl}/#how-it-works` },
+    { position: 3, name: 'Features', item: `${siteUrl}/#features` },
+    { position: 4, name: 'FAQ', item: `${siteUrl}/#faq` },
+  ];
 
   const homeTitle = `${name}: Offline-First Retail POS & Inventory Management`;
-  const pricingTitle = `${name} Pricing: Free, Pro & Enterprise Plans for 1–6 Branch Retailers`;
-  const pageTitle = isPricing ? pricingTitle : homeTitle;
+  const pageTitle = homeTitle;
 
   const schemaGraph = [
     {
@@ -93,17 +81,16 @@ export function buildSeoHead(route: SeoRoute, env: SeoEnv): SeoHead {
       name,
       applicationCategory: 'BusinessApplication',
       applicationSubCategory: 'PointOfSale',
-      operatingSystem: 'Android, iOS, Windows, Web',
+      operatingSystem: 'Web',
       inLanguage: 'en',
       description: APP_DESCRIPTION,
       featureList: CORE_FEATURES.map((f) => f.title),
-      isAccessibleForFree: true,
       publisher: { '@id': `${siteUrl}/#organization` },
     },
     {
       '@type': 'Organization',
       '@id': `${siteUrl}/#organization`,
-      name: `${name} Technologies`,
+      name,
       url: siteUrl,
       logo: {
         '@type': 'ImageObject',
@@ -129,10 +116,10 @@ export function buildSeoHead(route: SeoRoute, env: SeoEnv): SeoHead {
     },
     {
       '@type': 'WebPage',
-      '@id': isPricing ? `${siteUrl}/pricing#webpage` : `${siteUrl}/#webpage`,
+      '@id': `${siteUrl}/#webpage`,
       url: pageUrl,
       name: pageTitle,
-      description: isPricing ? PRICING_DESCRIPTION : HOME_DESCRIPTION,
+      description: HOME_DESCRIPTION,
       inLanguage: 'en',
       isPartOf: { '@id': `${siteUrl}/#website` },
       primaryImageOfPage: { '@type': 'ImageObject', url: ogImage },
@@ -164,7 +151,7 @@ export function buildSeoHead(route: SeoRoute, env: SeoEnv): SeoHead {
 
   return {
     title: pageTitle,
-    description: isPricing ? PRICING_DESCRIPTION : HOME_DESCRIPTION,
+    description: HOME_DESCRIPTION,
     keywords:
       'offline pos software, retail inventory management app, whatsapp digital receipts, customer debt book ledger, multi-branch retail software, point of sale software nigeria, inventory management software nigeria',
     canonical,

@@ -11,10 +11,8 @@ import { buildSeoHead, SeoEnv } from '../seo/seo';
  * Injects SEO meta tags and Schema.org JSON-LD at runtime from the current
  * environment (VITE_SITE_URL / window.location) AND the current route.
  *
- * Consumes the SAME `buildSeoHead` source of truth that the build-time
- * static-seo-prerender plugin uses, so the client-updated head (dev server,
- * client-side /pricing navigation) can never drift from the baked HTML
- * shipped in dist/index.html and dist/pricing/index.html.
+ * Consumes the same `buildSeoHead` source of truth as the build-time
+ * static prerender plugin so browser and generated metadata stay aligned.
  */
 export const DynamicJsonLd = () => {
   useEffect(() => {
@@ -23,8 +21,6 @@ export const DynamicJsonLd = () => {
     const supportEmail = getSupportEmail();
     const socialLinks = getSocialLinks();
 
-    const route = window.location.pathname === '/pricing' ? 'pricing' : 'home';
-
     const seoEnv: SeoEnv = {
       siteUrl: siteUrl || window.location.origin,
       businessName,
@@ -32,7 +28,7 @@ export const DynamicJsonLd = () => {
       socialLinks,
     };
 
-    const head = buildSeoHead(route, seoEnv);
+    const head = buildSeoHead(seoEnv);
 
     // 0. Route title (the baked static shell sets it; client-side nav needs it)
     document.title = head.title;
