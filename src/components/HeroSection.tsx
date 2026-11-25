@@ -48,6 +48,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onStartFree, scrollPro
             alt={`${getBusinessName()} retail POS and inventory interface`}
             className="hero-phone-img"
             loading="eager"
+            fetchPriority="high"
             decoding="async"
             width={480}
             height={360}

@@ -40,10 +40,10 @@ function staticSeoPrerender(seoEnv: SeoEnv): Plugin {
       const baseHtml = fs.readFileSync(baseHtmlPath, 'utf-8');
 
       const applyHead = (html: string, head: SeoHead) =>
-        html
-          .replace(/<title>[^<]*<\/title>/, '')
-          .replace(/[\s]*<meta\s+name="(?:title|description|keywords)"[^>]*>/g, '')
-          .replace(/<!-- SEO_HEAD -->/, () => renderHeadHtml(head));
+        html.replace(
+          /<!-- SEO_HEAD_START -->[\s\S]*?<!-- SEO_HEAD_END -->/,
+          `<!-- SEO_HEAD_START -->\n    ${renderHeadHtml(head)}\n    <!-- SEO_HEAD_END -->`
+        );
 
       // Home route: bake the full route head into the served document.
       fs.writeFileSync(baseHtmlPath, applyHead(baseHtml, buildSeoHead(seoEnv)), 'utf-8');

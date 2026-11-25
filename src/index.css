@@ -61,8 +61,8 @@
   --color-painpoint-muted: #8b979f;
 
   /* Typography */
-  --font-family-ui: 'Manrope', system-ui, sans-serif;
-  --font-family-number: 'Manrope', system-ui, sans-serif;
+  --font-family-ui: 'Aptos', 'Trebuchet MS', sans-serif;
+  --font-family-number: 'Aptos', 'Trebuchet MS', sans-serif;
 
   /* Shape System */
   --shape-xs: 4px;
@@ -1996,6 +1996,131 @@ button:focus-visible, a:focus-visible {
 
   .coming-soon-body {
     font-size: 13px;
+  }
+}
+
+/* CSS-native layouts keep the full story readable without scroll-driven JavaScript. */
+.painpoint-scroll-track {
+  min-height: auto;
+  padding: 96px 6vw;
+}
+
+.painpoint-sticky-viewport {
+  position: static;
+  height: auto;
+  padding: 0;
+  overflow: visible;
+}
+
+.painpoint-container {
+  align-items: start;
+  grid-template-columns: 1fr;
+  gap: 48px;
+}
+
+.painpoint-image-stack {
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.painpoint-right-col {
+  align-items: stretch;
+}
+
+.painpoint-stacked-card {
+  position: static;
+  height: auto;
+  min-width: 0;
+}
+
+.painpoint-paper-card {
+  min-height: 100%;
+}
+
+.painpoint-photo-frame {
+  height: 220px;
+}
+
+.footer-copyright-row,
+.footer-legal-links a {
+  color: #94a3b8;
+}
+
+.footer-figo-watermark {
+  display: none;
+}
+
+@media (max-width: 860px) {
+  .painpoint-scroll-track {
+    min-height: auto;
+    padding: 72px 5vw;
+  }
+
+  .painpoint-sticky-viewport {
+    position: static;
+    height: auto;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .painpoint-container {
+    height: auto;
+    gap: 28px;
+  }
+
+  .painpoint-image-stack {
+    display: grid;
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .painpoint-paper-card {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    min-height: 148px;
+  }
+
+  .painpoint-photo-frame {
+    height: 100%;
+  }
+
+  .painpoint-caption-area {
+    align-self: center;
+    text-align: left;
+    padding: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .features-section {
+    min-height: auto;
+    padding: 72px 5vw;
+  }
+
+  .features-sticky-viewport {
+    position: static;
+    height: auto;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .feature-grid-wrapper {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 16px;
+  }
+
+  .feature-grid {
+    transform: none !important;
+  }
+
+  .feature-card {
+    scroll-snap-align: start;
+    max-height: none;
+    overflow: visible;
   }
 }
 

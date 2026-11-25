@@ -91,10 +91,11 @@ The registration page loaded successfully. Account creation was deliberately not
 ## Performance and accessibility verification
 
 - Production build: passed.
-- Build output: HTML 2.10 kB (0.98 kB gzip), CSS 30.71 kB (6.79 kB gzip), JS 372.45 kB (126.76 kB gzip).
+- Final build output: HTML 1.86 kB (0.88 kB gzip), CSS 32.14 kB (7.02 kB gzip), JS 254.98 kB (79.59 kB gzip).
 - Responsive browser checks: 390×844 and 1440×900, with no horizontal overflow.
 - Mobile navigation exposes descriptive open/close labels; FAQ controls expose `aria-expanded`; images include dimensions; reduced-motion CSS remains enabled.
-- A local Lighthouse run was attempted but its package bootstrap did not complete, so no score is reported. This is an explicit measurement gap, not a passing result. Run three mobile Lighthouse audits against the preview deployment and record the median before merge; lab values are not field Core Web Vitals.
+- Production-equivalent local Lighthouse run: Performance 90, Accessibility 100, Best Practices 96, SEO 100; LCP 2.8 s, CLS 0, Total Blocking Time 260 ms, Speed Index 1.4 s. These are single-run lab values, not field Core Web Vitals. Best Practices loses points because Vercel Speed Insights returns 404 on localhost; verify it on the preview deployment. Run three mobile audits against that preview and record the median before merge.
+- The initial production run scored Performance 63 with 4.6 s LCP. Replacing GSAP scroll choreography with CSS-native layouts reduced the JavaScript bundle by about 37% gzip and raised the local lab score to 90.
 - Manual screen-reader and physical low-end Android testing remain required before claiming full WCAG 2.2 AA conformance.
 
 ## 30/60/90-day organic roadmap

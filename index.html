@@ -4,11 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" href="/hero-merchant-phone.webp" as="image" type="image/webp" />
     <meta name="format-detection" content="telephone=no" />
 
     <!-- Static fallback head. Route-specific title/meta/canonical/OG/Twitter/JSON-LD
          are baked at build time by vite.config.ts (static-seo-prerender) and kept in
          sync at runtime by DynamicJsonLd — both consume src/seo/seo.ts. -->
+    <!-- SEO_HEAD_START -->
     <title>Retail POS &amp; Inventory Management</title>
     <meta name="title" content="Retail POS &amp; Inventory Management" />
     <meta
@@ -19,6 +21,7 @@
       name="keywords"
       content="offline pos software, retail inventory management app, whatsapp digital receipts, customer debt book ledger, multi-branch retail software"
     />
+    <!-- SEO_HEAD_END -->
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#101314" />
 
@@ -27,15 +30,6 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="mobile-web-app-capable" content="yes" />
 
-    <!-- Typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,600;6..72,700&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- SEO_HEAD -->
   </head>
   <body>
     <div id="root"></div>

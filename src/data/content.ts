@@ -92,7 +92,7 @@ export const CORE_FEATURES: (FeatureItem & {
     highlight: 'Balances remain tied to their recorded movements.',
     image: '/feature-credit.webp',
     colorKey: 'amber',
-    accentColor: '#b45309',
+    accentColor: '#92400e',
     pillBg: 'rgba(180, 83, 9, 0.08)',
     pillBorder: 'rgba(180, 83, 9, 0.22)',
   },
