@@ -94,7 +94,7 @@ The registration page loaded successfully. Account creation was deliberately not
 - Build output: HTML 2.10 kB (0.98 kB gzip), CSS 30.71 kB (6.79 kB gzip), JS 372.45 kB (126.76 kB gzip).
 - Responsive browser checks: 390×844 and 1440×900, with no horizontal overflow.
 - Mobile navigation exposes descriptive open/close labels; FAQ controls expose `aria-expanded`; images include dimensions; reduced-motion CSS remains enabled.
-- Automated Lighthouse values are recorded below when the local audit completes. Lab values are not field Core Web Vitals.
+- A local Lighthouse run was attempted but its package bootstrap did not complete, so no score is reported. This is an explicit measurement gap, not a passing result. Run three mobile Lighthouse audits against the preview deployment and record the median before merge; lab values are not field Core Web Vitals.
 - Manual screen-reader and physical low-end Android testing remain required before claiming full WCAG 2.2 AA conformance.
 
 ## 30/60/90-day organic roadmap
