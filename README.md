@@ -76,3 +76,8 @@ Alternatively, set `VITE_WEB_APP_URL` to the web app's base URL and omit the
 registration override. Vite reads these variables at build time, so redeploy
 the landing page after changing them. In local development, create `.env` from
 `.env.example`. The landing page never writes environment files for visitors.
+
+For the OjàPadi production landing deployment, set the public config value
+`VITE_REGISTRATION_URL=https://stockpadi-drab.vercel.app/register` in the Vercel
+project's Production environment. After deployment, check that the hero,
+navigation, mobile bar, and footer-area signup buttons all open that page.
