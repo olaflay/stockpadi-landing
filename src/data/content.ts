@@ -30,7 +30,7 @@ export const PAIN_POINTS: PainPointItem[] = [
       'Your sales book says one amount, your drawer has another. Finding where the money went takes hours.',
     quote: 'Cash that never balances at the end of the day',
     badge: 'Missing Cash',
-    image: '/how-it-works-ledger.webp',
+    image: '/how-it-works-ledger-illustration.webp',
   },
   {
     id: 'pain-2',
@@ -39,7 +39,7 @@ export const PAIN_POINTS: PainPointItem[] = [
       'Cartons finish before you realize. You don’t know if staff sold it, gave it out, or took it.',
     quote: 'Goods finish and nobody knows who took them',
     badge: 'Missing Stock',
-    image: '/how-it-works-shelves.webp',
+    image: '/how-it-works-shelves-illustration.webp',
   },
   {
     id: 'pain-3',
@@ -48,7 +48,7 @@ export const PAIN_POINTS: PainPointItem[] = [
       'When customers rush the counter or take goods on credit, writing it on paper is too slow. Money is lost.',
     quote: 'Sales forgotten when the shop gets busy',
     badge: 'Rush Hour',
-    image: '/how-it-works-market.webp',
+    image: '/how-it-works-market-illustration.webp',
   },
 ];
 

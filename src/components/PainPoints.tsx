@@ -1,8 +1,5 @@
 import React from 'react';
 import { PAIN_POINTS } from '../data/content';
-import { LandingMotif } from './LandingIllustrations';
-
-const motifs = ['ledger', 'stock', 'receipt'] as const;
 
 export const PainPoints: React.FC = () => (
   <section
@@ -32,7 +29,15 @@ export const PainPoints: React.FC = () => (
               <article key={item.id} className="painpoint-stacked-card">
                 <div className="painpoint-paper-card">
                   <div className="painpoint-photo-frame">
-                    <LandingMotif kind={motifs[idx % motifs.length]} />
+                    <img
+                      className="painpoint-card-img"
+                      src={item.image}
+                      alt=""
+                      width={800}
+                      height={600}
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </div>
                   <div className="painpoint-caption-area">
                     <span className="painpoint-caption-badge">
