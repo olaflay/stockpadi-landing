@@ -69,9 +69,19 @@ function staticSeoPrerender(seoEnv: SeoEnv): Plugin {
   };
 }
 
-export default defineConfig(({ mode }) => {
+export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
   const siteUrl = (env.VITE_SITE_URL || '').replace(/\/$/, '');
+
+  if (command === 'build') {
+    const registration = env.VITE_REGISTRATION_URL?.trim();
+    const app = env.VITE_WEB_APP_URL?.trim();
+    const target = registration || (app ? `${app.replace(/\/$/, '')}/register` : '');
+    const url = URL.canParse(target) ? new URL(target) : null;
+    if (!url || !['https:', 'http:'].includes(url.protocol) || url.pathname === '/') {
+      throw new Error('Set VITE_REGISTRATION_URL to the web app registration page or set VITE_WEB_APP_URL to the web app base URL.');
+    }
+  }
 
   const seoEnv: SeoEnv = {
     siteUrl,

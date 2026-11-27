@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { getBusinessName } from '../config/env';
+import { getBusinessName, getRegistrationUrl } from '../config/env';
 import { BrandMark } from './BrandLogo';
 
 interface NavbarProps {
@@ -49,9 +49,9 @@ export const Navbar: React.FC<NavbarProps> = ({
         </button>
         <a className="nav-item" href="#faq" onClick={() => setIsOpen(false)}>FAQ</a>
 
-        <button type="button" className="nav-cta" onClick={onStartFree}>
+        <a href={getRegistrationUrl()} className="nav-cta" onClick={onStartFree}>
           Create account
-        </button>
+        </a>
       </nav>
 
       <button

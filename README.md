@@ -69,3 +69,10 @@ When importing into Vercel or Netlify:
 - **Framework Preset**: Vite
 - **Build Command**: `npm run build`
 - **Output Directory**: `dist`
+
+Set `VITE_REGISTRATION_URL` on the landing project to the full registration
+URL on the deployed web app, such as `https://app.example.com/register`.
+Alternatively, set `VITE_WEB_APP_URL` to the web app's base URL and omit the
+registration override. Vite reads these variables at build time, so redeploy
+the landing page after changing them. In local development, create `.env` from
+`.env.example`. The landing page never writes environment files for visitors.

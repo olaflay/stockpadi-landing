@@ -1,0 +1,163 @@
+.hero-illustration {
+  --art-dark: var(--color-brand-accent-hover);
+  --art-green: var(--color-brand-accent);
+  --art-light: var(--color-brand-container);
+  --art-mid: color-mix(in srgb, var(--art-green) 20%, var(--art-light));
+  position: relative;
+  isolation: isolate;
+  aspect-ratio: 2 / 1;
+  overflow: hidden;
+  border-radius: var(--shape-xl);
+  background: radial-gradient(ellipse at 41% 42%, var(--color-surface) 0%, var(--art-light) 78%);
+  color: var(--art-dark);
+}
+
+.hero-illustration > div { position: absolute; }
+
+.hero-art-orbit {
+  inset: 12% 13% 14%;
+  border: 1px dashed var(--art-mid);
+  border-radius: 50%;
+  transform: rotate(-9deg);
+}
+
+.hero-art-ground {
+  z-index: -1;
+  inset: auto 14% 12%;
+  height: 6%;
+  background: var(--art-mid);
+  border-radius: 50%;
+}
+
+.hero-art-store {
+  inset: 32% auto 15% 16%;
+  width: 33%;
+  background: var(--art-light);
+  border: 1px solid var(--art-mid);
+  border-radius: var(--shape-md);
+  box-shadow: 0 9px 22px color-mix(in srgb, var(--art-green) 13%, transparent);
+}
+
+.hero-art-awning {
+  position: absolute;
+  inset: -13% -8% auto;
+  height: 33%;
+  background: repeating-linear-gradient(90deg, var(--art-green) 0 13%, var(--art-mid) 13% 25%);
+  clip-path: polygon(10% 0, 90% 0, 100% 65%, 100% 100%, 0 100%, 0 65%);
+  border-radius: 0 0 var(--shape-sm) var(--shape-sm);
+}
+
+.hero-art-window {
+  position: absolute;
+  inset: 29% 52% 23% 12%;
+  display: grid;
+  place-items: center;
+  color: var(--art-green);
+  background: var(--color-surface);
+  border-radius: var(--shape-sm);
+}
+
+.hero-art-window svg { width: 44%; height: auto; }
+
+.hero-art-door {
+  position: absolute;
+  inset: 29% 12% 0 61%;
+  background: var(--art-mid);
+  border-radius: var(--shape-sm) var(--shape-sm) 0 0;
+}
+
+.hero-art-phone {
+  inset: 10% auto 13% 48%;
+  width: 22%;
+  padding: 3% 2%;
+  border: clamp(2px, .6vw, 5px) solid var(--art-dark);
+  border-radius: clamp(12px, 3vw, 26px);
+  background: var(--color-surface);
+  box-shadow: 0 10px 25px color-mix(in srgb, var(--art-green) 23%, transparent);
+  transform: rotate(-8deg);
+}
+
+.hero-art-phone-top { display: flex; align-items: center; gap: 9%; margin-bottom: 9%; }
+.hero-art-phone-top svg { width: 18%; height: auto; }
+.hero-art-phone-top span { width: 45%; height: .22em; border-radius: 1em; background: var(--art-mid); }
+.hero-art-sale { display: grid; gap: 14%; height: 32%; padding: 8%; border-radius: var(--shape-xs); background: var(--art-light); }
+.hero-art-sale span { width: 55%; border-radius: var(--shape-xs); background: var(--art-mid); }
+.hero-art-sale span:first-child { width: 75%; background: var(--art-green); }
+.hero-art-line { width: 85%; height: 4%; margin-top: 7%; background: var(--art-mid); border-radius: 1em; }
+.hero-art-line + .hero-art-line { width: 62%; }
+.hero-art-confirm { position: absolute; bottom: 8%; right: 9%; display: grid; place-items: center; width: 22%; aspect-ratio: 1; border-radius: 50%; color: var(--color-brand-accent-contrast); background: var(--art-green); }
+.hero-art-confirm svg { width: 60%; height: auto; }
+
+.hero-art-receipt {
+  inset: 39% auto auto 70%;
+  display: grid;
+  gap: 9%;
+  width: 13%;
+  height: 33%;
+  padding: 2%;
+  transform: rotate(13deg);
+  border-radius: var(--shape-xs);
+  background: var(--color-surface);
+  box-shadow: 0 7px 16px color-mix(in srgb, var(--art-green) 20%, transparent);
+}
+
+.hero-art-receipt svg { width: 43%; height: auto; }
+.hero-art-receipt span { width: 78%; height: .22em; border-radius: 1em; background: var(--art-mid); }
+.hero-art-receipt span:last-child { width: 58%; }
+.hero-art-offline { inset: 21% 12% auto auto; display: grid; place-items: center; width: 7%; aspect-ratio: 1; border-radius: 50%; background: var(--art-mid); }
+.hero-art-offline svg { width: 50%; height: auto; }
+
+.landing-motif {
+  --motif-base: var(--color-brand-container);
+  --motif-ink: var(--color-on-brand-container);
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: var(--motif-base);
+  color: var(--motif-ink);
+}
+
+.landing-motif--stock { --motif-base: #ddeaf7; --motif-ink: #244f72; }
+.landing-motif--receipt { --motif-base: #f3ead6; --motif-ink: #694c25; }
+.motif-orbit { position: absolute; inset: 20% 17%; border: 1px dashed currentColor; border-radius: 50%; opacity: .35; transform: rotate(-18deg); }
+.motif-tile { display: grid; place-items: center; width: min(47%, 5rem); aspect-ratio: 1; border-radius: var(--shape-md); background: var(--color-surface); transform: rotate(-10deg); box-shadow: 0 5px 14px color-mix(in srgb, currentColor 17%, transparent); }
+.motif-tile svg { width: 55%; height: auto; }
+.motif-spark { position: absolute; width: 7%; aspect-ratio: 1; background: currentColor; border-radius: 50%; inset: 22% 23% auto auto; opacity: .45; }
+
+.motif-ready {
+  position: absolute;
+  inset: auto 22% 21% auto;
+  display: grid;
+  place-items: center;
+  width: 24%;
+  aspect-ratio: 1;
+  border: 2px solid var(--motif-base);
+  border-radius: 50%;
+  background: var(--color-brand-accent);
+  color: var(--color-brand-accent-contrast);
+}
+
+.motif-ready svg { width: 62%; height: auto; }
+
+.final-cta-section .final-cta-card {
+  grid-template-columns: minmax(0, 1fr) minmax(6rem, .5fr);
+  gap: clamp(16px, 5vw, 64px);
+  align-items: center;
+}
+
+.final-cta-card > .landing-motif {
+  height: auto;
+  aspect-ratio: 1;
+  max-width: 13rem;
+  justify-self: end;
+  border-radius: var(--shape-xl);
+}
+
+@media (max-width: 540px) {
+  .final-cta-section .final-cta-card { grid-template-columns: minmax(0, 1fr); }
+  .final-cta-card > .landing-motif { width: min(38%, 7rem); justify-self: start; }
+}

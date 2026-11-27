@@ -403,23 +403,6 @@ button:focus-visible, a:focus-visible {
   margin: 32px auto 0;
 }
 
-.hero-device-wrapper {
-  background: transparent;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.hero-phone-img {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  border-radius: var(--shape-md);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
-  display: block;
-}
-
 .final-cta-section .final-cta-card {
   grid-template-columns: minmax(0, 1fr);
   padding: clamp(28px, 6vw, 64px);
@@ -1755,19 +1738,6 @@ button:focus-visible, a:focus-visible {
   z-index: 2;
 }
 
-.footer-legal-links {
-  display: flex;
-  gap: 16px;
-}
-
-.footer-legal-links a {
-  color: inherit;
-}
-
-.footer-legal-links a:hover {
-  color: #cbd5e1;
-}
-
 /* Watermark raised up so users can read it clearly */
 .footer-figo-watermark {
   position: absolute;
@@ -2052,8 +2022,7 @@ button:focus-visible, a:focus-visible {
   height: 220px;
 }
 
-.footer-copyright-row,
-.footer-legal-links a {
+.footer-copyright-row {
   color: #94a3b8;
 }
 
@@ -2121,14 +2090,17 @@ button:focus-visible, a:focus-visible {
     padding-bottom: 16px;
   }
 
-  .feature-grid {
-    transform: none !important;
-  }
-
   .feature-card {
     scroll-snap-align: start;
     max-height: none;
     overflow: visible;
+  }
+}
+
+@media (max-width: 768px) {
+  .feature-grid-wrapper--scrub {
+    overflow: clip;
+    scroll-snap-type: none;
   }
 }
 

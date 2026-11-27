@@ -1,6 +1,8 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { FINAL_CTA_CONTENT } from '../data/content';
+import { getRegistrationUrl } from '../config/env';
+import { LandingMotif } from './LandingIllustrations';
 
 interface FinalCtaProps {
   onStartFree: () => void;
@@ -17,13 +19,14 @@ export const FinalCta: React.FC<FinalCtaProps> = ({ onStartFree }) => {
           </p>
 
           <div className="final-cta-actions">
-            <button type="button" className="btn-primary final-btn" onClick={onStartFree}>
+            <a href={getRegistrationUrl()} className="btn-primary final-btn" onClick={onStartFree}>
               <span>{FINAL_CTA_CONTENT.primaryCta}</span>
               <ArrowRight size={15} />
-            </button>
+            </a>
           </div>
 
         </div>
+        <LandingMotif kind="storefront" />
       </div>
     </section>
   );

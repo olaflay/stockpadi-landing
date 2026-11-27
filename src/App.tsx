@@ -9,7 +9,6 @@ import { FinalCta } from './components/FinalCta';
 import { Footer } from './components/Footer';
 import { MobileFloatingBar } from './components/MobileFloatingBar';
 import { DynamicJsonLd } from './components/DynamicJsonLd';
-import { getRegistrationUrl } from './config/env';
 
 export function App() {
   const [showMobileBar, setShowMobileBar] = useState(false);
@@ -46,7 +45,6 @@ export function App() {
     window.dispatchEvent(
       new CustomEvent('registration_cta_clicked', { detail: { location } })
     );
-    window.location.assign(getRegistrationUrl());
   };
 
   return (

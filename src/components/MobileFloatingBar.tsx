@@ -1,4 +1,5 @@
 import React from 'react';
+import { getRegistrationUrl } from '../config/env';
 
 interface MobileFloatingBarProps {
   onStartFree: () => void;
@@ -11,9 +12,9 @@ export const MobileFloatingBar: React.FC<MobileFloatingBarProps> = ({ onStartFre
   return (
     <aside className="mobile-conversion-bar" aria-label="Quick registration bar">
       <span className="mobile-conversion-text">Record your first sale today.</span>
-      <button type="button" className="mobile-conversion-btn" onClick={onStartFree}>
+      <a href={getRegistrationUrl()} className="mobile-conversion-btn" onClick={onStartFree}>
         Create account
-      </button>
+      </a>
     </aside>
   );
 };

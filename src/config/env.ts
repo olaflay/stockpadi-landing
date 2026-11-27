@@ -35,7 +35,7 @@ export const getSiteUrl = (): string => {
 };
 
 export const getWebAppUrl = (): string => {
-  const envUrl = getEnvVar('VITE_WEB_APP_URL');
+  const envUrl = import.meta.env.VITE_WEB_APP_URL;
   if (envUrl && envUrl.trim() !== '') {
     return envUrl.trim().replace(/\/$/, '');
   }
@@ -44,7 +44,7 @@ export const getWebAppUrl = (): string => {
 };
 
 export const getRegistrationUrl = (): string => {
-  const registrationUrl = getEnvVar('VITE_REGISTRATION_URL');
+  const registrationUrl = import.meta.env.VITE_REGISTRATION_URL;
   if (registrationUrl && registrationUrl.trim() !== '') {
     return registrationUrl.trim();
   }

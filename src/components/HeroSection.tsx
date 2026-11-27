@@ -1,6 +1,8 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { HERO_CONTENT } from '../data/content';
+import { getRegistrationUrl } from '../config/env';
+import { HeroIllustration } from './LandingIllustrations';
 
 interface HeroSectionProps {
   onStartFree: () => void;
@@ -24,10 +26,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onStartFree }) => {
       </p>
 
       <div className="hero-actions">
-        <button type="button" className="btn-primary" onClick={onStartFree}>
+        <a href={getRegistrationUrl()} className="btn-primary" onClick={onStartFree}>
           <span>{HERO_CONTENT.primaryCta}</span>
           <ArrowRight size={15} />
-        </button>
+        </a>
 
         <button type="button" className="btn-secondary" onClick={scrollToAbout}>
           <span>{HERO_CONTENT.secondaryCta}</span>
@@ -35,18 +37,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onStartFree }) => {
       </div>
 
       <div className="hero-stage-container">
-        <div className="hero-device-wrapper">
-          <img
-            src={HERO_CONTENT.image}
-            alt="Shopkeeper using a phone behind her provisions counter"
-            className="hero-phone-img"
-            loading="eager"
-            fetchPriority="high"
-            decoding="async"
-            width={960}
-            height={640}
-          />
-        </div>
+        <HeroIllustration />
       </div>
 
       {/* Spacious Trust Bar placed below mockup */}

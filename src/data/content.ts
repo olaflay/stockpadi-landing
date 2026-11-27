@@ -20,7 +20,6 @@ export const HERO_CONTENT = {
     'No special hardware required',
     'Digital receipt sharing',
   ],
-  image: '/merchant-counter.webp',
 };
 
 export const PAIN_POINTS: PainPointItem[] = [

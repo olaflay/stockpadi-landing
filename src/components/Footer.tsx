@@ -128,11 +128,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateHome }) => {
 
       <div className="footer-copyright-row">
         <div>© {new Date().getFullYear()} {businessName}. All rights reserved.</div>
-        <div className="footer-legal-links">
-          <a href="#privacy">Privacy</a>
-          <a href="#terms">Terms</a>
-          <a href="#security">Security</a>
-        </div>
       </div>
 
       {/* Brand Watermark (positioned very low so only about half of text shows) */}
