@@ -996,27 +996,18 @@ button:focus-visible, a:focus-visible {
 /* Mobile: Pinned Horizontal Scrub (Single Card Viewport) */
 @media (max-width: 768px) {
   .features-section {
-    min-height: 290vh;
-    padding: 0;
+    padding: 56px 5vw;
     position: relative;
     background: var(--color-surface);
   }
 
   .features-sticky-viewport {
-    position: sticky;
-    top: 64px;
-    height: calc(100vh - 64px);
-    height: calc(100dvh - 64px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 24px 5vw;
-    box-sizing: border-box;
-    overflow: hidden;
+    position: relative;
+    background: var(--color-surface);
   }
 
   .features-header {
-    margin: 0 0 40px 0;
+    margin: 0 0 20px;
     grid-template-columns: 1fr;
     gap: 6px;
     text-align: left;
@@ -1036,7 +1027,8 @@ button:focus-visible, a:focus-visible {
   }
 
   .feature-grid-wrapper {
-    overflow: hidden;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
     width: 100%;
     padding-bottom: 8px;
   }
@@ -1046,14 +1038,13 @@ button:focus-visible, a:focus-visible {
     flex-direction: row;
     gap: 16px;
     width: max-content;
-    will-change: transform;
+    position: relative;
     grid-template-columns: none;
   }
 
   .feature-card {
-    flex: 0 0 calc(86vw);
-    min-width: calc(86vw);
-    max-width: calc(86vw);
+    flex: 0 0 min(90vw, 420px);
+    scroll-snap-align: start;
     box-sizing: border-box;
     padding: 20px 18px 18px;
     border-radius: var(--shape-md);
@@ -1061,8 +1052,6 @@ button:focus-visible, a:focus-visible {
     border: 1px solid var(--color-outline-variant);
     background: var(--color-surface);
     height: auto;
-    max-height: calc(100dvh - 220px);
-    overflow-y: auto;
   }
 
   .feature-card:hover {
@@ -1102,6 +1091,17 @@ button:focus-visible, a:focus-visible {
     padding: 8px 10px;
     font-size: 11px;
   }
+
+  .feature-grid-wrapper--scrub {
+    overflow: clip;
+    scroll-snap-type: none;
+  }
+}
+
+@media (max-width: 768px) and (max-height: 650px), (max-width: 768px) and (prefers-reduced-motion: reduce) {
+  .feature-grid-wrapper { overflow: visible; }
+  .feature-grid { display: grid; width: 100%; }
+  .feature-card { min-width: 0; }
 }
 
 /* -------------------------------------------------------------
@@ -2048,39 +2048,6 @@ button:focus-visible, a:focus-visible {
 
   .painpoint-caption-area {
     padding-top: 12px;
-  }
-}
-
-@media (max-width: 768px) {
-  .features-section {
-    min-height: auto;
-    padding: 72px 5vw;
-  }
-
-  .features-sticky-viewport {
-    position: static;
-    height: auto;
-    padding: 0;
-    overflow: visible;
-  }
-
-  .feature-grid-wrapper {
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 16px;
-  }
-
-  .feature-card {
-    scroll-snap-align: start;
-    max-height: none;
-    overflow: visible;
-  }
-}
-
-@media (max-width: 768px) {
-  .feature-grid-wrapper--scrub {
-    overflow: clip;
-    scroll-snap-type: none;
   }
 }
 

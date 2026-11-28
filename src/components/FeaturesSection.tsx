@@ -6,15 +6,17 @@ import { getBusinessName } from '../config/env';
 export const FeaturesSection: React.FC = () => {
   const brand = getBusinessName();
   const brandDisplay = brand;
+  const panelRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const viewport = viewportRef.current;
     const track = trackRef.current;
-    if (!viewport || !track) return;
+    const panel = panelRef.current;
+    if (!viewport || !track || !panel) return;
 
-    const mobileMotion = '(max-width: 768px) and (prefers-reduced-motion: no-preference)';
+    const mobileMotion = '(max-width: 768px) and (min-height: 651px) and (prefers-reduced-motion: no-preference)';
     const media = window.matchMedia(mobileMotion);
     let disposed = false;
     let revert: (() => void) | undefined;
@@ -30,19 +32,23 @@ export const FeaturesSection: React.FC = () => {
         responsive.add(mobileMotion, () => {
           viewport.classList.add('feature-grid-wrapper--scrub');
           viewport.scrollLeft = 0;
-          const distance = () => Math.max(0, track.scrollWidth - viewport.clientWidth);
-          gsap.to(track, {
-            x: () => -distance(),
-            ease: 'none',
+          const distance = () => Math.max(0, (track.lastElementChild as HTMLElement).offsetLeft +
+            (track.lastElementChild as HTMLElement).offsetWidth - viewport.clientWidth);
+          const timeline = gsap.timeline({
             scrollTrigger: {
-              trigger: viewport,
-              start: 'top 96px',
-              end: () => `+=${Math.max(1, distance())}`,
+              trigger: panel,
+              start: () => `top ${(document.querySelector('.landing-nav')?.getBoundingClientRect().height ?? 64) + 12}px`,
+              end: () => `+=${distance() + 112}`,
               pin: true,
+              pinSpacing: true,
               scrub: true,
+              anticipatePin: 1,
               invalidateOnRefresh: true,
             },
           });
+          // Give the final card its own pause before the next section enters.
+          timeline.to(track, { x: () => -distance(), ease: 'none', duration: 1 });
+          timeline.to({}, { duration: 0.14 });
           return () => viewport.classList.remove('feature-grid-wrapper--scrub');
         });
       }).catch(() => {
@@ -77,7 +83,7 @@ export const FeaturesSection: React.FC = () => {
       className="features-section"
       aria-labelledby="features-title"
     >
-      <div className="features-sticky-viewport">
+      <div className="features-sticky-viewport" ref={panelRef}>
         <div className="features-header">
           <div>
             <span className="features-eyebrow">What You Get</span>
